@@ -9,10 +9,10 @@ namespace HotelBusinessModel
         public int Id { get; set; }
 
         [Required]
-        public string UslugaName { get; set; }
+        public string ServiceName { get; set; }
 
         [Required]
-        public string UslugaSpecification { get; set; }
+        public string ServiceSpecification { get; set; }
 
         [Required]
         public decimal Price { get; set; }

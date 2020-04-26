@@ -1,0 +1,23 @@
+﻿using System.Runtime.Serialization;
+
+namespace HorelBusinessService.ViewModels
+{
+    [DataContract]
+    public class PaymentViewModel
+    {
+        [DataMember]
+        public int OrderId { get; set; }
+
+        [DataMember]
+        public string UserFIO { get; set; }
+
+        [DataMember]
+        public string DateCreate { get; set; }
+
+        [DataMember]
+        public string DateImplement { get; set; }
+
+        [DataMember]
+        public decimal Summ { get; set; }
+    }
+}
