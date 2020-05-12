@@ -33,7 +33,8 @@ namespace HorelBusinessService.ImplementationsBD
                     var element = new Form
                     {
                         FormName = model.FormName,
-                        Specifications = model.Specifications
+                        Specifications = model.Specifications,
+                        Price = model.Price
                     };
                     context.Forms.Add(element);
                     await context.SaveChangesAsync();
@@ -127,6 +128,7 @@ namespace HorelBusinessService.ImplementationsBD
                 Id = rec.Id,
                 FormName = rec.FormName,
                 Specifications = rec.Specifications,
+                Price = rec.Price
             })
                 .ToListAsync();
             return result;

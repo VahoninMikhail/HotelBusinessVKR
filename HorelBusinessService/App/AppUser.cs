@@ -13,7 +13,7 @@ namespace HorelBusinessService.App
     public class AppUserLogin : IdentityUserLogin<AppId> { }
 
     [DataContract]
-    public class AppUser
+    public class AppUser : IdentityUser<AppId, AppUserLogin, AppUserRole, AppUserClaim>
     {
         [DataMember]
         [Required]
@@ -64,6 +64,6 @@ namespace HorelBusinessService.App
     {
         Administrator = 0,
 
-        Posetitel = 1
+        User = 1
     }
 }

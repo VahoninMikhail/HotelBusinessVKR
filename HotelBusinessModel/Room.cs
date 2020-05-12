@@ -13,7 +13,7 @@ namespace HotelBusinessModel
         public virtual Form Form { get; set; }
 
         [Required]
-        public string RoomName { get; set; }
+        public int RoomName { get; set; }
 
         public bool Active { get; set; }
 

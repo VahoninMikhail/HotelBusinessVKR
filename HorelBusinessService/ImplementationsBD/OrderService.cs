@@ -29,9 +29,9 @@ namespace HorelBusinessService.ImplementationsBD
                     var element = new Order
                     {
                         UserId = model.UserId,
-                        ArrivalDate = DateTime.Now,
-                        DepartureDate = model.PogashenieEnd,
-                        OrderStatus = OrderStatus.Начат
+                        ArrivalDate = model.ArrivalDate,
+                        DepartureDate = model.DepartureDate,
+                        OrderStatus = OrderStatus.Начат,
                     };
                     context.Orders.Add(element);
                     await context.SaveChangesAsync();
@@ -48,10 +48,27 @@ namespace HorelBusinessService.ImplementationsBD
                             OrderId = element.Id,
                             Count = groupService.Count,
                             Price = context.Services.Where(rec => rec.Id == groupService.ServiceId).FirstOrDefault().Price,
-                            ServiceId = groupService.ServiceId
+                            ServiceId = groupService.ServiceId,
                         });
-
                     }
+                    await context.SaveChangesAsync();
+
+                    var groupRooms = model.RoomOrders.GroupBy(rec => rec.RoomId).Select(rec => new RoomOrderBindingModel
+                    {
+                        RoomId = rec.Key
+                    });
+                    foreach (var groupRoom in groupRooms)
+                    {
+                        context.RoomOrders.Add(new RoomOrder
+                        {
+                            OrderId = element.Id,
+                            ArrivalDate = groupRoom.ArrivalDate,
+                            DepartureDate = groupRoom.DepartureDate,
+                            Price = context.Forms.Where(rec => rec.Id == context.Rooms.Where(rec1 => rec1.Id == groupRoom.RoomId).FirstOrDefault().FormId).FirstOrDefault().Price,
+                            RoomId = groupRoom.RoomId
+                        });
+                    }
+
                     await context.SaveChangesAsync();
                     if (model.Payed > 0)
                     {
@@ -82,6 +99,12 @@ namespace HorelBusinessService.ImplementationsBD
                 Price = rec.Price,
                 Total = rec.Count * rec.Price
             }).ToListAsync();
+            var roomOrders = await context.RoomOrders.Where(rec => rec.OrderId == model.OrderId).Include(rec => rec.Room).Select(rec => new RoomOrderViewModel
+            {
+                Id = rec.Id,
+                RoomName = rec.Room.RoomName,
+                Price = rec.Price,
+            }).ToListAsync();
             var remaind = serviceOrders.Select(rec => rec.Total).DefaultIfEmpty(0).Sum() - context.Payments.Where(rec => rec.OrderId == model.OrderId).Select(rec => rec.Summ).DefaultIfEmpty(0).Sum();
             if (remaind < model.Summ)
             {
@@ -95,7 +118,7 @@ namespace HorelBusinessService.ImplementationsBD
             var order = await context.Orders.FirstOrDefaultAsync(rec => rec.Id == model.OrderId);
             if (order != null)
             {
-                order.OrderStatus = (remaind == model.Summ) ? OrderStatus.Оплачен : OrderStatus.Внесена_Предоплата;
+                order.OrderStatus = (remaind == model.Summ) ? OrderStatus.Оплачен : OrderStatus.Начат;
             }
             context.Payments.Add(new Payment
             {
@@ -190,7 +213,7 @@ namespace HorelBusinessService.ImplementationsBD
                 }).ToListAsync();
         }
 
-        public async Task<List<OrderViewModel>> GetList(int clientId)
+        public async Task<List<OrderViewModel>> GetList(string clientId)
         {
             return await context.Orders.Where(rec => rec.UserId == clientId).Include(rec => rec.User).Include(rec => rec.ServiceOrders)
                 .Select(rec => new OrderViewModel

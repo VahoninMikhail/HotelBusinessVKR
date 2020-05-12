@@ -14,6 +14,9 @@ namespace HotelBusinessModel
         [Required]
         public string Specifications { get; set; }
 
+        [Required]
+        public decimal Price { get; set; }
+
         [ForeignKey("FormId")]
         public virtual List<Room> Rooms { get; set; }
 

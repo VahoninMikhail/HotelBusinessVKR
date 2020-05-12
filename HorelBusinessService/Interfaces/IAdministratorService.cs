@@ -12,7 +12,7 @@ namespace HorelBusinessService.Interfaces
 
         Task<AdministratorViewModel> GetElement(int id);
 
-        Task AddElement(AdministratorCreateBindingModel model);
+        Task AddElement(AdministratorBindingModel model);
 
         Task UpdElement(AdministratorBindingModel model);
 

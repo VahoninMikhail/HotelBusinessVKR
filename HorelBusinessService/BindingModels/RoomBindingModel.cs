@@ -9,7 +9,7 @@ namespace HorelBusinessService.BindingModels
         public int Id { get; set; }
 
         [DataMember]
-        public string RoomName { get; set; }
+        public int RoomName { get; set; }
 
         [DataMember]
         public int FormId { get; set; }

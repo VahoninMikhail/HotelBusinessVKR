@@ -6,7 +6,7 @@ namespace HorelBusinessService.BindingModels
     public class UserBindingModel
     {
         [DataMember]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [DataMember]
         public string UserFIO { get; set; }

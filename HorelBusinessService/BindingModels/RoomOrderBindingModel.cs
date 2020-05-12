@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace HorelBusinessService.BindingModels
 {
@@ -12,6 +13,9 @@ namespace HorelBusinessService.BindingModels
         public int RoomId { get; set; }
 
         [DataMember]
-        public int Count { get; set; }
+        public DateTime ArrivalDate { get; set; }
+
+        [DataMember]
+        public DateTime DepartureDate { get; set; }
     }
 }

@@ -11,15 +11,21 @@ namespace HorelBusinessService.BindingModels
         public int Id { get; set; }
 
         [DataMember]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         [DataMember]
-        public DateTime PogashenieEnd { get; set; }
+        public DateTime ArrivalDate { get; set; }
+
+        [DataMember]
+        public DateTime DepartureDate { get; set; }
 
         [DataMember]
         public int Payed { get; set; }
 
         [DataMember]
         public List<ServiceOrderBindingModel> ServiceOrders { get; set; }
+
+        [DataMember]
+        public List<RoomOrderBindingModel> RoomOrders { get; set; }
     }
 }

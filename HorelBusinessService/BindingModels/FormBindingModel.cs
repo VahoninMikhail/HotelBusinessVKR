@@ -16,6 +16,9 @@ namespace HorelBusinessService.BindingModels
         public string Specifications { get; set; }
 
         [DataMember]
+        public decimal Price { get; set; }
+
+        [DataMember]
         public List<FormFreeServiceBindingModel> FormFreeServices { get; set; }
     }
 }

@@ -1,17 +1,12 @@
-﻿using System.Runtime.Serialization;
+﻿using HorelBusinessService.App;
+using System.Runtime.Serialization;
 
 namespace HorelBusinessService.BindingModels
 {
     [DataContract]
-    public class AdministratorBindingModel
+    public class AdministratorBindingModel : AppUser
     {
         [DataMember]
-        public int Id { get; set; }
-
-        [DataMember]
         public string AdministratorFIO { get; set; }
-
-        [DataMember]
-        public string AdministratorMail { get; set; }
     }
 }

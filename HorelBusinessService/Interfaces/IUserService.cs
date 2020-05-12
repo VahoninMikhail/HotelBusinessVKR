@@ -10,15 +10,15 @@ namespace HorelBusinessService.Interfaces
     {
         Task<List<UserViewModel>> GetList();
 
-        Task<UserViewModel> GetElement(int id);
+        Task<UserViewModel> GetElement(string id);
 
         Task AddElement(UserCreateBindingModel model);
 
         Task UpdElement(UserBindingModel model);
 
-        Task DelElement(int id);
+        Task DelElement(string id);
 
-        Task<AppUser> GetUser(int id);
+        Task<AppUser> GetUser(string id);
 
         Task<AppUser> GetUserByName(string name);
 

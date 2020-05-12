@@ -11,7 +11,7 @@ namespace HorelBusinessService.ViewModels
         public int Id { get; set; }
 
         [DataMember]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         [DataMember]
         public string UserFIO { get; set; }

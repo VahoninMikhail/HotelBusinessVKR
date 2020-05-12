@@ -1,16 +1,17 @@
 ﻿using HorelBusinessService.BindingModels;
+using HorelBusinessService.Interfaces;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Threading.Tasks;
 
 namespace HorelBusinessService.App
 {
-    public class AppUserStore : UserStore<AppUser, AppRole, AppId, AppUserLogin, AppUserRole, AppUserClaim>
+    public class AppUserStore /*: UserStore<AppUser, AppRole, AppId, AppUserLogin, AppUserRole, AppUserClaim>*/
     {
-        private readonly IAdministratorService serviceA;
+        /*private readonly IAdministratorService serviceA;
 
-        private readonly IPosetitelService serviceC;
+        private readonly IUserService serviceC;
 
-        public AppUserStore(AbstractDbContext context, IAdministratorService serviceA, IPosetitelService serviceC) : base(context)
+        public AppUserStore(AbstractDbContext context, IAdministratorService serviceA, IUserService serviceC) : base(context)
         {
             this.serviceA = serviceA;
             this.serviceC = serviceC;
@@ -22,7 +23,7 @@ namespace HorelBusinessService.App
             {
                 return serviceA.GetUser(userId.Id);
             }
-            else if (userId.Role.Equals(ApplicationRole.Posetitel))
+            else if (userId.Role.Equals(ApplicationRole.User))
             {
                 return serviceC.GetUser(userId.Id);
             }
@@ -31,9 +32,9 @@ namespace HorelBusinessService.App
         public override Task CreateAsync(AppUser user)
         {
 
-            if (user is AdministratorCreateBindingModel)
+            if (user is AdministratorBindingModel)
             {
-                return serviceA.AddElement(user as AdministratorCreateBindingModel);
+                return serviceA.AddElement(user as AdministratorBindingModel);
             }
             else if (user is UserCreateBindingModel)
             {
@@ -48,7 +49,7 @@ namespace HorelBusinessService.App
             {
                 return serviceA.DelElement(user.Id.Id);
             }
-            else if (user.Id.Role.Equals(ApplicationRole.Posetitel))
+            else if (user.Id.Role.Equals(ApplicationRole.User))
             {
                 return serviceC.DelElement(user.Id.Id);
             }
@@ -70,5 +71,14 @@ namespace HorelBusinessService.App
             }
             return null;
         }
+
+        public override Task UpdateAsync(AppUser user)
+        {
+            if (user is AdministratorBindingModel)
+            {
+                return serviceA.UpdElement(user as AdministratorBindingModel);
+            }
+            return null;
+        }*/
     }
 }

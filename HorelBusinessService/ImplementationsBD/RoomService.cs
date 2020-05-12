@@ -66,6 +66,19 @@ namespace HorelBusinessService.ImplementationsBD
             throw new Exception("Element not found");
         }
 
+        public async Task<List<RoomViewModel>> GetList(int formId)
+        {
+            return await context.Rooms.Where(rec => rec.FormId == formId).Include(rec => rec.Form).Include(rec => rec.RoomOrders)
+                .Select(rec => new RoomViewModel
+                {
+                    Id = rec.Id,
+                    RoomName = rec.RoomName,
+                    FormId = rec.FormId,
+                    FormName = rec.Form.FormName,
+                    Active = (rec.Active) ? "Active" : "Locked"
+                }).ToListAsync();
+        }
+
         public async Task<List<RoomViewModel>> GetList()
         {
             List<RoomViewModel> result = await context.Rooms.Select(rec => new RoomViewModel
@@ -73,6 +86,7 @@ namespace HorelBusinessService.ImplementationsBD
                 Id = rec.Id,
                 RoomName = rec.RoomName,
                 FormName = context.Forms.Where(recc => recc.Id == rec.FormId).Select(recc => recc.FormName).FirstOrDefault(),
+                FormId = rec.FormId,
                 Active = (rec.Active) ? "Active" : "Locked"
             })
                 .ToListAsync();

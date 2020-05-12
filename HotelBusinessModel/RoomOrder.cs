@@ -1,4 +1,6 @@
-﻿namespace HotelBusinessModel
+﻿using System;
+
+namespace HotelBusinessModel
 {
     public class RoomOrder
     {
@@ -8,7 +10,9 @@
 
         public int OrderId { get; set; }
 
-        public int Count { get; set; }
+        public DateTime ArrivalDate { get; set; }
+
+        public DateTime DepartureDate { get; set; }
 
         public decimal Price { get; set; }
 

@@ -1,11 +1,12 @@
 ﻿using HotelBusinessModel;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace HorelBusinessService
 {
-    public class AbstractDbContext : DbContext
+    public class AbstractDbContext : IdentityDbContext<User>
     {
         public AbstractDbContext() : base("HotelBusiness")
         {
@@ -63,6 +64,8 @@ namespace HorelBusinessService
 
         public virtual DbSet<ServiceOrder> ServiceOrders { get; set; }
 
-        public virtual DbSet<User> Users { get; set; }
+        public System.Data.Entity.DbSet<HorelBusinessService.App.AppId> AppIds { get; set; }
+
+        public System.Data.Entity.DbSet<HorelBusinessService.BindingModels.ServiceBindingModel> ServiceBindingModels { get; set; }
     }
 }

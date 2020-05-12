@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace HorelBusinessService.ImplementationsBD
 {
+    
     public class AdministratorService : IAdministratorService
     {
         private AbstractDbContext context;
@@ -25,7 +26,7 @@ namespace HorelBusinessService.ImplementationsBD
             return new AdministratorService(context);
         }
 
-        public async Task AddElement(AdministratorCreateBindingModel model)
+        public async Task AddElement(AdministratorBindingModel model)
         {
             Administrator element = await context.Administrators.FirstOrDefaultAsync(rec => rec.AdministratorFIO == model.AdministratorFIO);
             if (element != null)
@@ -128,19 +129,27 @@ namespace HorelBusinessService.ImplementationsBD
         public async Task UpdElement(AdministratorBindingModel model)
         {
             Administrator element = await context.Administrators.FirstOrDefaultAsync(rec =>
-                                    (rec.AdministratorFIO == model.AdministratorFIO || rec.AdministratorMail == rec.AdministratorMail) && rec.Id != model.Id);
+                                    rec.AdministratorFIO == model.AdministratorFIO && rec.Id != model.Id.Id);
             if (element != null)
             {
-                throw new Exception("Уже есть администратор с такими данными");
+                throw new Exception("Уже есть админ с таким ФИО");
             }
-            element = await context.Administrators.FirstOrDefaultAsync(rec => rec.Id == model.Id);
+            element = context.Administrators.FirstOrDefault(rec => rec.AdministratorMail == model.UserName && rec.Id != model.Id.Id);
+            if (element != null)
+            {
+                throw new Exception("Уже есть админ с таким логином");
+            }
+            element = await context.Administrators.FirstOrDefaultAsync(rec => rec.Id == model.Id.Id);
             if (element == null)
             {
                 throw new Exception("Элемент не найден");
             }
             element.AdministratorFIO = model.AdministratorFIO;
-            element.AdministratorMail = model.AdministratorMail;
+            element.AdministratorMail = model.UserName;
+            element.Password = model.PasswordHash;
+            element.Zaschita = model.SecurityStamp;
             await context.SaveChangesAsync();
         }
     }
+    
 }

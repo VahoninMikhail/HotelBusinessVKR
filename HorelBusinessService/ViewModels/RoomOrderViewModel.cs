@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace HorelBusinessService.ViewModels
 {
@@ -12,15 +13,21 @@ namespace HorelBusinessService.ViewModels
         public int RoomId { get; set; }
 
         [DataMember]
-        public int RoomName { get; set; }
+        public DateTime ArrivalDate { get; set; }
 
         [DataMember]
-        public int Count { get; set; }
+        public DateTime DepartureDate { get; set; }
+
+        [DataMember]
+        public int RoomName { get; set; }
 
         [DataMember]
         public decimal Price { get; set; }
 
         [DataMember]
         public decimal Total { get; set; }
+
+        [DataMember]
+        public virtual RoomViewModel Room { get; set; }
     }
 }

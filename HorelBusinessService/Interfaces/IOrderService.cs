@@ -9,7 +9,7 @@ namespace HorelBusinessService.Interfaces
     {
         Task<List<OrderViewModel>> GetList();
 
-        Task<List<OrderViewModel>> GetList(int userId);
+        Task<List<OrderViewModel>> GetList(string userId);
 
         Task<OrderViewModel> GetElement(int id);
 
