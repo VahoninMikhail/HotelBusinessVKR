@@ -14,9 +14,12 @@ namespace HotelBusinessWeb
 
         public void AddRoomItem(int formId, int quantity, DateTime fromDate, DateTime beforeDate)
         {
+            TimeSpan diff1 = beforeDate.Subtract(fromDate);
+            int days = diff1.Days;
+
             List<RoomViewModel> listRoom = Task.Run(() => APIСlient.GetRequestData<List<RoomViewModel>>("api/Room/GetList")).Result;
             //
-            List<OrderViewModel> listReservation = Task.Run(() => APIСlient.GetRequestData<List<OrderViewModel>>("api/Order/GetList")).Result;
+            List<RoomOrderViewModel> listReservation = Task.Run(() => APIСlient.GetRequestData<List<RoomOrderViewModel>>("api/Order/GetListRoomOrder")).Result;
             
             //
             RoomViewModel room = listRoom.Where(t => t.FormId == formId).FirstOrDefault();
@@ -32,19 +35,16 @@ namespace HotelBusinessWeb
             {
                 if (listReservation[i].OrderStatus != Convert.ToString(OrderStatus.Завершен))
                 {
-                    for (int j = 0; j < listReservation[i].RoomOrders.Count; i++)
-                    {
-                        if (fromDate >= listReservation[i].RoomOrders[j].ArrivalDate && fromDate < listReservation[i].RoomOrders[j].DepartureDate)
+                        if (fromDate >= listReservation[i].ArrivalDate && fromDate < listReservation[i].DepartureDate)
                         {
                             //если дата входит в диапазон, значит комната занята, удаляем её из списка
-                            listRoom.RemoveAll(list => list.Id == listReservation[i].RoomOrders[j].RoomId);
+                            listRoom.RemoveAll(list => list.Id == listReservation[i].RoomId);
                         }
-                        else if (listReservation[i].RoomOrders[j].ArrivalDate >= fromDate && listReservation[i].RoomOrders[j].ArrivalDate < beforeDate)
+                        else if (listReservation[i].ArrivalDate >= fromDate && listReservation[i].ArrivalDate < beforeDate)
                         {
                             //если дата входит в диапазон, значит комната занята, удаляем её из списка
-                            listRoom.RemoveAll(list => list.Id == listReservation[i].RoomOrders[j].RoomId);
+                            listRoom.RemoveAll(list => list.Id == listReservation[i].RoomId);
                         }
-                    }
                 }
             }
             //проверка хватает ли нам комнат
@@ -52,6 +52,7 @@ namespace HotelBusinessWeb
             {
                 throw new Exception("Не хватает комнат, осталось " + listRoom.Count + " комнаты данного вида");
             }
+            List<FormViewModel> listForm= Task.Run(() => APIСlient.GetRequestData<List<FormViewModel>>("api/Form/GetList")).Result;
             //
             if (line == null)
             {
@@ -63,8 +64,9 @@ namespace HotelBusinessWeb
                         RoomName = listRoom[i].RoomName,
                         Room = listRoom[i],
                         ArrivalDate = fromDate,
-                        DepartureDate = beforeDate
-                    });
+                        DepartureDate = beforeDate,
+                        Price = listForm.Where(p => p.Id == listRoom[i].FormId).FirstOrDefault().Price*days
+                });
                 }
             }
             else
@@ -84,6 +86,7 @@ namespace HotelBusinessWeb
                         Room = listRoom[i],
                         ArrivalDate = fromDate,
                         DepartureDate = beforeDate,
+                        Price = listForm.Where(p => p.Id == listRoom[i].FormId).FirstOrDefault().Price * days
                     });
                 }
             }
@@ -121,6 +124,7 @@ namespace HotelBusinessWeb
             else
             {
                 line.Count += quantity;
+                line.Total = line.Price * line.Count;
             }
         }
 
@@ -129,9 +133,15 @@ namespace HotelBusinessWeb
             lineCollection.RemoveAll(l => l.ServiceId == serviceId);
         }
 
+        public void RemoveAll()
+        {
+            lineCollection.RemoveAll(l => l.ServiceId >= 0);
+            roomCollection.RemoveAll(l => l.RoomId >= 0);
+        }
+
         public decimal ComputeTotalValue()
         {
-            return lineCollection.Sum(e => e.Total) + roomCollection.Sum(e => e.Total);
+            return lineCollection.Sum(e => e.Total) + roomCollection.Sum(e => e.Price);
 
         }
         public void Clear()

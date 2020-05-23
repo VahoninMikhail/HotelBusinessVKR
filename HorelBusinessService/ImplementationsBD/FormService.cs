@@ -128,7 +128,13 @@ namespace HorelBusinessService.ImplementationsBD
                 Id = rec.Id,
                 FormName = rec.FormName,
                 Specifications = rec.Specifications,
-                Price = rec.Price
+                Price = rec.Price,
+                Rooms = rec.Rooms.Where(r => r.FormId == rec.Id).Select(r => new RoomViewModel
+                {
+                    RoomName = r.RoomName,
+                    FormName = r.Form.FormName
+                }).ToList(),
+
             })
                 .ToListAsync();
             return result;

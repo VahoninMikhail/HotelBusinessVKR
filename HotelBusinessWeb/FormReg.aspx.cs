@@ -26,12 +26,17 @@ namespace HotelBusinessWeb
         {
             if (string.IsNullOrEmpty(TextBoxFIO.Text))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле логин');</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле ФИО');</script>");
                 return;
             }
             if (string.IsNullOrEmpty(TextBoxLogin.Text))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле пароль');</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле логин');</script>");
+                return;
+            }
+            if (string.IsNullOrEmpty(TextBoxPhoneNumber.Text))
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле номер телефона');</script>");
                 return;
             }
             if (string.IsNullOrEmpty(TextBoxPassword.Text))
@@ -41,11 +46,12 @@ namespace HotelBusinessWeb
             }
             if (string.IsNullOrEmpty(TextBoxConfirmPassword.Text))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле пароль');</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле подтвержение');</script>");
                 return;
             }
             string fio = TextBoxFIO.Text;
             string login = TextBoxLogin.Text;
+            string phoneNumber = TextBoxPhoneNumber.Text;
             string password = TextBoxPassword.Text;
             string confirmPassword = TextBoxConfirmPassword.Text;
 
@@ -55,6 +61,7 @@ namespace HotelBusinessWeb
                 {
                     UserFIO = fio,
                     Email = login,
+                    PhoneNumber = phoneNumber,
                     Password = password,
                     ConfirmPassword = confirmPassword
                 }));

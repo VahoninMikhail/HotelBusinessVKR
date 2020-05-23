@@ -141,6 +141,25 @@ namespace RestApiHotelBusiness.Controllers
             return Ok();
         }
 
+        // POST api/Account/ChangePhone
+      /*  [Route("ChangePhone")]
+        public async Task<IHttpActionResult> ChangePhone(ChangePhoneBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult result = await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), model.NewPhone,);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
+        }*/
+
         // POST api/Account/SetPassword
         [Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
@@ -335,7 +354,7 @@ namespace RestApiHotelBusiness.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new User() { UserName = model.Email, Email = model.Email, UserFIO = model.UserFIO, Bonuses = 0, Active = true };
+            var user = new User() { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, UserFIO = model.UserFIO, Bonuses = 0, Active = true };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

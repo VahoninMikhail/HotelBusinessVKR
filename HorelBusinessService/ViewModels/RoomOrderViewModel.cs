@@ -13,10 +13,19 @@ namespace HorelBusinessService.ViewModels
         public int RoomId { get; set; }
 
         [DataMember]
+        public int FormId { get; set; }
+
+        [DataMember]
+        public string FormName { get; set; }
+
+        [DataMember]
         public DateTime ArrivalDate { get; set; }
 
         [DataMember]
         public DateTime DepartureDate { get; set; }
+
+        [DataMember]
+        public string OrderStatus { get; set; }
 
         [DataMember]
         public int RoomName { get; set; }
@@ -29,5 +38,8 @@ namespace HorelBusinessService.ViewModels
 
         [DataMember]
         public virtual RoomViewModel Room { get; set; }
+
+        [DataMember]
+        public virtual OrderViewModel Order { get; set; }
     }
 }

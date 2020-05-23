@@ -12,7 +12,7 @@ namespace HotelBusinessWeb
 {
     public class APIСlient
     {
-        private static HttpClient сlient = new HttpClient();
+        public static HttpClient сlient = new HttpClient();
         public static string UserName;
         public static void Connect()
         {
@@ -21,7 +21,6 @@ namespace HotelBusinessWeb
             сlient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
-
 
         public static void Login(string userName, string password)
         {

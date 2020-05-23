@@ -1,53 +1,88 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormMain.aspx.cs" Inherits="HotelBusinessWeb.FormMain" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormMain.aspx.cs" Inherits="HotelBusinessWeb.FormMain" MasterPageFile="~/Hotel.Master" %>
 
 <%@ Register assembly="System.Web.Mvc" namespace="System.Web.Mvc" tagprefix="cc1" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="bodyContent" runat="server" >
+    <div id="content">
+                   
+           <p> 
+              Выберите даты:
+           </p>      
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
+           <table id="cartTableService">
+            <thead>
+                <tr>
+                    <th>Дата заезда <asp:Calendar ID="CalendarFrom" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" ToolTip="Дата не может быть меньше настоящей" Width="350px">
+                        <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                        <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                        <OtherMonthDayStyle ForeColor="#999999" />
+                        <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                        <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                        <TodayDayStyle BackColor="#CCCCCC" />
+                        </asp:Calendar></th>
+                    <th>Дата выезда <asp:Calendar ID="CalendarBefore" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                        <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                        <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                        <OtherMonthDayStyle ForeColor="#999999" />
+                        <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                        <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                        <TodayDayStyle BackColor="#CCCCCC" />
+                        </asp:Calendar></th>
+                </tr>
+            </thead>  
+           </table>
 
-      <p>
-          <asp:Calendar ID="CalendarFrom" runat="server" Width="175px"></asp:Calendar>                                     
-          <asp:Calendar ID="CalendarBefore" runat="server" Width="178px"></asp:Calendar>
-      </p>
-              
-            <asp:TextBox ID="TextBoxCountForm" runat="server"></asp:TextBox>
-            <asp:GridView ID="GridViewForm" runat="server" OnSelectedIndexChanged="GridViewForm_SelectedIndexChanged" DataKeyNames = "Id">
-            </asp:GridView>
-            <asp:TextBox ID="TextBoxCountService" runat="server" EnableTheming="True"></asp:TextBox>
-            <asp:GridView ID="GridViewService" runat="server" OnSelectedIndexChanged="GridViewService_SelectedIndexChanged" DataKeyNames = "Id" OnPreRender="GridViewService_PreRender" EnableModelValidation="False">
-            </asp:GridView>
+          <p><a id="search" runat="server">Найти</a> <a id="secectNewDate" runat="server" visible ="false">Выбрать другие даты</a> </p>
 
-            <p>
-                
-            </p>
-            <asp:DropDownList ID="DropDownListForm" runat="server">
-            </asp:DropDownList>
-            <asp:Button ID="ButtonAddForm" runat="server" Text="Добавить" OnClick="ButtonAddForm_Click" />
-            <asp:GridView ID="GridViewZakazRoom" runat="server">
-            </asp:GridView>
-            <asp:DropDownList ID="DropDownListService" runat="server">
-            </asp:DropDownList>
-            <asp:Button ID="ButtonAddService" runat="server" Text="Добавить" />
-            <asp:GridView ID="GridViewZakazService" runat="server">
-            </asp:GridView>
-        </div>
-        <input id="Hidden2" type="hidden" />
-        <p>
-            <input id="Hidden1" type="hidden" />
-            <asp:Button ID="Save" runat="server" Text="Заказать" OnClick="Save_Click" />
-            <asp:Button ID="ButtonCancel" runat="server" Text="Отмена" />
+          <p> 
+              <asp:Label ID="LabelDate" runat="server" Text=""></asp:Label>
+          </p>
 
-            <asp:Button ID="btnInsert" runat="server" onclientclick= "OpenInsert()" Text="Insert"/>
-        
+        <p id ="forms" runat ="server" visible ="false">   
+            <%
+            foreach (HorelBusinessService.ViewModels.FormViewModel form in GetForms())
+            {
+                Response.Write(String.Format(@"
+                        <div class='item'>
+                            <h2>{0}</h2>
+                            <p>{1}</p>
+                            <h4>{2:c}</h4>
+                            <input id='addFormCount{3}' name='addFormCount{3}' type ='number' onkeypress='SupressInput(event)' min ='1' max = '{4}' value='1' runat = 'server'/>
+                            <button name='addForm' type='submit' value='{3}'>
+                                Выбрать
+                            </button>
+                        </div>",
+                    form.FormName, form.Specifications, form.Price, form.Id, form.Rooms.Count));
+            }
+           %>
+         <a id="next" runat="server">Далее</a>
         </p>
-    </form>
-</body>
-</html>
+
+        <p id ="serv" runat ="server" visible ="false">        
+            <%
+            foreach (HorelBusinessService.ViewModels.ServiceViewModel service in GetServices())
+            {
+                Response.Write(String.Format(@"
+                        <div class='item'>
+                            <h3>{0}</h3>
+                            {1}
+                            <h4>{2:c}</h4>
+                            <input id='addServiceCount{3}' name='addServiceCount{3}' type ='number' onkeypress='SupressInput(event)' min ='1' value='1' runat = 'server'/>
+                            <button name='addService' type='submit' value='{3}'>
+                                Выбрать
+                            </button>
+                        </div>",
+                    service.ServiceName, service.ServiceSpecification, service.Price, service.Id));
+            }
+           %>  
+           <a id="last" runat="server">Назад</a>
+        </p>
+
+      </div>
+<script>
+function SupressInput($event)
+{
+  $event.preventDefault();
+}
+</script>
+    </asp:Content>

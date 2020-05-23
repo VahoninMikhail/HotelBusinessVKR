@@ -32,6 +32,15 @@ namespace RestApiHotelBusiness.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class ChangePhoneBindingModel
+    {
+        [Required]
+        [StringLength(11, ErrorMessage = "Значение {0} должно содержать 11 символов.", MinimumLength = 11)]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Новый пароль")]
+        public string NewPhone { get; set; }
+    }
+
     public class RegisterBindingModel
     {
         [Required]
@@ -41,6 +50,10 @@ namespace RestApiHotelBusiness.Models
         [Required]
         [Display(Name = "ФИО")]
         public string UserFIO { get; set; }
+
+        [Required]
+        [Display(Name = "Номер телефона")]
+        public string PhoneNumber { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Значение {0} должно содержать не менее {2} символов.", MinimumLength = 6)]

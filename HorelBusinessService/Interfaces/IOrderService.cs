@@ -9,6 +9,8 @@ namespace HorelBusinessService.Interfaces
     {
         Task<List<OrderViewModel>> GetList();
 
+        Task<List<RoomOrderViewModel>> GetListRoomOrder();
+
         Task<List<OrderViewModel>> GetList(string userId);
 
         Task<OrderViewModel> GetElement(int id);
@@ -20,5 +22,13 @@ namespace HorelBusinessService.Interfaces
         Task DelElement(int id);
 
         Task CreatePayment(PaymentBindingModel model);
+
+        Task SendPosetitelAccountDoc(OrderBindingModel model);
+
+        Task SaveReservation(OrderBindingModel model);
+
+        Task SendPosetitelAccountXls(OrderBindingModel model);
+
+        Task SendMail(string mailto, string caption, string message, string path = null);
     }
 }

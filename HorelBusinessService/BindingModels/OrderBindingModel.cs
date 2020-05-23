@@ -20,7 +20,13 @@ namespace HorelBusinessService.BindingModels
         public DateTime DepartureDate { get; set; }
 
         [DataMember]
-        public int Payed { get; set; }
+        public decimal Payed { get; set; }
+
+        [DataMember]
+        public string FileName { get; set; }
+
+        [DataMember]
+        public string FontPath { get; set; }
 
         [DataMember]
         public List<ServiceOrderBindingModel> ServiceOrders { get; set; }

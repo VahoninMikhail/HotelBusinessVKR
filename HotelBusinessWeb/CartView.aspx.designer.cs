@@ -13,13 +13,13 @@ namespace HotelBusinessWeb {
     public partial class CartView {
         
         /// <summary>
-        /// form1 элемент управления.
+        /// ButtonRemoveAll элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Button ButtonRemoveAll;
         
         /// <summary>
         /// Repeater1 элемент управления.

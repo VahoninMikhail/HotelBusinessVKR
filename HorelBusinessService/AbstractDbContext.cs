@@ -63,9 +63,5 @@ namespace HorelBusinessService
         public virtual DbSet<Service> Services { get; set; }
 
         public virtual DbSet<ServiceOrder> ServiceOrders { get; set; }
-
-        public System.Data.Entity.DbSet<HorelBusinessService.App.AppId> AppIds { get; set; }
-
-        public System.Data.Entity.DbSet<HorelBusinessService.BindingModels.ServiceBindingModel> ServiceBindingModels { get; set; }
     }
 }

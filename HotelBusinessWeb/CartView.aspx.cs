@@ -3,11 +3,8 @@ using HorelBusinessService.ViewModels;
 using RestApiHotelBusiness.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace HotelBusinessWeb
 {
@@ -27,7 +24,7 @@ namespace HotelBusinessWeb
                     {
                         SessionHelper.GetCart(Session).RemoveLine(serviceId);
                     }
-                }
+                }            
             }
         }
 
@@ -84,8 +81,8 @@ namespace HotelBusinessWeb
                 });
             }
 
-            DateTime arrivalDate= DateTime.Now;
-            DateTime departureDate = DateTime.Now;
+            DateTime arrivalDate= DateTime.Today;
+            DateTime departureDate = DateTime.Today;
             List<RoomOrderBindingModel> roomBM = new List<RoomOrderBindingModel>();
             foreach (var i in GetCartLinesRoom())
             {
@@ -107,8 +104,9 @@ namespace HotelBusinessWeb
                 DepartureDate = departureDate,
                 RoomOrders = roomBM,
                 ServiceOrders = serviceBM,
-                Payed = 0          
+                Payed = 0
             }));
+
             task.ContinueWith((prevTask) => Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Сохранение прошло успешно');</script>"),
                 TaskContinuationOptions.OnlyOnRanToCompletion);
             task.ContinueWith((prevTask) =>
@@ -121,6 +119,12 @@ namespace HotelBusinessWeb
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
             }, TaskContinuationOptions.OnlyOnFaulted);
             //Server.Transfer("FormMain.aspx");
+
+        }
+
+        protected void ButtonRemoveAll_Click(object sender, EventArgs e)
+        {
+            SessionHelper.GetCart(Session).RemoveAll();
         }
     }
 }

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelBusinessWeb", "HotelBu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{78853288-D01F-4A81-9E10-1EC9F208FC5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject2", "UnitTestProject2\UnitTestProject2.csproj", "{7F46F6C6-A189-4710-ADFC-A485C6B51997}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{78853288-D01F-4A81-9E10-1EC9F208FC5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78853288-D01F-4A81-9E10-1EC9F208FC5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78853288-D01F-4A81-9E10-1EC9F208FC5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F46F6C6-A189-4710-ADFC-A485C6B51997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F46F6C6-A189-4710-ADFC-A485C6B51997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F46F6C6-A189-4710-ADFC-A485C6B51997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F46F6C6-A189-4710-ADFC-A485C6B51997}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
