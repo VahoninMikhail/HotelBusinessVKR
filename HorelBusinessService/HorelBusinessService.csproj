@@ -77,6 +77,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -86,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractDbContext.cs" />
+    <Compile Include="ApplicationRoles.cs" />
     <Compile Include="App\AppId.cs" />
     <Compile Include="App\AppUser.cs" />
     <Compile Include="App\AppUserStore.cs" />
@@ -93,6 +95,8 @@
     <Compile Include="BindingModels\AdministratorCreateBindingModel.cs" />
     <Compile Include="BindingModels\FormBindingModel.cs" />
     <Compile Include="BindingModels\FormFreeServiceBindingModel.cs" />
+    <Compile Include="BindingModels\ImageBindingModel.cs" />
+    <Compile Include="BindingModels\MemoryPostedFile.cs" />
     <Compile Include="BindingModels\OrderBindingModel.cs" />
     <Compile Include="BindingModels\PaymentBindingModel.cs" />
     <Compile Include="BindingModels\RepaymentBindingModel.cs" />
@@ -126,6 +130,7 @@
     <Compile Include="ViewModels\AdministratorViewModel.cs" />
     <Compile Include="ViewModels\FormFreeServiceViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
+    <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\OrderPogashenieViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\PaymentViewModel.cs" />

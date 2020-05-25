@@ -42,21 +42,21 @@ namespace RestApiHotelBusiness.Controllers
         }
 
         [HttpPost]
-        public void AddElement(ServiceBindingModel model)
+        public async Task AddElement(ServiceBindingModel model)
         {
-            service.AddElement(model);
+            await service.AddElement(model);
         }
 
-        [HttpPut]
-        public void UpdElement(ServiceBindingModel model)
+        [HttpPost]
+        public async Task UpdElement(ServiceBindingModel model)
         {
-            service.UpdElement(model);
+            await service.UpdElement(model);
         }
 
-        [HttpDelete]
-        public void DelElement(int id)
+        [HttpPost]
+        public async Task DelElement(int id)
         {
-            service.DelElement(id);
+            await service.DelElement(id);
         }
     }
 }

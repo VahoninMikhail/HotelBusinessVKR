@@ -1,7 +1,11 @@
-﻿using HorelBusinessService.ViewModels;
+﻿using HorelBusinessService.BindingModels;
+using HorelBusinessService.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 using System.Web.UI;
 
 namespace HotelBusinessWeb
@@ -12,6 +16,11 @@ namespace HotelBusinessWeb
 
         private List<RoomOrderViewModel> roomOrders = new List<RoomOrderViewModel>();
         private List<ServiceOrderViewModel> serviceOrders = new List<ServiceOrderViewModel>();
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            
+        }
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -124,6 +133,39 @@ namespace HotelBusinessWeb
             return Task.Run(() => APIСlient.GetRequestData<List<FormViewModel>>("api/Form/GetList")).Result;
         }
 
+        public string Image(int id)
+        {
+            FormViewModel form = Task.Run(() => APIСlient.GetRequestData<FormViewModel>("api/Form/Get/" + id + "")).Result;
+
+            ImageViewModel im = form.Images[0];
+            if (form != null)
+            {
+                string r = Convert.ToBase64String(im.Image);
+                string imgDataURL = string.Format("data:image/png;base64,{0}", r);
+                return imgDataURL;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+    /*    public string GetImage(int formId)
+        {
+            FormViewModel form = Task.Run(() => APIСlient.GetRequestData<FormViewModel>("api/Form/Get/" + formId + "")).Result;
+
+            if (form != null)
+            {
+                string r = Convert.ToBase64String(form.Images[0].Image);
+                string imgDataURL = string.Format("data:image/jpeg;base64,{0}", r);
+                return imgDataURL;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        */
         public List<ServiceViewModel> GetServices()
         {
             return Task.Run(() => APIСlient.GetRequestData<List<ServiceViewModel>>("api/Service/GetList")).Result;

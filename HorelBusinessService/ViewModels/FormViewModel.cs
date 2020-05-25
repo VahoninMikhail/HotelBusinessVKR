@@ -23,5 +23,8 @@ namespace HorelBusinessService.ViewModels
 
         [DataMember]
         public List<RoomViewModel> Rooms { get; set; }
+
+        [DataMember]
+        public virtual List<ImageViewModel> Images { get; set; }
     }
 }

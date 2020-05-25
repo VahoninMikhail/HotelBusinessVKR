@@ -13,5 +13,8 @@ namespace HotelBusinessWeb
 
         [DataMember]
         public string UserName { get; set; }
+
+        [DataMember]
+        public string UserRole { get; set; }
     }
 }

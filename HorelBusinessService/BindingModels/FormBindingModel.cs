@@ -20,5 +20,8 @@ namespace HorelBusinessService.BindingModels
 
         [DataMember]
         public List<FormFreeServiceBindingModel> FormFreeServices { get; set; }
+
+        [DataMember]
+        public virtual List<ImageBindingModel> Images { get; set; }
     }
 }

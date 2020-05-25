@@ -24,7 +24,7 @@ namespace HorelBusinessService.ImplementationsBD
             Room element = await context.Rooms.FirstOrDefaultAsync(rec => rec.RoomName == model.RoomName);
             if (element != null)
             {
-                throw new Exception("Already have a employee with such a name");
+                throw new Exception("Такой номер уже существует");
             }
             context.Rooms.Add(new Room
             {

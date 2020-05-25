@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace HorelBusinessService.ImplementationsBD
 {
@@ -39,23 +40,53 @@ namespace HorelBusinessService.ImplementationsBD
                     context.Forms.Add(element);
                     await context.SaveChangesAsync();
 
-                    var groupServices = model.FormFreeServices.GroupBy(rec => rec.ServiceId).Select(rec => new FormFreeServiceBindingModel
+                   /*var groupServices = model.FormFreeServices.GroupBy(rec => rec.ServiceId).Select(rec => new FormFreeServiceBindingModel
                     {
                         ServiceId = rec.Key,
                         Count = rec.Sum(r => r.Count)
                     });
-                    foreach (var groupService in groupServices)
+                    if (groupServices != null)
                     {
-                        context.FormFreeServices.Add(new FormFreeService
+                        foreach (var groupService in groupServices)
                         {
-                            FormId = element.Id,
-                            Count = groupService.Count,
-                            Price = context.Services.Where(rec => rec.Id == groupService.ServiceId).FirstOrDefault().Price,
-                            ServiceId = groupService.ServiceId
-                        });
+                            context.FormFreeServices.Add(new FormFreeService
+                            {
+                                FormId = element.Id,
+                                Count = groupService.Count,
+                                Price = context.Services.Where(rec => rec.Id == groupService.ServiceId).FirstOrDefault().Price,
+                                ServiceId = groupService.ServiceId
+                            });
 
+                        }
                     }
-                    await context.SaveChangesAsync();
+                    await context.SaveChangesAsync();*/
+
+                    if (model.Images.Count != 0)
+                    {
+                        foreach (var image in model.Images)
+                        {
+                            var buffer = image.Image;
+
+                            HttpPostedFileBase objFile = new MemoryPostedFile(buffer);
+
+                            try
+                            {
+                                if (objFile != null && objFile.ContentLength > 0)
+                                {
+                                    context.Images.Add(new Image
+                                    {
+                                        FileByteArr = buffer,
+                                        FormId = element.Id
+                                    });
+                                    await context.SaveChangesAsync();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                throw ex;
+                            }
+                        }
+                    }
 
                     await Task.Run(() => transaction.Commit());
                 }
@@ -108,14 +139,20 @@ namespace HorelBusinessService.ImplementationsBD
                     Price = rec.Price,
                     Total = rec.Count * rec.Price
                 }).ToListAsync();
+                var image = await context.Images.Where(rec => rec.FormId == element.Id).Select(rec => new ImageViewModel
+                {
+                    Image = rec.FileByteArr
+                }).ToListAsync();
                 var sum = serviceForms.Select(rec => rec.Total).DefaultIfEmpty(0).Sum();
                 var paid = context.Payments.Where(rec => rec.OrderId == element.Id).Select(rec => rec.Summ).DefaultIfEmpty(0).Sum();
                 return new FormViewModel
                 {
                     Id = element.Id,
                     FormName = element.FormName,
+                    Price = element.Price,
                     Specifications = element.Specifications,
-                    FormFreeServices = serviceForms
+                    FormFreeServices = serviceForms,
+                    Images = image
                 };
             }
             throw new Exception("Элемент не найден");
@@ -134,7 +171,10 @@ namespace HorelBusinessService.ImplementationsBD
                     RoomName = r.RoomName,
                     FormName = r.Form.FormName
                 }).ToList(),
-
+                Images = rec.Images.Where(r => r.FormId == rec.Id).Select(r => new ImageViewModel
+                {
+                    Image = r.FileByteArr
+                }).ToList()
             })
                 .ToListAsync();
             return result;
@@ -155,8 +195,37 @@ namespace HorelBusinessService.ImplementationsBD
             }
             element.FormName = model.FormName;
             element.Specifications = model.Specifications;
-            element.Id = model.Id;
-            await context.SaveChangesAsync();
+            element.Price = model.Price;
+
+            if (model.Images.Count != 0)
+            {
+                foreach (var image in model.Images)
+                {
+                    var buffer = image.Image;
+
+                    HttpPostedFileBase objFile = new MemoryPostedFile(buffer);
+
+                    try
+                    {
+                        if (objFile != null && objFile.ContentLength > 0)
+                        {
+                            context.Images.Add(new Image
+                            {
+                                FileByteArr = buffer,
+                                FormId = element.Id
+                            });
+                            await context.SaveChangesAsync();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+
+            await Task.Run(() => context.Database.BeginTransaction().Commit());
+            context.SaveChanges();
         }
     }
 }

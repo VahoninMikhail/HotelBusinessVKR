@@ -13,7 +13,11 @@ namespace HotelBusinessWeb
     public class APIСlient
     {
         public static HttpClient сlient = new HttpClient();
-        public static string UserName;
+
+        public static string Role { get; set; }
+
+        public static string UserName { get; set; }
+
         public static void Connect()
         {
             сlient.BaseAddress = new Uri(ConfigurationManager.AppSettings["IPAddress"]);
@@ -40,6 +44,8 @@ namespace HotelBusinessWeb
                 throw ex;
             }
             сlient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenResponse.Access_token);
+            Role = tokenResponse.UserRole;
+            UserName = tokenResponse.UserName;
         }
         private static async Task<HttpResponseMessage> GetRequest(string requestUrl)
         {

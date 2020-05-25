@@ -24,7 +24,7 @@ namespace HorelBusinessService.ImplementationsBD
             Service element = await context.Services.FirstOrDefaultAsync(rec => rec.ServiceName == model.ServiceName);
             if (element != null)
             {
-                throw new Exception("Already have a employee with such a name");
+                throw new Exception("Такое наименование уже существует");
             }
             context.Services.Add(new Service
             {
@@ -93,6 +93,7 @@ namespace HorelBusinessService.ImplementationsBD
             }
             element.ServiceName = model.ServiceName;
             element.ServiceSpecification = model.ServiceSpecification;
+            element.Price = model.Price;
             element.Id = model.Id;
             await context.SaveChangesAsync();
         }

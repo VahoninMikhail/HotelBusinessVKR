@@ -59,16 +59,16 @@ namespace RestApiHotelBusiness.Controllers
             await service.AddElement(model);
         }
 
-        [HttpDelete]
+        [HttpPost]
         public async Task DelElement(int id)
         {
             await service.DelElement(id);
         }
 
-        [HttpPut]
-        public void UpdElement(FormBindingModel model)
+        [HttpPost]
+        public async Task UpdElement(FormBindingModel model)
         {
-            service.UpdElement(model);
+            await service.UpdElement(model);
         }
     }
 }

@@ -1,10 +1,6 @@
 ﻿using HorelBusinessService.BindingModels;
 using HorelBusinessService.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -42,21 +38,21 @@ namespace RestApiHotelBusiness.Controllers
         }
 
         [HttpPost]
-        public void AddElement(RoomBindingModel model)
+        public async Task AddElement(RoomBindingModel model)
         {
-            service.AddElement(model);
+            await service.AddElement(model);
         }
 
-        [HttpPut]
-        public void UpdElement(RoomBindingModel model)
+        [HttpPost]
+        public async Task UpdElement(RoomBindingModel model)
         {
-            service.UpdElement(model);
+            await service.UpdElement(model);
         }
 
-        [HttpDelete]
-        public void DelElement(int id)
+        [HttpPost]
+        public async Task DelElement(int id)
         {
-            service.DelElement(id);
+            await service.DelElement(id);
         }
     }
 }

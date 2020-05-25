@@ -246,7 +246,7 @@ namespace RestApiHotelBusiness.Controllers
             return Ok();
         }
 
-        // GET api/Account/ExternalLogin
+       /* // GET api/Account/ExternalLogin
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
@@ -301,7 +301,7 @@ namespace RestApiHotelBusiness.Controllers
             }
 
             return Ok();
-        }
+        }*/
 
         // GET api/Account/ExternalLogins?returnUrl=%2F&generateState=true
         [AllowAnonymous]

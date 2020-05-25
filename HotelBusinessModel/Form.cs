@@ -21,6 +21,9 @@ namespace HotelBusinessModel
         public virtual List<Room> Rooms { get; set; }
 
         [ForeignKey("FormId")]
+        public virtual List<Image> Images { get; set; }
+
+        [ForeignKey("FormId")]
         public virtual List<FormFreeService> FormFreeServices { get; set; }
     }
 }
