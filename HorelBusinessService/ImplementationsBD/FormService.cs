@@ -25,7 +25,7 @@ namespace HorelBusinessService.ImplementationsBD
             Form element1 = await context.Forms.FirstOrDefaultAsync(rec => rec.FormName == model.FormName);
             if (element1 != null)
             {
-                throw new Exception("Already have a employee with such a name");
+                throw new Exception("Есть вид номеров с таким названием");
             }
             using (var transaction = context.Database.BeginTransaction())
             {
@@ -98,6 +98,121 @@ namespace HorelBusinessService.ImplementationsBD
             }
         }
 
+        //работа с услугами
+        public async Task AddFreeServiceElement(FormFreeServiceBindingModel model)
+        {
+            FormFreeService element1 = await context.FormFreeServices.FirstOrDefaultAsync(rec => rec.ServiceId == model.ServiceId && rec.FormId == model.FormId);
+            if (element1 != null)
+            {
+                throw new Exception("Эта услуга уже бесплатна для этой формы");
+            }
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    var element = new FormFreeService
+                    {
+                        FormId = model.FormId,
+                        ServiceId = model.ServiceId
+                    };
+                    context.FormFreeServices.Add(element);
+
+                    await context.SaveChangesAsync();
+
+                    await Task.Run(() => transaction.Commit());
+                }
+                catch (Exception ex)
+                {
+                    await Task.Run(() => transaction.Rollback());
+                    throw;
+                }
+            }
+        }
+        public async Task DelFreeServiceElement(FormFreeServiceBindingModel model)
+        {
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    FormFreeService element = await context.FormFreeServices.FirstOrDefaultAsync(rec => rec.ServiceId == model.ServiceId && rec.FormId == model.FormId);
+                    if (element != null)
+                    {
+                        context.FormFreeServices.Remove(element);
+                        await context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        throw new Exception("Элемент не найден");
+                    }
+                    await Task.Run(() => transaction.Commit());
+                }
+                catch (Exception)
+                {
+                    await Task.Run(() => transaction.Rollback());
+                    throw;
+                }
+            }
+        }
+        //
+
+        //работа с картинками    
+        public async Task AddImageElement(ImageBindingModel model)
+        {
+            Image element1 = await context.Images.FirstOrDefaultAsync(rec => rec.FormId == model.FormId && rec.FileByteArr == model.Image);
+            if (element1 != null)
+            {
+                throw new Exception("Это изображение уже было добавлено для этого вида номеров");
+            }
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    var element = new Image
+                    {
+                        FormId = model.FormId,
+                        FileByteArr = model.Image
+                    };
+                    context.Images.Add(element);
+
+                    await context.SaveChangesAsync();
+
+                    await Task.Run(() => transaction.Commit());
+                }
+                catch (Exception ex)
+                {
+                    await Task.Run(() => transaction.Rollback());
+                    throw;
+                }
+            }
+        }
+
+        public async Task DelImageElement(ImageBindingModel model)
+        {
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    Image element = await context.Images.FirstOrDefaultAsync(rec => rec.FormId == model.FormId && rec.Id == model.Id);
+                    if (element != null)
+                    {
+                        context.Images.Remove(element);
+                        await context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        throw new Exception("Элемент не найден");
+                    }
+                    await Task.Run(() => transaction.Commit());
+                }
+                catch (Exception)
+                {
+                    await Task.Run(() => transaction.Rollback());
+                    throw;
+                }
+            }
+        }
+        //
+
         public async Task DelElement(int id)
         {
             using (var transaction = context.Database.BeginTransaction())
@@ -109,6 +224,8 @@ namespace HorelBusinessService.ImplementationsBD
                     {
                         context.FormFreeServices.RemoveRange(
                                             context.FormFreeServices.Where(rec => rec.FormId == id));
+                        context.Images.RemoveRange(
+                                            context.Images.Where(rec => rec.FormId == id));
                         context.Forms.Remove(element);
                         await context.SaveChangesAsync();
                     }
@@ -134,17 +251,16 @@ namespace HorelBusinessService.ImplementationsBD
                 var serviceForms = await context.FormFreeServices.Where(rec => rec.FormId == element.Id).Include(rec => rec.Service).Select(rec => new FormFreeServiceViewModel
                 {
                     Id = rec.Id,
+                    ServiceId = rec.ServiceId,
                     ServiceName = rec.Service.ServiceName,
-                    Count = rec.Count,
-                    Price = rec.Price,
-                    Total = rec.Count * rec.Price
+                    FormId = rec.FormId,
+                    FormName = rec.Form.FormName
                 }).ToListAsync();
                 var image = await context.Images.Where(rec => rec.FormId == element.Id).Select(rec => new ImageViewModel
                 {
+                    Id = rec.Id,
                     Image = rec.FileByteArr
                 }).ToListAsync();
-                var sum = serviceForms.Select(rec => rec.Total).DefaultIfEmpty(0).Sum();
-                var paid = context.Payments.Where(rec => rec.OrderId == element.Id).Select(rec => rec.Summ).DefaultIfEmpty(0).Sum();
                 return new FormViewModel
                 {
                     Id = element.Id,

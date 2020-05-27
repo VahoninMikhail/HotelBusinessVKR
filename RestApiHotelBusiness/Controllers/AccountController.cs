@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
+using HorelBusinessService;
 using HotelBusinessModel;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -26,15 +29,17 @@ namespace RestApiHotelBusiness.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private AppRoleManager _roleManager;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager,
+        public AccountController(ApplicationUserManager userManager, AppRoleManager roleManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
             UserManager = userManager;
+            RoleManager = roleManager;
             AccessTokenFormat = accessTokenFormat;
         }
 
@@ -47,6 +52,18 @@ namespace RestApiHotelBusiness.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+
+        public AppRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? Request.GetOwinContext().GetUserManager<AppRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
             }
         }
 
@@ -80,6 +97,20 @@ namespace RestApiHotelBusiness.Controllers
         {
             return Ok(UserManager.Users);
         }
+
+       /*  [HttpGet]
+         public IHttpActionResult GetRole()
+         {
+             return  Ok(RoleManager.Roles);
+         }*/
+
+       /* [HttpGet]
+        public async Task<IHttpActionResult> GetListUser()
+        {
+            string roleName = "User";
+            var role = await RoleManager.Roles.SingleAsync(r => r.Name == roleName);
+            return Ok(UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == role.Id)));
+        }*/
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
         [Route("ManageInfo")]
@@ -357,6 +388,8 @@ namespace RestApiHotelBusiness.Controllers
             var user = new User() { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, UserFIO = model.UserFIO, Bonuses = 0, Active = true };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            UserManager.AddToRole(user.Id, "User");
 
             if (!result.Succeeded)
             {

@@ -59,6 +59,33 @@ namespace RestApiHotelBusiness.Controllers
             await service.AddElement(model);
         }
 
+        //фотографии
+        [HttpPost]
+        public async Task AddImageElement(ImageBindingModel model)
+        {
+            await service.AddImageElement(model);
+        }
+
+        [HttpPost]
+        public async Task DelImageElement(ImageBindingModel model)
+        {
+            await service.DelImageElement(model);
+        }
+
+        //бесплатные услуги
+        [HttpPost]
+        public async Task AddFreeServiceElement(FormFreeServiceBindingModel model)
+        {
+            await service.AddFreeServiceElement(model);
+        }
+
+        [HttpPost]
+        public async Task DelFreeServiceElement(FormFreeServiceBindingModel model)
+        {
+            await service.DelFreeServiceElement(model);
+        }
+        //
+
         [HttpPost]
         public async Task DelElement(int id)
         {

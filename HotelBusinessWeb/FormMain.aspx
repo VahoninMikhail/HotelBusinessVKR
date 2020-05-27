@@ -48,31 +48,28 @@
                 </ItemTemplate>
              </asp:Repeater >
 
-
-            <div class="content-grid-info">
-                <div class="post-info">
+            <div class="content-grid-info" runat="server">
                     <p id="forms" runat="server" visible="false">
                         <%
-                            foreach (HorelBusinessService.ViewModels.FormViewModel form in GetForms())
-                            {
+                        foreach (HorelBusinessService.ViewModels.FormViewModel form in GetForms())
+                        {
                                 string s = Image(form.Id);
-                                Response.Write(String.Format(@"
+                            Response.Write(String.Format(@"
                         <div class='item'>
                             <img src='{5}' width='100' height='100'/>
-                            <h2>{0}</h2>
-                            <p>{1}</p>
+                            <h3>{0}</h3>
+                            {1}
                             <h4>{2:c}</h4>
-                            <input id='addFormCount{3}' name='addFormCount{3}' type ='number' onkeypress='SupressInput(event)' min ='1' max = '{4}' value='1' runat = 'server'/>
+                            <input id='addFormCount{3}' name='addFormCount{3}' type ='number' onkeypress='SupressInput(event)' min ='1' max ={4} value='1' runat = 'server'/>
                             <button name='addForm' type='submit' value='{3}'>
                                 Выбрать
                             </button>
                         </div>",
-                                        form.FormName, form.Specifications, form.Price, form.Id, form.Rooms.Count, s));
-                            }
-                        %>
+                                form.FormName, form.Specifications, form.Price, form.Id, Convert.ToInt32(form.Rooms.Count), s));
+                        }
+                    %>
                         <a id="next" runat="server">Далее</a>
                     </p>
-                </div>
 
                 <p id="serv" runat="server" visible="false">
                     <%

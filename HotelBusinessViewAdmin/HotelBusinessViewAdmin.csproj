@@ -91,6 +91,12 @@
     <Compile Include="FormBase.Designer.cs">
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddFreeService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddFreeService.Designer.cs">
+      <DependentUpon>AddFreeService.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,24 @@
     </Compile>
     <Compile Include="HttpErrorMessage.cs" />
     <Compile Include="ImageProcessing.cs" />
+    <Compile Include="Orders\AddFormOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\AddFormOrder.Designer.cs">
+      <DependentUpon>AddFormOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\AddServiceOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\AddServiceOrder.Designer.cs">
+      <DependentUpon>AddServiceOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\CreateOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\CreateOrder.Designer.cs">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rooms\EditRoom.cs">
@@ -133,6 +157,18 @@
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="TokenResponse.cs" />
+    <Compile Include="Users\EditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\EditUser.Designer.cs">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Users.Designer.cs">
+      <DependentUpon>Users.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Autorization\FormAuthorization.resx">
       <DependentUpon>FormAuthorization.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,11 +178,23 @@
     <EmbeddedResource Include="FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddFreeService.resx">
+      <DependentUpon>AddFreeService.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditForm.resx">
       <DependentUpon>EditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms.resx">
       <DependentUpon>Forms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\AddFormOrder.resx">
+      <DependentUpon>AddFormOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\AddServiceOrder.resx">
+      <DependentUpon>AddServiceOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\CreateOrder.resx">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -168,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Services\Services.resx">
       <DependentUpon>Services.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Users.resx">
+      <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -202,6 +253,10 @@
     <ProjectReference Include="..\HorelBusinessService\HorelBusinessService.csproj">
       <Project>{3B2C6ADC-6666-4FC3-A4E7-95102E12E874}</Project>
       <Name>HorelBusinessService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HotelBusinessModel\HotelBusinessModel.csproj">
+      <Project>{2FB3B1B6-3A95-472D-B465-B34B1E32A932}</Project>
+      <Name>HotelBusinessModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

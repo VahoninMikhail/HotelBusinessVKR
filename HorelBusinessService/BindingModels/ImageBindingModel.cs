@@ -10,5 +10,8 @@ namespace HorelBusinessService.BindingModels
 
         [DataMember]
         public byte[] Image { get; set; }
+
+        [DataMember]
+        public int FormId { get; set; }
     }
 }

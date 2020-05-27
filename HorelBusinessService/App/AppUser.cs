@@ -49,7 +49,12 @@ namespace HorelBusinessService.App
         }
     }
 
-    public class AppRole : IdentityRole<AppId, AppUserRole>
+    public class AppRole : IdentityRole
+    {
+        public AppRole() { }
+    }
+
+    /*public class AppRole : IdentityRole<AppId, AppUserRole>
     {
         public AppRole() { }
         public AppRole(string name) { Name = name; }
@@ -58,7 +63,8 @@ namespace HorelBusinessService.App
     {
         public AppRoleStore(AbstractDbContext context) : base(context) { }
 
-    }
+    }*/
+
 
     public enum ApplicationRole
     {

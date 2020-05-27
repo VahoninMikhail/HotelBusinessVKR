@@ -13,6 +13,14 @@ namespace HorelBusinessService.Interfaces
 
         Task AddElement(FormBindingModel model);
 
+        Task AddFreeServiceElement(FormFreeServiceBindingModel model);
+
+        Task DelFreeServiceElement(FormFreeServiceBindingModel model);
+
+        Task AddImageElement(ImageBindingModel model);
+
+        Task DelImageElement(ImageBindingModel model);
+
         Task UpdElement(FormBindingModel model);
 
         Task DelElement(int id);

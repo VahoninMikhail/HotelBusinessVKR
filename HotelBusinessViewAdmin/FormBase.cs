@@ -40,5 +40,23 @@ namespace HotelBusinessViewAdmin
 
             }
         }
+
+        private void buttonUsers_Click(object sender, System.EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Users.Users();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void buttonCreateOrder_Click(object sender, System.EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Orders.CreateOrder();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }

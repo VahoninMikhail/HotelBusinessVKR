@@ -16,5 +16,8 @@ namespace HorelBusinessService.BindingModels
 
         [DataMember]
         public string UserName { get; set; }
+
+        [DataMember]
+        public string LockoutEnabled { get; set; }
     }
 }

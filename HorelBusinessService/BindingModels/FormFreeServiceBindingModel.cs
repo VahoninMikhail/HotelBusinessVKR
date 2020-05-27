@@ -12,6 +12,6 @@ namespace HorelBusinessService.BindingModels
         public int ServiceId { get; set; }
 
         [DataMember]
-        public int Count { get; set; }
+        public int FormId { get; set; }
     }
 }

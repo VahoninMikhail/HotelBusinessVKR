@@ -18,9 +18,9 @@ namespace HorelBusinessService.ViewModels
         public string UserPhone { get; set; }
 
         [DataMember]
-        public int Bonuses { get; set; }
+        public string LockoutEnabled { get; set; }
 
         [DataMember]
-        public string Active { get; set; }
+        public int Bonuses { get; set; }
     }
 }

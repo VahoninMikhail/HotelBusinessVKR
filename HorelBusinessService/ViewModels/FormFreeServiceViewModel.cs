@@ -15,12 +15,9 @@ namespace HorelBusinessService.ViewModels
         public string ServiceName { get; set; }
 
         [DataMember]
-        public int Count { get; set; }
+        public int FormId { get; set; }
 
         [DataMember]
-        public decimal Price { get; set; }
-
-        [DataMember]
-        public decimal Total { get; set; }
+        public string FormName { get; set; }
     }
 }

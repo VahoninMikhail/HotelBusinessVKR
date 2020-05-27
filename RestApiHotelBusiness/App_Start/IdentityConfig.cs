@@ -1,9 +1,11 @@
 ﻿using HorelBusinessService;
+using HorelBusinessService.App;
 using HotelBusinessModel;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using System;
 
 namespace RestApiHotelBusiness
 {
@@ -40,6 +42,21 @@ namespace RestApiHotelBusiness
                 manager.UserTokenProvider = new DataProtectorTokenProvider<User>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
+        }
+    }
+
+    public class AppRoleManager : RoleManager<AppRole>
+    {
+        public AppRoleManager(RoleStore<AppRole> store)
+            : base(store)
+        { }
+
+        public static AppRoleManager Create(
+            IdentityFactoryOptions<AppRoleManager> options,
+            IOwinContext context)
+        {
+            return new AppRoleManager(new
+                RoleStore<AppRole>(context.Get<AbstractDbContext>()));
         }
     }
 }

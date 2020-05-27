@@ -39,7 +39,6 @@ namespace HotelBusinessWeb
             try
             {
                 APIСlient.Login(TextBoxUserName.Text, textBoxPassword.Text);
-                APIСlient.UserName = TextBoxUserName.Text;
                 Server.Transfer("FormMain.aspx");
             }
             catch (Exception ex)
