@@ -15,7 +15,7 @@ namespace HorelBusinessService.ViewModels
         public string UserName { get; set; }
 
         [DataMember]
-        public string UserPhone { get; set; }
+        public string PhoneNumber { get; set; }
 
         [DataMember]
         public string LockoutEnabled { get; set; }

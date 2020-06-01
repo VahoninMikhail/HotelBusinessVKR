@@ -72,6 +72,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admins\Admins.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admins\Admins.Designer.cs">
+      <DependentUpon>Admins.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\EditAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admins\EditAdmin.Designer.cs">
+      <DependentUpon>EditAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="ApiClient.cs" />
     <Compile Include="Autorization\FormAuthorization.cs">
       <SubType>Form</SubType>
@@ -169,6 +181,12 @@
     <Compile Include="Users\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admins\Admins.resx">
+      <DependentUpon>Admins.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admins\EditAdmin.resx">
+      <DependentUpon>EditAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Autorization\FormAuthorization.resx">
       <DependentUpon>FormAuthorization.cs</DependentUpon>
     </EmbeddedResource>
@@ -217,6 +235,9 @@
     <EmbeddedResource Include="Services\Services.resx">
       <DependentUpon>Services.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\EditUser.resx">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,6 +278,10 @@
     <ProjectReference Include="..\HotelBusinessModel\HotelBusinessModel.csproj">
       <Project>{2FB3B1B6-3A95-472D-B465-B34B1E32A932}</Project>
       <Name>HotelBusinessModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RestApiHotelBusiness\RestApiHotelBusiness.csproj">
+      <Project>{60BB619B-CE2B-4E27-BEFB-D04AD7E9F9A5}</Project>
+      <Name>RestApiHotelBusiness</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

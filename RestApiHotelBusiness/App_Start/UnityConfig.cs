@@ -57,6 +57,7 @@ namespace RestApiHotelBusiness
             container.RegisterType<IServiceService, ServiceService>(new HierarchicalLifetimeManager());
             container.RegisterType<IReportService, ReportService>(new HierarchicalLifetimeManager());
             container.RegisterType<ApplicationUserManager>(new HierarchicalLifetimeManager());
+            container.RegisterType<AppRoleManager>(new HierarchicalLifetimeManager());
         }
     }
 }

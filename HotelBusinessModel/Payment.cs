@@ -14,6 +14,8 @@ namespace HotelBusinessModel
 
         public decimal Summ { get; set; }
 
+        public string PayType { get; set; }
+
         public virtual Order Order { get; set; }
     }
 }

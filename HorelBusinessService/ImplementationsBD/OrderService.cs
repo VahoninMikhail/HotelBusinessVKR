@@ -86,7 +86,8 @@ namespace HorelBusinessService.ImplementationsBD
                         await CreatePayment(new PaymentBindingModel
                         {
                             OrderId = element.Id,
-                            Summ = model.Payed
+                            Summ = model.Payed,
+                            PayType = model.PayType
                         });
                     }
 
@@ -120,40 +121,20 @@ namespace HorelBusinessService.ImplementationsBD
 
         public async System.Threading.Tasks.Task CreatePayment(PaymentBindingModel model)
         {
-            var serviceOrders = await context.ServiceOrders.Where(rec => rec.OrderId == model.OrderId).Include(rec => rec.Service).Select(rec => new ServiceOrderViewModel
+            Order element = context.Orders.FirstOrDefault(rec => rec.Id == model.OrderId);
+            if (element == null)
             {
-                Id = rec.Id,
-                ServiceName = rec.Service.ServiceName,
-                Count = rec.Count,
-                Price = rec.Price,
-                Total = rec.Count * rec.Price
-            }).ToListAsync();
-            var roomOrders = await context.RoomOrders.Where(rec => rec.OrderId == model.OrderId).Include(rec => rec.Room).Select(rec => new RoomOrderViewModel
-            {
-                Id = rec.Id,
-                RoomName = rec.Room.RoomName,
-                Price = rec.Price
-            }).ToListAsync();
-            var remaind = serviceOrders.Select(rec => rec.Total).DefaultIfEmpty(0).Sum() - context.Payments.Where(rec => rec.OrderId == model.OrderId).Select(rec => rec.Summ).DefaultIfEmpty(0).Sum();
-            if (remaind < model.Summ)
-            {
-                var user = await context.Orders.Where(rec => rec.Id == model.OrderId).Select(rec => rec.User).FirstOrDefaultAsync();
-                if (user != null)
-                {
-                    user.Bonuses += (int)model.Summ - (int)remaind;
-                }
-                model.Summ = remaind;
+                throw new Exception("Элемент не найден");
             }
-            var order = await context.Orders.FirstOrDefaultAsync(rec => rec.Id == model.OrderId);
-            if (order != null)
-            {
-                order.OrderStatus = (remaind == model.Summ) ? OrderStatus.Оплачен : OrderStatus.Начат;
-            }
+            element.OrderStatus = OrderStatus.Оплачен;
+ 
             context.Payments.Add(new Payment
             {
                 OrderId = model.OrderId,
                 Summ = model.Summ,
-                DateCreate = DateTime.Now
+                DateImplement = DateTime.Now,
+                DateCreate = DateTime.Now,
+                PayType = model.PayType
             });
             await context.SaveChangesAsync();
         }

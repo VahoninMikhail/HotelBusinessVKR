@@ -22,6 +22,9 @@ namespace HotelBusinessModel
         public virtual List<Payment> Payments { get; set; }
 
         [ForeignKey("OrderId")]
+        public virtual List<Review> Reviews { get; set; }
+
+        [ForeignKey("OrderId")]
         public virtual List<ServiceOrder> ServiceOrders { get; set; }
 
         [ForeignKey("OrderId")]

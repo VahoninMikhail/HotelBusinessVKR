@@ -22,8 +22,6 @@ namespace RestApiHotelBusiness.Controllers
             ResourcesPath = System.Web.Hosting.HostingEnvironment.MapPath("~/Resources/");
         }
 
-
-
         //получаем путь файлов проекта
         [HttpGet]
         public IHttpActionResult GetTemp()

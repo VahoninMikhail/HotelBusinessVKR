@@ -31,14 +31,15 @@
             this.comboBoxUsers = new System.Windows.Forms.ComboBox();
             this.labelUser = new System.Windows.Forms.Label();
             this.groupBoxForms = new System.Windows.Forms.GroupBox();
+            this.textBoxSumRoom = new System.Windows.Forms.TextBox();
+            this.labelSumRoom = new System.Windows.Forms.Label();
             this.dataGridViewForms = new System.Windows.Forms.DataGridView();
             this.buttonAddForm = new System.Windows.Forms.Button();
-            this.buttonEditForm = new System.Windows.Forms.Button();
             this.buttonDelForm = new System.Windows.Forms.Button();
             this.groupBoxServices = new System.Windows.Forms.GroupBox();
-            this.dataGridViewService = new System.Windows.Forms.DataGridView();
+            this.textBoxSumService = new System.Windows.Forms.TextBox();
+            this.labelSumService = new System.Windows.Forms.Label();
             this.buttonAddService = new System.Windows.Forms.Button();
-            this.buttonEditService = new System.Windows.Forms.Button();
             this.buttonDelService = new System.Windows.Forms.Button();
             this.dataGridViewFreeService = new System.Windows.Forms.DataGridView();
             this.labelSum = new System.Windows.Forms.Label();
@@ -48,21 +49,26 @@
             this.labelFrom = new System.Windows.Forms.Label();
             this.labelBefore = new System.Windows.Forms.Label();
             this.dateTimePickerBefore = new System.Windows.Forms.DateTimePicker();
-            this.textBoxSumRoom = new System.Windows.Forms.TextBox();
-            this.labelSumRoom = new System.Windows.Forms.Label();
-            this.textBoxSumService = new System.Windows.Forms.TextBox();
-            this.labelSumService = new System.Windows.Forms.Label();
+            this.groupBoxPayment = new System.Windows.Forms.GroupBox();
+            this.checkBoxCash = new System.Windows.Forms.CheckBox();
+            this.checkBoxCard = new System.Windows.Forms.CheckBox();
+            this.dataGridViewService = new System.Windows.Forms.DataGridView();
+            this.groupBoxUserPeriod = new System.Windows.Forms.GroupBox();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonOk = new System.Windows.Forms.Button();
             this.groupBoxForms.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewForms)).BeginInit();
             this.groupBoxServices.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFreeService)).BeginInit();
+            this.groupBoxPayment.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
+            this.groupBoxUserPeriod.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxUsers
             // 
             this.comboBoxUsers.FormattingEnabled = true;
-            this.comboBoxUsers.Location = new System.Drawing.Point(123, 10);
+            this.comboBoxUsers.Location = new System.Drawing.Point(111, 16);
             this.comboBoxUsers.Name = "comboBoxUsers";
             this.comboBoxUsers.Size = new System.Drawing.Size(138, 21);
             this.comboBoxUsers.TabIndex = 0;
@@ -70,7 +76,7 @@
             // labelUser
             // 
             this.labelUser.AutoSize = true;
-            this.labelUser.Location = new System.Drawing.Point(13, 13);
+            this.labelUser.Location = new System.Drawing.Point(6, 19);
             this.labelUser.Name = "labelUser";
             this.labelUser.Size = new System.Drawing.Size(104, 13);
             this.labelUser.TabIndex = 1;
@@ -82,14 +88,31 @@
             this.groupBoxForms.Controls.Add(this.labelSumRoom);
             this.groupBoxForms.Controls.Add(this.dataGridViewForms);
             this.groupBoxForms.Controls.Add(this.buttonAddForm);
-            this.groupBoxForms.Controls.Add(this.buttonEditForm);
             this.groupBoxForms.Controls.Add(this.buttonDelForm);
+            this.groupBoxForms.Enabled = false;
             this.groupBoxForms.Location = new System.Drawing.Point(16, 43);
             this.groupBoxForms.Name = "groupBoxForms";
             this.groupBoxForms.Size = new System.Drawing.Size(313, 425);
             this.groupBoxForms.TabIndex = 10;
             this.groupBoxForms.TabStop = false;
             this.groupBoxForms.Text = "Выбранные номера:";
+            // 
+            // textBoxSumRoom
+            // 
+            this.textBoxSumRoom.Enabled = false;
+            this.textBoxSumRoom.Location = new System.Drawing.Point(116, 395);
+            this.textBoxSumRoom.Name = "textBoxSumRoom";
+            this.textBoxSumRoom.Size = new System.Drawing.Size(110, 20);
+            this.textBoxSumRoom.TabIndex = 16;
+            // 
+            // labelSumRoom
+            // 
+            this.labelSumRoom.AutoSize = true;
+            this.labelSumRoom.Location = new System.Drawing.Point(6, 397);
+            this.labelSumRoom.Name = "labelSumRoom";
+            this.labelSumRoom.Size = new System.Drawing.Size(104, 13);
+            this.labelSumRoom.TabIndex = 15;
+            this.labelSumRoom.Text = "Итого по номерам:";
             // 
             // dataGridViewForms
             // 
@@ -106,26 +129,17 @@
             this.dataGridViewForms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewForms.Size = new System.Drawing.Size(287, 321);
             this.dataGridViewForms.TabIndex = 1;
+            this.dataGridViewForms.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewForms_CellClick);
             // 
             // buttonAddForm
             // 
-            this.buttonAddForm.Location = new System.Drawing.Point(6, 351);
+            this.buttonAddForm.Location = new System.Drawing.Point(6, 346);
             this.buttonAddForm.Name = "buttonAddForm";
-            this.buttonAddForm.Size = new System.Drawing.Size(85, 33);
+            this.buttonAddForm.Size = new System.Drawing.Size(85, 43);
             this.buttonAddForm.TabIndex = 2;
-            this.buttonAddForm.Text = "Добавить";
+            this.buttonAddForm.Text = "Выбрать номер";
             this.buttonAddForm.UseVisualStyleBackColor = true;
             this.buttonAddForm.Click += new System.EventHandler(this.buttonAddForm_Click);
-            // 
-            // buttonEditForm
-            // 
-            this.buttonEditForm.Location = new System.Drawing.Point(97, 351);
-            this.buttonEditForm.Name = "buttonEditForm";
-            this.buttonEditForm.Size = new System.Drawing.Size(80, 33);
-            this.buttonEditForm.TabIndex = 3;
-            this.buttonEditForm.Text = "Изменить";
-            this.buttonEditForm.UseVisualStyleBackColor = true;
-            this.buttonEditForm.Click += new System.EventHandler(this.buttonEditForm_Click);
             // 
             // buttonDelForm
             // 
@@ -139,12 +153,12 @@
             // 
             // groupBoxServices
             // 
+            this.groupBoxServices.Controls.Add(this.dataGridViewService);
             this.groupBoxServices.Controls.Add(this.textBoxSumService);
             this.groupBoxServices.Controls.Add(this.labelSumService);
-            this.groupBoxServices.Controls.Add(this.dataGridViewService);
             this.groupBoxServices.Controls.Add(this.buttonAddService);
-            this.groupBoxServices.Controls.Add(this.buttonEditService);
             this.groupBoxServices.Controls.Add(this.buttonDelService);
+            this.groupBoxServices.Enabled = false;
             this.groupBoxServices.Location = new System.Drawing.Point(345, 43);
             this.groupBoxServices.Name = "groupBoxServices";
             this.groupBoxServices.Size = new System.Drawing.Size(313, 425);
@@ -152,21 +166,22 @@
             this.groupBoxServices.TabStop = false;
             this.groupBoxServices.Text = "Выбранные услуги:";
             // 
-            // dataGridViewService
+            // textBoxSumService
             // 
-            this.dataGridViewService.AllowUserToAddRows = false;
-            this.dataGridViewService.AllowUserToResizeColumns = false;
-            this.dataGridViewService.AllowUserToResizeRows = false;
-            this.dataGridViewService.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridViewService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewService.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewService.Location = new System.Drawing.Point(6, 19);
-            this.dataGridViewService.MultiSelect = false;
-            this.dataGridViewService.Name = "dataGridViewService";
-            this.dataGridViewService.RowHeadersVisible = false;
-            this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewService.Size = new System.Drawing.Size(287, 321);
-            this.dataGridViewService.TabIndex = 1;
+            this.textBoxSumService.Enabled = false;
+            this.textBoxSumService.Location = new System.Drawing.Point(126, 399);
+            this.textBoxSumService.Name = "textBoxSumService";
+            this.textBoxSumService.Size = new System.Drawing.Size(110, 20);
+            this.textBoxSumService.TabIndex = 16;
+            // 
+            // labelSumService
+            // 
+            this.labelSumService.AutoSize = true;
+            this.labelSumService.Location = new System.Drawing.Point(21, 402);
+            this.labelSumService.Name = "labelSumService";
+            this.labelSumService.Size = new System.Drawing.Size(99, 13);
+            this.labelSumService.TabIndex = 15;
+            this.labelSumService.Text = "Итого по услугам:";
             // 
             // buttonAddService
             // 
@@ -177,16 +192,6 @@
             this.buttonAddService.Text = "Добавить";
             this.buttonAddService.UseVisualStyleBackColor = true;
             this.buttonAddService.Click += new System.EventHandler(this.buttonAddService_Click);
-            // 
-            // buttonEditService
-            // 
-            this.buttonEditService.Location = new System.Drawing.Point(97, 351);
-            this.buttonEditService.Name = "buttonEditService";
-            this.buttonEditService.Size = new System.Drawing.Size(80, 33);
-            this.buttonEditService.TabIndex = 3;
-            this.buttonEditService.Text = "Изменить";
-            this.buttonEditService.UseVisualStyleBackColor = true;
-            this.buttonEditService.Click += new System.EventHandler(this.buttonEditService_Click);
             // 
             // buttonDelService
             // 
@@ -225,6 +230,7 @@
             // 
             // textBoxSum
             // 
+            this.textBoxSum.Enabled = false;
             this.textBoxSum.Location = new System.Drawing.Point(65, 481);
             this.textBoxSum.Name = "textBoxSum";
             this.textBoxSum.Size = new System.Drawing.Size(110, 20);
@@ -232,9 +238,9 @@
             // 
             // buttonSaveOrder
             // 
-            this.buttonSaveOrder.Location = new System.Drawing.Point(211, 474);
+            this.buttonSaveOrder.Location = new System.Drawing.Point(10, 31);
             this.buttonSaveOrder.Name = "buttonSaveOrder";
-            this.buttonSaveOrder.Size = new System.Drawing.Size(118, 33);
+            this.buttonSaveOrder.Size = new System.Drawing.Size(118, 40);
             this.buttonSaveOrder.TabIndex = 5;
             this.buttonSaveOrder.Text = "Оформить заказ";
             this.buttonSaveOrder.UseVisualStyleBackColor = true;
@@ -242,7 +248,7 @@
             // 
             // dateTimePickerFrom
             // 
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(371, 11);
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(329, 17);
             this.dateTimePickerFrom.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
             this.dateTimePickerFrom.Size = new System.Drawing.Size(151, 20);
@@ -251,7 +257,7 @@
             // labelFrom
             // 
             this.labelFrom.AutoSize = true;
-            this.labelFrom.Location = new System.Drawing.Point(288, 13);
+            this.labelFrom.Location = new System.Drawing.Point(254, 21);
             this.labelFrom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFrom.Name = "labelFrom";
             this.labelFrom.Size = new System.Drawing.Size(76, 13);
@@ -261,7 +267,7 @@
             // labelBefore
             // 
             this.labelBefore.AutoSize = true;
-            this.labelBefore.Location = new System.Drawing.Point(525, 15);
+            this.labelBefore.Location = new System.Drawing.Point(488, 21);
             this.labelBefore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelBefore.Name = "labelBefore";
             this.labelBefore.Size = new System.Drawing.Size(77, 13);
@@ -270,61 +276,110 @@
             // 
             // dateTimePickerBefore
             // 
-            this.dateTimePickerBefore.Location = new System.Drawing.Point(603, 12);
+            this.dateTimePickerBefore.Location = new System.Drawing.Point(569, 19);
             this.dateTimePickerBefore.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerBefore.Name = "dateTimePickerBefore";
             this.dateTimePickerBefore.Size = new System.Drawing.Size(151, 20);
             this.dateTimePickerBefore.TabIndex = 18;
             // 
-            // textBoxSumRoom
+            // groupBoxPayment
             // 
-            this.textBoxSumRoom.Location = new System.Drawing.Point(116, 395);
-            this.textBoxSumRoom.Name = "textBoxSumRoom";
-            this.textBoxSumRoom.Size = new System.Drawing.Size(110, 20);
-            this.textBoxSumRoom.TabIndex = 16;
+            this.groupBoxPayment.Controls.Add(this.checkBoxCard);
+            this.groupBoxPayment.Controls.Add(this.checkBoxCash);
+            this.groupBoxPayment.Controls.Add(this.buttonSaveOrder);
+            this.groupBoxPayment.Enabled = false;
+            this.groupBoxPayment.Location = new System.Drawing.Point(181, 474);
+            this.groupBoxPayment.Name = "groupBoxPayment";
+            this.groupBoxPayment.Size = new System.Drawing.Size(148, 77);
+            this.groupBoxPayment.TabIndex = 19;
+            this.groupBoxPayment.TabStop = false;
+            this.groupBoxPayment.Text = "Вид оплаты:";
             // 
-            // labelSumRoom
+            // checkBoxCash
             // 
-            this.labelSumRoom.AutoSize = true;
-            this.labelSumRoom.Location = new System.Drawing.Point(6, 397);
-            this.labelSumRoom.Name = "labelSumRoom";
-            this.labelSumRoom.Size = new System.Drawing.Size(104, 13);
-            this.labelSumRoom.TabIndex = 15;
-            this.labelSumRoom.Text = "Итого по номерам:";
+            this.checkBoxCash.AutoSize = true;
+            this.checkBoxCash.Location = new System.Drawing.Point(7, 15);
+            this.checkBoxCash.Name = "checkBoxCash";
+            this.checkBoxCash.Size = new System.Drawing.Size(77, 17);
+            this.checkBoxCash.TabIndex = 0;
+            this.checkBoxCash.Text = "Наличные";
+            this.checkBoxCash.UseVisualStyleBackColor = true;
+            this.checkBoxCash.CheckedChanged += new System.EventHandler(this.checkBoxCash_CheckedChanged);
             // 
-            // textBoxSumService
+            // checkBoxCard
             // 
-            this.textBoxSumService.Location = new System.Drawing.Point(126, 399);
-            this.textBoxSumService.Name = "textBoxSumService";
-            this.textBoxSumService.Size = new System.Drawing.Size(110, 20);
-            this.textBoxSumService.TabIndex = 16;
+            this.checkBoxCard.AutoSize = true;
+            this.checkBoxCard.Location = new System.Drawing.Point(91, 15);
+            this.checkBoxCard.Name = "checkBoxCard";
+            this.checkBoxCard.Size = new System.Drawing.Size(56, 17);
+            this.checkBoxCard.TabIndex = 1;
+            this.checkBoxCard.Text = "Карта";
+            this.checkBoxCard.UseVisualStyleBackColor = true;
             // 
-            // labelSumService
+            // dataGridViewService
             // 
-            this.labelSumService.AutoSize = true;
-            this.labelSumService.Location = new System.Drawing.Point(21, 402);
-            this.labelSumService.Name = "labelSumService";
-            this.labelSumService.Size = new System.Drawing.Size(99, 13);
-            this.labelSumService.TabIndex = 15;
-            this.labelSumService.Text = "Итого по услугам:";
+            this.dataGridViewService.AllowUserToAddRows = false;
+            this.dataGridViewService.AllowUserToResizeColumns = false;
+            this.dataGridViewService.AllowUserToResizeRows = false;
+            this.dataGridViewService.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewService.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewService.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewService.MultiSelect = false;
+            this.dataGridViewService.Name = "dataGridViewService";
+            this.dataGridViewService.RowHeadersVisible = false;
+            this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewService.Size = new System.Drawing.Size(287, 321);
+            this.dataGridViewService.TabIndex = 17;
+            // 
+            // groupBoxUserPeriod
+            // 
+            this.groupBoxUserPeriod.Controls.Add(this.labelUser);
+            this.groupBoxUserPeriod.Controls.Add(this.comboBoxUsers);
+            this.groupBoxUserPeriod.Controls.Add(this.dateTimePickerBefore);
+            this.groupBoxUserPeriod.Controls.Add(this.labelFrom);
+            this.groupBoxUserPeriod.Controls.Add(this.labelBefore);
+            this.groupBoxUserPeriod.Controls.Add(this.dateTimePickerFrom);
+            this.groupBoxUserPeriod.Location = new System.Drawing.Point(16, 3);
+            this.groupBoxUserPeriod.Name = "groupBoxUserPeriod";
+            this.groupBoxUserPeriod.Size = new System.Drawing.Size(725, 44);
+            this.groupBoxUserPeriod.TabIndex = 20;
+            this.groupBoxUserPeriod.TabStop = false;
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Location = new System.Drawing.Point(873, 9);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(102, 39);
+            this.buttonEdit.TabIndex = 17;
+            this.buttonEdit.Text = "Изменить даты и пользователя";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // buttonOk
+            // 
+            this.buttonOk.Location = new System.Drawing.Point(747, 9);
+            this.buttonOk.Name = "buttonOk";
+            this.buttonOk.Size = new System.Drawing.Size(120, 39);
+            this.buttonOk.TabIndex = 21;
+            this.buttonOk.Text = "Применить";
+            this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // CreateOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(987, 519);
-            this.Controls.Add(this.dateTimePickerBefore);
-            this.Controls.Add(this.labelBefore);
-            this.Controls.Add(this.dateTimePickerFrom);
-            this.Controls.Add(this.labelFrom);
-            this.Controls.Add(this.buttonSaveOrder);
+            this.ClientSize = new System.Drawing.Size(987, 555);
+            this.Controls.Add(this.buttonOk);
+            this.Controls.Add(this.buttonEdit);
+            this.Controls.Add(this.groupBoxUserPeriod);
+            this.Controls.Add(this.groupBoxPayment);
             this.Controls.Add(this.textBoxSum);
             this.Controls.Add(this.labelSum);
             this.Controls.Add(this.dataGridViewFreeService);
             this.Controls.Add(this.groupBoxServices);
             this.Controls.Add(this.groupBoxForms);
-            this.Controls.Add(this.labelUser);
-            this.Controls.Add(this.comboBoxUsers);
             this.Name = "CreateOrder";
             this.Text = "CreateOrder";
             this.Load += new System.EventHandler(this.CreateOrder_Load);
@@ -333,8 +388,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewForms)).EndInit();
             this.groupBoxServices.ResumeLayout(false);
             this.groupBoxServices.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFreeService)).EndInit();
+            this.groupBoxPayment.ResumeLayout(false);
+            this.groupBoxPayment.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).EndInit();
+            this.groupBoxUserPeriod.ResumeLayout(false);
+            this.groupBoxUserPeriod.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,12 +406,9 @@
         private System.Windows.Forms.GroupBox groupBoxForms;
         private System.Windows.Forms.DataGridView dataGridViewForms;
         private System.Windows.Forms.Button buttonAddForm;
-        private System.Windows.Forms.Button buttonEditForm;
         private System.Windows.Forms.Button buttonDelForm;
         private System.Windows.Forms.GroupBox groupBoxServices;
-        private System.Windows.Forms.DataGridView dataGridViewService;
         private System.Windows.Forms.Button buttonAddService;
-        private System.Windows.Forms.Button buttonEditService;
         private System.Windows.Forms.Button buttonDelService;
         private System.Windows.Forms.DataGridView dataGridViewFreeService;
         private System.Windows.Forms.Label labelSum;
@@ -366,5 +422,12 @@
         private System.Windows.Forms.Label labelSumRoom;
         private System.Windows.Forms.TextBox textBoxSumService;
         private System.Windows.Forms.Label labelSumService;
+        private System.Windows.Forms.GroupBox groupBoxPayment;
+        private System.Windows.Forms.CheckBox checkBoxCard;
+        private System.Windows.Forms.CheckBox checkBoxCash;
+        private System.Windows.Forms.DataGridView dataGridViewService;
+        private System.Windows.Forms.GroupBox groupBoxUserPeriod;
+        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Button buttonOk;
     }
 }

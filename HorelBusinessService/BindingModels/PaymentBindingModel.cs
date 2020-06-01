@@ -13,5 +13,8 @@ namespace HorelBusinessService.BindingModels
 
         [DataMember]
         public decimal Summ { get; set; }
+
+        [DataMember]
+        public string PayType { get; set; }
     }
 }

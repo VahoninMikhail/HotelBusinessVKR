@@ -1,6 +1,6 @@
-﻿namespace HotelBusinessViewAdmin.Users
+﻿namespace HotelBusinessViewAdmin.Admins
 {
-    partial class EditUser
+    partial class EditAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -44,10 +44,10 @@
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(98, 47);
+            this.labelEmail.Location = new System.Drawing.Point(83, 47);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(38, 13);
-            this.labelEmail.TabIndex = 25;
+            this.labelEmail.TabIndex = 36;
             this.labelEmail.Text = "E-mail:";
             // 
             // textBoxLogin
@@ -55,20 +55,20 @@
             this.textBoxLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.textBoxLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.textBoxLogin.Location = new System.Drawing.Point(142, 45);
+            this.textBoxLogin.Location = new System.Drawing.Point(127, 45);
             this.textBoxLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxLogin.MaxLength = 32;
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(194, 20);
-            this.textBoxLogin.TabIndex = 24;
+            this.textBoxLogin.TabIndex = 35;
             // 
             // labelFIO
             // 
             this.labelFIO.AutoSize = true;
-            this.labelFIO.Location = new System.Drawing.Point(102, 16);
+            this.labelFIO.Location = new System.Drawing.Point(87, 16);
             this.labelFIO.Name = "labelFIO";
             this.labelFIO.Size = new System.Drawing.Size(37, 13);
-            this.labelFIO.TabIndex = 23;
+            this.labelFIO.TabIndex = 34;
             this.labelFIO.Text = "ФИО:";
             // 
             // textBoxFIO
@@ -76,20 +76,20 @@
             this.textBoxFIO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.textBoxFIO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxFIO.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.textBoxFIO.Location = new System.Drawing.Point(142, 13);
+            this.textBoxFIO.Location = new System.Drawing.Point(127, 13);
             this.textBoxFIO.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxFIO.MaxLength = 32;
             this.textBoxFIO.Name = "textBoxFIO";
             this.textBoxFIO.Size = new System.Drawing.Size(194, 20);
-            this.textBoxFIO.TabIndex = 22;
+            this.textBoxFIO.TabIndex = 33;
             // 
             // labelConformPassword
             // 
             this.labelConformPassword.AutoSize = true;
-            this.labelConformPassword.Location = new System.Drawing.Point(33, 143);
+            this.labelConformPassword.Location = new System.Drawing.Point(18, 143);
             this.labelConformPassword.Name = "labelConformPassword";
             this.labelConformPassword.Size = new System.Drawing.Size(103, 13);
-            this.labelConformPassword.TabIndex = 21;
+            this.labelConformPassword.TabIndex = 32;
             this.labelConformPassword.Text = "Повторите пароль:";
             // 
             // textBoxConfirmPassword
@@ -97,12 +97,12 @@
             this.textBoxConfirmPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.textBoxConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxConfirmPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.textBoxConfirmPassword.Location = new System.Drawing.Point(142, 141);
+            this.textBoxConfirmPassword.Location = new System.Drawing.Point(127, 141);
             this.textBoxConfirmPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxConfirmPassword.MaxLength = 32;
             this.textBoxConfirmPassword.Name = "textBoxConfirmPassword";
             this.textBoxConfirmPassword.Size = new System.Drawing.Size(194, 20);
-            this.textBoxConfirmPassword.TabIndex = 20;
+            this.textBoxConfirmPassword.TabIndex = 31;
             this.textBoxConfirmPassword.UseSystemPasswordChar = true;
             // 
             // textBoxPassword
@@ -110,12 +110,12 @@
             this.textBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.textBoxPassword.Location = new System.Drawing.Point(142, 109);
+            this.textBoxPassword.Location = new System.Drawing.Point(127, 109);
             this.textBoxPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxPassword.MaxLength = 32;
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(194, 20);
-            this.textBoxPassword.TabIndex = 19;
+            this.textBoxPassword.TabIndex = 30;
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // textBoxPhoneNumber
@@ -123,23 +123,23 @@
             this.textBoxPhoneNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.textBoxPhoneNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxPhoneNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.textBoxPhoneNumber.Location = new System.Drawing.Point(142, 77);
+            this.textBoxPhoneNumber.Location = new System.Drawing.Point(127, 77);
             this.textBoxPhoneNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxPhoneNumber.MaxLength = 32;
             this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
             this.textBoxPhoneNumber.Size = new System.Drawing.Size(194, 20);
-            this.textBoxPhoneNumber.TabIndex = 18;
+            this.textBoxPhoneNumber.TabIndex = 29;
             // 
             // buttonRegister
             // 
             this.buttonRegister.AutoSize = true;
             this.buttonRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRegister.Location = new System.Drawing.Point(142, 173);
+            this.buttonRegister.Location = new System.Drawing.Point(127, 173);
             this.buttonRegister.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonRegister.Name = "buttonRegister";
             this.buttonRegister.Size = new System.Drawing.Size(130, 30);
-            this.buttonRegister.TabIndex = 17;
+            this.buttonRegister.TabIndex = 28;
             this.buttonRegister.Text = "Зарегистрировать";
             this.buttonRegister.UseVisualStyleBackColor = false;
             this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
@@ -147,26 +147,26 @@
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(88, 111);
+            this.labelPassword.Location = new System.Drawing.Point(73, 111);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(48, 13);
-            this.labelPassword.TabIndex = 16;
+            this.labelPassword.TabIndex = 27;
             this.labelPassword.Text = "Пароль:";
             // 
             // labelPhone
             // 
             this.labelPhone.AutoSize = true;
-            this.labelPhone.Location = new System.Drawing.Point(43, 84);
+            this.labelPhone.Location = new System.Drawing.Point(28, 84);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(96, 13);
-            this.labelPhone.TabIndex = 15;
+            this.labelPhone.TabIndex = 26;
             this.labelPhone.Text = "Номер телефона:";
             // 
-            // EditUser
+            // EditAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 220);
+            this.ClientSize = new System.Drawing.Size(335, 214);
             this.Controls.Add(this.labelEmail);
             this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.labelFIO);
@@ -178,8 +178,8 @@
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelPhone);
-            this.Name = "EditUser";
-            this.Text = "EditUser";
+            this.Name = "EditAdmin";
+            this.Text = "EditAdmin";
             this.ResumeLayout(false);
             this.PerformLayout();
 

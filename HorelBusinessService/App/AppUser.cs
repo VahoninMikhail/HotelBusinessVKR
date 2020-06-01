@@ -51,7 +51,11 @@ namespace HorelBusinessService.App
 
     public class AppRole : IdentityRole
     {
-        public AppRole() { }
+        public AppRole() : base() { }
+
+        public AppRole(string name)
+            : base(name)
+        { }
     }
 
     /*public class AppRole : IdentityRole<AppId, AppUserRole>

@@ -36,15 +36,11 @@
             this.richTextBoxSpecification = new System.Windows.Forms.RichTextBox();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
-            this.buttonAddImage = new System.Windows.Forms.Button();
-            this.buttonWatch = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxFormName
             // 
-            this.textBoxFormName.Location = new System.Drawing.Point(71, 12);
+            this.textBoxFormName.Location = new System.Drawing.Point(12, 31);
             this.textBoxFormName.MaxLength = 16;
             this.textBoxFormName.Name = "textBoxFormName";
             this.textBoxFormName.Size = new System.Drawing.Size(208, 20);
@@ -61,7 +57,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(169, 154);
+            this.buttonCancel.Location = new System.Drawing.Point(127, 154);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(110, 36);
             this.buttonCancel.TabIndex = 5;
@@ -82,7 +78,7 @@
             // labelSpecification
             // 
             this.labelSpecification.AutoSize = true;
-            this.labelSpecification.Location = new System.Drawing.Point(305, 72);
+            this.labelSpecification.Location = new System.Drawing.Point(240, 9);
             this.labelSpecification.Name = "labelSpecification";
             this.labelSpecification.Size = new System.Drawing.Size(60, 13);
             this.labelSpecification.TabIndex = 8;
@@ -90,7 +86,7 @@
             // 
             // richTextBoxSpecification
             // 
-            this.richTextBoxSpecification.Location = new System.Drawing.Point(371, 15);
+            this.richTextBoxSpecification.Location = new System.Drawing.Point(243, 25);
             this.richTextBoxSpecification.Name = "richTextBoxSpecification";
             this.richTextBoxSpecification.Size = new System.Drawing.Size(369, 175);
             this.richTextBoxSpecification.TabIndex = 10;
@@ -98,7 +94,7 @@
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(71, 52);
+            this.textBoxPrice.Location = new System.Drawing.Point(12, 71);
             this.textBoxPrice.MaxLength = 16;
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(208, 20);
@@ -113,42 +109,11 @@
             this.labelPrice.TabIndex = 11;
             this.labelPrice.Text = "Цена:";
             // 
-            // buttonAddImage
-            // 
-            this.buttonAddImage.Location = new System.Drawing.Point(12, 215);
-            this.buttonAddImage.Name = "buttonAddImage";
-            this.buttonAddImage.Size = new System.Drawing.Size(110, 36);
-            this.buttonAddImage.TabIndex = 13;
-            this.buttonAddImage.Text = "Добавить фото:";
-            this.buttonAddImage.UseVisualStyleBackColor = true;
-            this.buttonAddImage.Click += new System.EventHandler(this.buttonAddImage_Click);
-            // 
-            // buttonWatch
-            // 
-            this.buttonWatch.Location = new System.Drawing.Point(192, 355);
-            this.buttonWatch.Name = "buttonWatch";
-            this.buttonWatch.Size = new System.Drawing.Size(110, 36);
-            this.buttonWatch.TabIndex = 14;
-            this.buttonWatch.Text = "Смотреть";
-            this.buttonWatch.UseVisualStyleBackColor = true;
-            this.buttonWatch.Click += new System.EventHandler(this.buttonWatch_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(308, 215);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(565, 324);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
             // EditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 551);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.buttonWatch);
-            this.Controls.Add(this.buttonAddImage);
+            this.ClientSize = new System.Drawing.Size(621, 209);
             this.Controls.Add(this.textBoxPrice);
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.richTextBoxSpecification);
@@ -160,7 +125,6 @@
             this.Name = "EditForm";
             this.Text = "EditForm";
             this.Load += new System.EventHandler(this.EditForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,8 +140,5 @@
         private System.Windows.Forms.RichTextBox richTextBoxSpecification;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.Label labelPrice;
-        private System.Windows.Forms.Button buttonAddImage;
-        private System.Windows.Forms.Button buttonWatch;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

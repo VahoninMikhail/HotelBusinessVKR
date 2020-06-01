@@ -216,8 +216,6 @@ namespace HotelBusinessViewAdmin.Forms
 
         private async void dataGridViewForms_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            listViewImages.Items.Clear();
-
             int id = Convert.ToInt32(dataGridViewForms.SelectedRows[0].Cells[0].Value);
             var form = await ApiClient.GetRequestData<FormViewModel>("api/Form/Get/" + id);
 
@@ -239,9 +237,6 @@ namespace HotelBusinessViewAdmin.Forms
                 imageList.Images.Add(pictureBox1.Image);
             }
 
-            // устанавливаем в listView1 список изображений imageList
-            listViewImages.SmallImageList = imageList;
-
             for (int i = 0; i < form.Images.Count; i++)
             {
                 // создадим объект ListViewItem (строку) для listView1
@@ -251,7 +246,6 @@ namespace HotelBusinessViewAdmin.Forms
                 listViewItem.ImageIndex = i;
 
                 // добавляем созданный элемент listViewItem (строку) в listView1
-                listViewImages.Items.Add(listViewItem);
             }
 
 

@@ -26,6 +26,9 @@ namespace HorelBusinessService.BindingModels
         public string FileName { get; set; }
 
         [DataMember]
+        public string PayType { get; set; }
+
+        [DataMember]
         public string FontPath { get; set; }
 
         [DataMember]

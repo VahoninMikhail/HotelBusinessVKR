@@ -4,11 +4,11 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HotelBusinessViewAdmin.Users
+namespace HotelBusinessViewAdmin.Admins
 {
-    public partial class EditUser : Form
+    public partial class EditAdmin : Form
     {
-        public EditUser()
+        public EditAdmin()
         {
             InitializeComponent();
         }
@@ -41,14 +41,14 @@ namespace HotelBusinessViewAdmin.Users
             {
                 message += "В номере телефона не должно быть пробелов";
             }
-          /*  if (!Regex.IsMatch(login, @"^[a-zA-Z0-9]{5,30}$"))
-            {
-                message += " В номере телефона должно быть 11 цифр";
-            }*/
+            /*  if (!Regex.IsMatch(login, @"^[a-zA-Z0-9]{5,30}$"))
+              {
+                  message += " В номере телефона должно быть 11 цифр";
+              }*/
             //if (!Regex.IsMatch(password, @"(?=.*[a-z])(?=.*[0-9])^[a-zA-Z0-9]{5,}$"/*@"^(?=.*[0-9]$)(?=.*[a-zA-Z]){5,}"*/))
-           // {
-          //      message += " Пароль должен быть не менее 5 символов и не более 20 символов, содержать хотя бы одну латинскую букву в нижнем регистре и одну цифру";
-          //  }
+            // {
+            //      message += " Пароль должен быть не менее 5 символов и не более 20 символов, содержать хотя бы одну латинскую букву в нижнем регистре и одну цифру";
+            //  }
             if (!password.Equals(confirmPassword))
             {
                 message += "Пароли должны совпадать";
@@ -60,7 +60,7 @@ namespace HotelBusinessViewAdmin.Users
             }
             try
             {
-                Task task = Task.Run(() => ApiClient.PostRequestData("api/Account/Register", new RegisterBindingModel
+                Task task = Task.Run(() => ApiClient.PostRequestData("api/Account/RegisterAdmin", new RegisterBindingModel
                 {
                     UserFIO = fio,
                     Email = login,
@@ -71,16 +71,16 @@ namespace HotelBusinessViewAdmin.Users
                 MessageBox.Show("Пользователь зарегистрирован", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
 
-               /* Task task = Task.Run(() => ApiClient.PostRequestData("api/Account/Register", new RegisterBindingModel
-                {
-                    UserFIO = fio,
-                    Email = login,
-                    PhoneNumber = phoneNumber,
-                    Password = password,
-                    ConfirmPassword = confirmPassword
-                }));
-                MessageBox.Show("Пользователь зарегистрирован", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Close();*/
+                /* Task task = Task.Run(() => ApiClient.PostRequestData("api/Account/Register", new RegisterBindingModel
+                 {
+                     UserFIO = fio,
+                     Email = login,
+                     PhoneNumber = phoneNumber,
+                     Password = password,
+                     ConfirmPassword = confirmPassword
+                 }));
+                 MessageBox.Show("Пользователь зарегистрирован", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 Close();*/
             }
             catch (Exception ex)
             {

@@ -45,9 +45,9 @@ namespace RestApiHotelBusiness
         }
     }
 
-    public class AppRoleManager : RoleManager<AppRole>
+    public class AppRoleManager : RoleManager<IdentityRole>
     {
-        public AppRoleManager(RoleStore<AppRole> store)
+        public AppRoleManager(RoleStore<IdentityRole> store)
             : base(store)
         { }
 
@@ -56,7 +56,7 @@ namespace RestApiHotelBusiness
             IOwinContext context)
         {
             return new AppRoleManager(new
-                RoleStore<AppRole>(context.Get<AbstractDbContext>()));
+                RoleStore<IdentityRole>(context.Get<AbstractDbContext>()));
         }
     }
 }

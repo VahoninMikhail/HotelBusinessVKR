@@ -61,7 +61,7 @@ namespace HorelBusinessService.ImplementationsBD
                     }
                     await context.SaveChangesAsync();*/
 
-                    if (model.Images.Count != 0)
+                   /* if (model.Images.Count != 0)
                     {
                         foreach (var image in model.Images)
                         {
@@ -86,7 +86,7 @@ namespace HorelBusinessService.ImplementationsBD
                                 throw ex;
                             }
                         }
-                    }
+                    }*/
 
                     await Task.Run(() => transaction.Commit());
                 }
@@ -312,33 +312,6 @@ namespace HorelBusinessService.ImplementationsBD
             element.FormName = model.FormName;
             element.Specifications = model.Specifications;
             element.Price = model.Price;
-
-            if (model.Images.Count != 0)
-            {
-                foreach (var image in model.Images)
-                {
-                    var buffer = image.Image;
-
-                    HttpPostedFileBase objFile = new MemoryPostedFile(buffer);
-
-                    try
-                    {
-                        if (objFile != null && objFile.ContentLength > 0)
-                        {
-                            context.Images.Add(new Image
-                            {
-                                FileByteArr = buffer,
-                                FormId = element.Id
-                            });
-                            await context.SaveChangesAsync();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
-                }
-            }
 
             await Task.Run(() => context.Database.BeginTransaction().Commit());
             context.SaveChanges();

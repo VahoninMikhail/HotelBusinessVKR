@@ -35,9 +35,6 @@
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.listViewImages = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBoxFroms = new System.Windows.Forms.GroupBox();
@@ -46,9 +43,9 @@
             this.buttonDelService = new System.Windows.Forms.Button();
             this.groupBoxService = new System.Windows.Forms.GroupBox();
             this.groupBoxImages = new System.Windows.Forms.GroupBox();
+            this.dataGridViewImages = new System.Windows.Forms.DataGridView();
             this.buttonDelImages = new System.Windows.Forms.Button();
             this.buttonAddImages = new System.Windows.Forms.Button();
-            this.dataGridViewImages = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewForms)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBoxFroms.SuspendLayout();
@@ -107,35 +104,13 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(725, 363);
+            this.buttonClose.Location = new System.Drawing.Point(725, 380);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(100, 40);
+            this.buttonClose.Size = new System.Drawing.Size(89, 40);
             this.buttonClose.TabIndex = 6;
             this.buttonClose.Text = "Выход";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // listViewImages
-            // 
-            this.listViewImages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.listViewImages.HideSelection = false;
-            this.listViewImages.Location = new System.Drawing.Point(915, 446);
-            this.listViewImages.Name = "listViewImages";
-            this.listViewImages.Size = new System.Drawing.Size(310, 282);
-            this.listViewImages.TabIndex = 7;
-            this.listViewImages.UseCompatibleStateImageBehavior = false;
-            this.listViewImages.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Фотографии";
-            this.columnHeader1.Width = 169;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Id";
             // 
             // imageList1
             // 
@@ -145,9 +120,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(355, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(401, 19);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(522, 392);
+            this.pictureBox1.Size = new System.Drawing.Size(386, 267);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
@@ -218,32 +193,12 @@
             this.groupBoxImages.Controls.Add(this.buttonDelImages);
             this.groupBoxImages.Controls.Add(this.buttonAddImages);
             this.groupBoxImages.Controls.Add(this.pictureBox1);
-            this.groupBoxImages.Location = new System.Drawing.Point(12, 437);
+            this.groupBoxImages.Location = new System.Drawing.Point(12, 426);
             this.groupBoxImages.Name = "groupBoxImages";
-            this.groupBoxImages.Size = new System.Drawing.Size(897, 432);
+            this.groupBoxImages.Size = new System.Drawing.Size(802, 300);
             this.groupBoxImages.TabIndex = 11;
             this.groupBoxImages.TabStop = false;
             this.groupBoxImages.Text = "Фотографии данного вида номера:";
-            // 
-            // buttonDelImages
-            // 
-            this.buttonDelImages.Location = new System.Drawing.Point(174, 346);
-            this.buttonDelImages.Name = "buttonDelImages";
-            this.buttonDelImages.Size = new System.Drawing.Size(88, 63);
-            this.buttonDelImages.TabIndex = 6;
-            this.buttonDelImages.Text = "Удалить";
-            this.buttonDelImages.UseVisualStyleBackColor = true;
-            this.buttonDelImages.Click += new System.EventHandler(this.buttonDelImages_Click);
-            // 
-            // buttonAddImages
-            // 
-            this.buttonAddImages.Location = new System.Drawing.Point(25, 346);
-            this.buttonAddImages.Name = "buttonAddImages";
-            this.buttonAddImages.Size = new System.Drawing.Size(91, 63);
-            this.buttonAddImages.TabIndex = 9;
-            this.buttonAddImages.Text = "Добавить";
-            this.buttonAddImages.UseVisualStyleBackColor = true;
-            this.buttonAddImages.Click += new System.EventHandler(this.buttonAddImages_Click);
             // 
             // dataGridViewImages
             // 
@@ -258,18 +213,37 @@
             this.dataGridViewImages.Name = "dataGridViewImages";
             this.dataGridViewImages.RowHeadersVisible = false;
             this.dataGridViewImages.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewImages.Size = new System.Drawing.Size(295, 321);
+            this.dataGridViewImages.Size = new System.Drawing.Size(295, 267);
             this.dataGridViewImages.TabIndex = 12;
             this.dataGridViewImages.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewImages_CellClick);
+            // 
+            // buttonDelImages
+            // 
+            this.buttonDelImages.Location = new System.Drawing.Point(307, 223);
+            this.buttonDelImages.Name = "buttonDelImages";
+            this.buttonDelImages.Size = new System.Drawing.Size(88, 63);
+            this.buttonDelImages.TabIndex = 6;
+            this.buttonDelImages.Text = "Удалить";
+            this.buttonDelImages.UseVisualStyleBackColor = true;
+            this.buttonDelImages.Click += new System.EventHandler(this.buttonDelImages_Click);
+            // 
+            // buttonAddImages
+            // 
+            this.buttonAddImages.Location = new System.Drawing.Point(307, 154);
+            this.buttonAddImages.Name = "buttonAddImages";
+            this.buttonAddImages.Size = new System.Drawing.Size(88, 63);
+            this.buttonAddImages.TabIndex = 9;
+            this.buttonAddImages.Text = "Добавить";
+            this.buttonAddImages.UseVisualStyleBackColor = true;
+            this.buttonAddImages.Click += new System.EventHandler(this.buttonAddImages_Click);
             // 
             // Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1035, 881);
+            this.ClientSize = new System.Drawing.Size(924, 739);
             this.Controls.Add(this.groupBoxImages);
             this.Controls.Add(this.groupBoxService);
-            this.Controls.Add(this.listViewImages);
             this.Controls.Add(this.groupBoxFroms);
             this.Controls.Add(this.buttonClose);
             this.Name = "Forms";
@@ -293,9 +267,7 @@
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonDel;
         private System.Windows.Forms.Button buttonClose;
-        private System.Windows.Forms.ListView listViewImages;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBoxFroms;
         private System.Windows.Forms.DataGridView dataGridViewService;
@@ -305,7 +277,6 @@
         private System.Windows.Forms.GroupBox groupBoxImages;
         private System.Windows.Forms.Button buttonDelImages;
         private System.Windows.Forms.Button buttonAddImages;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.DataGridView dataGridViewImages;
     }
 }

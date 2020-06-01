@@ -98,19 +98,83 @@ namespace RestApiHotelBusiness.Controllers
             return Ok(UserManager.Users);
         }
 
-       /*  [HttpGet]
-         public IHttpActionResult GetRole()
-         {
-             return  Ok(RoleManager.Roles);
-         }*/
+        /*  [HttpGet]
+          public IHttpActionResult GetRole()
+          {
+              return  Ok(RoleManager.Roles);
+          }*/
 
-       /* [HttpGet]
+        [HttpGet]
         public async Task<IHttpActionResult> GetListUser()
         {
             string roleName = "User";
             var role = await RoleManager.Roles.SingleAsync(r => r.Name == roleName);
+            // return Ok(UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == role.Id)));
             return Ok(UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == role.Id)));
-        }*/
+        }
+
+        [HttpGet]
+        public async Task<IHttpActionResult> GetListAdmin()
+        {
+            string roleName = "Admin";
+            var role = await RoleManager.Roles.SingleAsync(r => r.Name == roleName);
+            // return Ok(UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == role.Id)));
+            return Ok(UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == role.Id)));
+        }
+
+        [HttpPost]
+        public async Task DelElement(string id)
+        {
+            var user = await UserManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                IdentityResult result = await UserManager.DeleteAsync(user);
+                if (result.Succeeded)
+                {
+                    
+                }
+                else
+                {
+                    
+                }
+            }
+        }
+
+        [HttpPost]
+        public async Task BlockElement(string id)
+        {
+            var user = await UserManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                IdentityResult result = await UserManager.SetLockoutEnabledAsync(user.Id, true);
+                if (result.Succeeded)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+        [HttpPost]
+        public async Task UnblockElement(string id)
+        {
+            var user = await UserManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                IdentityResult result = await UserManager.SetLockoutEnabledAsync(user.Id, false);
+                if (result.Succeeded)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+        }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
         [Route("ManageInfo")]
@@ -390,6 +454,29 @@ namespace RestApiHotelBusiness.Controllers
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
             UserManager.AddToRole(user.Id, "User");
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [Route("RegisterAdmin")]
+        public async Task<IHttpActionResult> RegisterAdmin(RegisterBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new User() { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, UserFIO = model.UserFIO, Bonuses = 0, Active = true };
+
+            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            UserManager.AddToRole(user.Id, "Admin");
 
             if (!result.Succeeded)
             {
