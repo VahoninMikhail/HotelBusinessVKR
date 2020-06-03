@@ -86,6 +86,19 @@ namespace RestApiHotelBusiness.Controllers
             await service.AddElement(model);
         }
 
+        [HttpPost]
+        public async Task CreatePayment(PaymentBindingModel model)
+        {
+            await service.CreatePayment(model);
+        }
+
+        [HttpPost]
+        [Route("api/Order/CloseOrder/{orderId}")]
+        public async Task CloseOrder(int orderId)
+        {
+            await service.CloseOrder(orderId);
+        }
+
         [HttpDelete]
         public async Task DelElement(int id)
         {

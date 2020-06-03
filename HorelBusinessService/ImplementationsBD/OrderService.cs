@@ -139,6 +139,24 @@ namespace HorelBusinessService.ImplementationsBD
             await context.SaveChangesAsync();
         }
 
+        public async System.Threading.Tasks.Task CloseOrder(int orderId)
+        {
+            Order element = context.Orders.FirstOrDefault(rec => rec.Id == orderId);
+            if (element == null)
+            {
+                throw new Exception("Элемент не найден");
+            }
+            element.OrderStatus = OrderStatus.Завершен;
+
+            User user = context.Users.FirstOrDefault(rec => rec.Id == element.UserId);
+            if (user == null)
+            {
+                throw new Exception("Элемент не найден");
+            }
+            user.Bonuses += Convert.ToInt32(Convert.ToDouble(element.Payments[0].Summ) * 0.05);
+            await context.SaveChangesAsync();
+        }
+
         public async System.Threading.Tasks.Task DelElement(int id)
         {
             using (var transaction = context.Database.BeginTransaction())
@@ -187,7 +205,13 @@ namespace HorelBusinessService.ImplementationsBD
                     FormName = rec.Room.Form.FormName,
                     Price = rec.Price
                 }).ToListAsync();
-                var sum = serviceOrders.Select(rec => rec.Total).DefaultIfEmpty(0).Sum();
+                var payments = await context.Payments.Where(rec => rec.OrderId == element.Id).Select(rec => new PaymentViewModel
+                {
+                    DateImplement = rec.DateImplement.ToString(),
+                    Summ = rec.Summ,
+                    PayType = rec.PayType
+                }).ToListAsync();
+                var sum = serviceOrders.Select(rec => rec.Total).DefaultIfEmpty(0).Sum() + roomOrders.Select(rec => rec.Price).DefaultIfEmpty(0).Sum();
                 var paid = context.Payments.Where(rec => rec.OrderId == element.Id).Select(rec => rec.Summ).DefaultIfEmpty(0).Sum();
                 return new OrderViewModel
                 {
@@ -198,6 +222,7 @@ namespace HorelBusinessService.ImplementationsBD
                     DepartureDate = element.DepartureDate.ToLongDateString(),
                     ServiceOrders = serviceOrders,
                     RoomOrders = roomOrders,
+                    Payments = payments,
                     OrderStatus = element.OrderStatus.ToString(),
                     Sum = sum,
                     Paid = paid,

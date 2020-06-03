@@ -12,7 +12,7 @@ namespace HorelBusinessService.ViewModels
         public string UserFIO { get; set; }
 
         [DataMember]
-        public string DateCreate { get; set; }
+        public string UserMail { get; set; }
 
         [DataMember]
         public string DateImplement { get; set; }

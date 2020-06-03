@@ -17,6 +17,8 @@ namespace HorelBusinessService.Interfaces
 
         Task AddElement(OrderBindingModel model);
 
+        Task CloseOrder(int orderId);
+
         Task UpdElement(OrderBindingModel model);
 
         Task DelElement(int id);

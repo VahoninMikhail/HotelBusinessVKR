@@ -35,11 +35,23 @@
             this.buttonUsers = new System.Windows.Forms.Button();
             this.buttonCreateOrder = new System.Windows.Forms.Button();
             this.buttonAdmins = new System.Windows.Forms.Button();
-            this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
+            this.dataGridViewEntry = new System.Windows.Forms.DataGridView();
             this.buttonPayment = new System.Windows.Forms.Button();
             this.buttonCloseOrder = new System.Windows.Forms.Button();
-            this.dateTimePickerOrder = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
+            this.dateTimePickerEntry = new System.Windows.Forms.DateTimePicker();
+            this.dataGridViewExit = new System.Windows.Forms.DataGridView();
+            this.dateTimePickerExit = new System.Windows.Forms.DateTimePicker();
+            this.groupBoxEntry = new System.Windows.Forms.GroupBox();
+            this.buttonSaveEntryPDF = new System.Windows.Forms.Button();
+            this.buttonDetailEntry = new System.Windows.Forms.Button();
+            this.groupBoxExit = new System.Windows.Forms.GroupBox();
+            this.buttonSaveExitPDF = new System.Windows.Forms.Button();
+            this.buttonDetailExit = new System.Windows.Forms.Button();
+            this.buttonReport = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEntry)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExit)).BeginInit();
+            this.groupBoxEntry.SuspendLayout();
+            this.groupBoxExit.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelUserName
@@ -111,57 +123,159 @@
             this.buttonAdmins.UseVisualStyleBackColor = true;
             this.buttonAdmins.Click += new System.EventHandler(this.buttonAdmins_Click);
             // 
-            // dataGridViewOrders
+            // dataGridViewEntry
             // 
-            this.dataGridViewOrders.AllowUserToAddRows = false;
-            this.dataGridViewOrders.AllowUserToResizeColumns = false;
-            this.dataGridViewOrders.AllowUserToResizeRows = false;
-            this.dataGridViewOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewOrders.Location = new System.Drawing.Point(31, 158);
-            this.dataGridViewOrders.MultiSelect = false;
-            this.dataGridViewOrders.Name = "dataGridViewOrders";
-            this.dataGridViewOrders.RowHeadersVisible = false;
-            this.dataGridViewOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOrders.Size = new System.Drawing.Size(599, 280);
-            this.dataGridViewOrders.TabIndex = 7;
+            this.dataGridViewEntry.AllowUserToAddRows = false;
+            this.dataGridViewEntry.AllowUserToResizeColumns = false;
+            this.dataGridViewEntry.AllowUserToResizeRows = false;
+            this.dataGridViewEntry.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewEntry.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEntry.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewEntry.Location = new System.Drawing.Point(6, 45);
+            this.dataGridViewEntry.MultiSelect = false;
+            this.dataGridViewEntry.Name = "dataGridViewEntry";
+            this.dataGridViewEntry.RowHeadersVisible = false;
+            this.dataGridViewEntry.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewEntry.Size = new System.Drawing.Size(342, 386);
+            this.dataGridViewEntry.TabIndex = 7;
             // 
             // buttonPayment
             // 
-            this.buttonPayment.Location = new System.Drawing.Point(636, 226);
+            this.buttonPayment.Location = new System.Drawing.Point(369, 106);
             this.buttonPayment.Name = "buttonPayment";
-            this.buttonPayment.Size = new System.Drawing.Size(152, 38);
+            this.buttonPayment.Size = new System.Drawing.Size(78, 38);
             this.buttonPayment.TabIndex = 8;
             this.buttonPayment.Text = "Оплата";
             this.buttonPayment.UseVisualStyleBackColor = true;
+            this.buttonPayment.Click += new System.EventHandler(this.buttonPayment_Click);
             // 
             // buttonCloseOrder
             // 
-            this.buttonCloseOrder.Location = new System.Drawing.Point(636, 270);
+            this.buttonCloseOrder.Location = new System.Drawing.Point(369, 164);
             this.buttonCloseOrder.Name = "buttonCloseOrder";
-            this.buttonCloseOrder.Size = new System.Drawing.Size(152, 38);
+            this.buttonCloseOrder.Size = new System.Drawing.Size(78, 38);
             this.buttonCloseOrder.TabIndex = 9;
             this.buttonCloseOrder.Text = "Завершить заказ";
             this.buttonCloseOrder.UseVisualStyleBackColor = true;
+            this.buttonCloseOrder.Click += new System.EventHandler(this.buttonCloseOrder_Click);
             // 
-            // dateTimePickerOrder
+            // dateTimePickerEntry
             // 
-            this.dateTimePickerOrder.Location = new System.Drawing.Point(31, 126);
-            this.dateTimePickerOrder.Name = "dateTimePickerOrder";
-            this.dateTimePickerOrder.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerOrder.TabIndex = 10;
-            this.dateTimePickerOrder.ValueChanged += new System.EventHandler(this.dateTimePickerOrder_ValueChanged);
+            this.dateTimePickerEntry.Location = new System.Drawing.Point(6, 19);
+            this.dateTimePickerEntry.Name = "dateTimePickerEntry";
+            this.dateTimePickerEntry.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerEntry.TabIndex = 10;
+            this.dateTimePickerEntry.ValueChanged += new System.EventHandler(this.dateTimePickerOrder_ValueChanged);
+            // 
+            // dataGridViewExit
+            // 
+            this.dataGridViewExit.AllowUserToAddRows = false;
+            this.dataGridViewExit.AllowUserToResizeColumns = false;
+            this.dataGridViewExit.AllowUserToResizeRows = false;
+            this.dataGridViewExit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridViewExit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewExit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewExit.Location = new System.Drawing.Point(6, 45);
+            this.dataGridViewExit.MultiSelect = false;
+            this.dataGridViewExit.Name = "dataGridViewExit";
+            this.dataGridViewExit.RowHeadersVisible = false;
+            this.dataGridViewExit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewExit.Size = new System.Drawing.Size(342, 386);
+            this.dataGridViewExit.TabIndex = 11;
+            // 
+            // dateTimePickerExit
+            // 
+            this.dateTimePickerExit.Location = new System.Drawing.Point(6, 19);
+            this.dateTimePickerExit.Name = "dateTimePickerExit";
+            this.dateTimePickerExit.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerExit.TabIndex = 12;
+            this.dateTimePickerExit.ValueChanged += new System.EventHandler(this.dateTimePickerExit_ValueChanged);
+            // 
+            // groupBoxEntry
+            // 
+            this.groupBoxEntry.Controls.Add(this.buttonSaveEntryPDF);
+            this.groupBoxEntry.Controls.Add(this.buttonDetailEntry);
+            this.groupBoxEntry.Controls.Add(this.dataGridViewEntry);
+            this.groupBoxEntry.Controls.Add(this.dateTimePickerEntry);
+            this.groupBoxEntry.Location = new System.Drawing.Point(12, 100);
+            this.groupBoxEntry.Name = "groupBoxEntry";
+            this.groupBoxEntry.Size = new System.Drawing.Size(444, 440);
+            this.groupBoxEntry.TabIndex = 13;
+            this.groupBoxEntry.TabStop = false;
+            this.groupBoxEntry.Text = "Въезд:";
+            // 
+            // buttonSaveEntryPDF
+            // 
+            this.buttonSaveEntryPDF.Location = new System.Drawing.Point(354, 285);
+            this.buttonSaveEntryPDF.Name = "buttonSaveEntryPDF";
+            this.buttonSaveEntryPDF.Size = new System.Drawing.Size(78, 38);
+            this.buttonSaveEntryPDF.TabIndex = 15;
+            this.buttonSaveEntryPDF.Text = "Сохранить в PDF";
+            this.buttonSaveEntryPDF.UseVisualStyleBackColor = true;
+            this.buttonSaveEntryPDF.Click += new System.EventHandler(this.buttonSaveEntryPDF_Click);
+            // 
+            // buttonDetailEntry
+            // 
+            this.buttonDetailEntry.Location = new System.Drawing.Point(354, 393);
+            this.buttonDetailEntry.Name = "buttonDetailEntry";
+            this.buttonDetailEntry.Size = new System.Drawing.Size(78, 38);
+            this.buttonDetailEntry.TabIndex = 14;
+            this.buttonDetailEntry.Text = "Подробно о заказе";
+            this.buttonDetailEntry.UseVisualStyleBackColor = true;
+            this.buttonDetailEntry.Click += new System.EventHandler(this.buttonDetailEntry_Click);
+            // 
+            // groupBoxExit
+            // 
+            this.groupBoxExit.Controls.Add(this.buttonSaveExitPDF);
+            this.groupBoxExit.Controls.Add(this.buttonDetailExit);
+            this.groupBoxExit.Controls.Add(this.dataGridViewExit);
+            this.groupBoxExit.Controls.Add(this.dateTimePickerExit);
+            this.groupBoxExit.Controls.Add(this.buttonCloseOrder);
+            this.groupBoxExit.Controls.Add(this.buttonPayment);
+            this.groupBoxExit.Location = new System.Drawing.Point(462, 100);
+            this.groupBoxExit.Name = "groupBoxExit";
+            this.groupBoxExit.Size = new System.Drawing.Size(460, 440);
+            this.groupBoxExit.TabIndex = 14;
+            this.groupBoxExit.TabStop = false;
+            this.groupBoxExit.Text = "Выезд";
+            // 
+            // buttonSaveExitPDF
+            // 
+            this.buttonSaveExitPDF.Location = new System.Drawing.Point(369, 229);
+            this.buttonSaveExitPDF.Name = "buttonSaveExitPDF";
+            this.buttonSaveExitPDF.Size = new System.Drawing.Size(78, 38);
+            this.buttonSaveExitPDF.TabIndex = 14;
+            this.buttonSaveExitPDF.Text = "Сохранить в PDF";
+            this.buttonSaveExitPDF.UseVisualStyleBackColor = true;
+            // 
+            // buttonDetailExit
+            // 
+            this.buttonDetailExit.Location = new System.Drawing.Point(369, 393);
+            this.buttonDetailExit.Name = "buttonDetailExit";
+            this.buttonDetailExit.Size = new System.Drawing.Size(78, 38);
+            this.buttonDetailExit.TabIndex = 13;
+            this.buttonDetailExit.Text = "Подробно о заказе";
+            this.buttonDetailExit.UseVisualStyleBackColor = true;
+            this.buttonDetailExit.Click += new System.EventHandler(this.buttonDetailExit_Click);
+            // 
+            // buttonReport
+            // 
+            this.buttonReport.Location = new System.Drawing.Point(558, 56);
+            this.buttonReport.Name = "buttonReport";
+            this.buttonReport.Size = new System.Drawing.Size(152, 38);
+            this.buttonReport.TabIndex = 15;
+            this.buttonReport.Text = "Отчеты";
+            this.buttonReport.UseVisualStyleBackColor = true;
+            this.buttonReport.Click += new System.EventHandler(this.buttonReport_Click);
             // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dateTimePickerOrder);
-            this.Controls.Add(this.buttonCloseOrder);
-            this.Controls.Add(this.buttonPayment);
-            this.Controls.Add(this.dataGridViewOrders);
+            this.ClientSize = new System.Drawing.Size(1085, 567);
+            this.Controls.Add(this.buttonReport);
+            this.Controls.Add(this.groupBoxExit);
+            this.Controls.Add(this.groupBoxEntry);
             this.Controls.Add(this.buttonAdmins);
             this.Controls.Add(this.buttonCreateOrder);
             this.Controls.Add(this.buttonUsers);
@@ -172,7 +286,10 @@
             this.Name = "FormBase";
             this.Text = "FormBase";
             this.Load += new System.EventHandler(this.FormBase_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEntry)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExit)).EndInit();
+            this.groupBoxEntry.ResumeLayout(false);
+            this.groupBoxExit.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,9 +304,18 @@
         private System.Windows.Forms.Button buttonUsers;
         private System.Windows.Forms.Button buttonCreateOrder;
         private System.Windows.Forms.Button buttonAdmins;
-        private System.Windows.Forms.DataGridView dataGridViewOrders;
+        private System.Windows.Forms.DataGridView dataGridViewEntry;
         private System.Windows.Forms.Button buttonPayment;
         private System.Windows.Forms.Button buttonCloseOrder;
-        private System.Windows.Forms.DateTimePicker dateTimePickerOrder;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEntry;
+        private System.Windows.Forms.DataGridView dataGridViewExit;
+        private System.Windows.Forms.DateTimePicker dateTimePickerExit;
+        private System.Windows.Forms.GroupBox groupBoxEntry;
+        private System.Windows.Forms.Button buttonDetailEntry;
+        private System.Windows.Forms.GroupBox groupBoxExit;
+        private System.Windows.Forms.Button buttonDetailExit;
+        private System.Windows.Forms.Button buttonSaveEntryPDF;
+        private System.Windows.Forms.Button buttonSaveExitPDF;
+        private System.Windows.Forms.Button buttonReport;
     }
 }

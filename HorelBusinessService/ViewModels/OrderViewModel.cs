@@ -44,6 +44,9 @@ namespace HorelBusinessService.ViewModels
         public List<RoomOrderViewModel> RoomOrders { get; set; }
 
         [DataMember]
+        public List<PaymentViewModel> Payments { get; set; }
+
+        [DataMember]
         public DateTime PogashenieDate { get; set; }
     }
 }

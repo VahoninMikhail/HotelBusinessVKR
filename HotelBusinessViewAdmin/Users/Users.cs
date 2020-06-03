@@ -134,5 +134,29 @@ namespace HotelBusinessViewAdmin.Users
                 }
             }
         }
+
+        private void buttonDetail_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewOrders.SelectedRows.Count == 1)
+            {
+                var form = new HotelBusinessViewAdmin.Base.DetailOrderBase();
+                form.Id = Convert.ToInt32(dataGridViewOrders.SelectedRows[0].Cells[0].Value);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+
+        private async void dataGridViewUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string id = Convert.ToString(dataGridViewUsers.SelectedRows[0].Cells[0].Value);
+            var form = await ApiClient.GetRequestData<List<OrderViewModel>>("api/Order/GetPosetitelList/" + id);
+           // var form = await ApiClient.GetRequestData<List<OrderViewModel>>("api/Order/GetList");
+           // form.RemoveAll(r => r.UserId != id);
+
+            dataGridViewOrders.DataSource = null;
+            dataGridViewOrders.DataSource = form;
+        }
     }
 }
