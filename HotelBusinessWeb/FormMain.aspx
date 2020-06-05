@@ -3,11 +3,10 @@
 <%@ Register assembly="System.Web.Mvc" namespace="System.Web.Mvc" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContent" runat="server" >
-    <div id="content">
-        <div class="content">
-            <p>
-                Выберите даты:
-            </p>
+    <div class="content-grid-info" runat="server">
+         <div id="content">          
+        <div class="content"> 
+    <div class="container">                      
             <table id="cartTableService">
                 <thead>
                     <tr>
@@ -35,28 +34,33 @@
                 </thead>
             </table>
 
-            <p><a id="search" runat="server">Найти</a> <a id="secectNewDate" runat="server" visible="false">Выбрать другие даты</a> </p>
+            <pre><a id="search" runat="server">Найти</a> <a id="secectNewDate" runat="server" visible="false">Выбрать другие даты</a></pre>
 
-            <p>
-                <asp:Label ID="LabelDate" runat="server" Text=""></asp:Label>
-            </p>
-
-
-             <asp:Repeater ID="Repeater1" ItemType="System.String"  runat="server" EnableViewState="false">
-                <ItemTemplate>
-                    <img src="" width="100" height="100"/>
-                </ItemTemplate>
-             </asp:Repeater >
-
-            <div class="content-grid-info" runat="server">
+            <pre><asp:Label ID="LabelDate" runat="server" Text=""></asp:Label></pre>
+                                       
                     <p id="forms" runat="server" visible="false">
                         <%
-                        foreach (HorelBusinessService.ViewModels.FormViewModel form in GetForms())
-                        {
-                                string s = Image(form.Id);
+                            foreach (HorelBusinessService.ViewModels.FormViewModel form in GetForms())
+                            {                                
+
+                                List<string> imList = ImageList(form.Id);
+                                
+                                Response.Write(String.Format(@"
+                                  <div class='item'>  
+                                    <div class='row'>"));
+
+                                foreach(var i in imList)
+                                {
+                                    Response.Write(String.Format(@"<div class='col-md-3 col-sm-4 col-xs-6 thumb'>
+                                    <a data-fancybox='gallery{1}' href='{0}'>
+                                    <img class='img-responsive' src='{0}' alt=''>
+                                    </a>
+                                    </div>", i, form.Id));
+                                }
+                                List<string> serviceName = ServiceNames(form.Id);
+
                             Response.Write(String.Format(@"
-                        <div class='item'>
-                            <img src='{5}' width='100' height='100'/>
+                            </div>
                             <h3>{0}</h3>
                             {1}
                             <h4>{2:c}</h4>
@@ -64,11 +68,30 @@
                             <button name='addForm' type='submit' value='{3}'>
                                 Выбрать
                             </button>
+
+                            <a name='OpenFreeService' value='{3}'>
+                                Открыть бесплатные услуги данного вида номера
+                            </a>
                         </div>",
-                                form.FormName, form.Specifications, form.Price, form.Id, Convert.ToInt32(form.Rooms.Count), s));
-                        }
+                                    form.FormName, form.Specifications, form.Price, form.Id, Convert.ToInt32(form.Rooms.Count)));
+
+
+                                foreach(var i in serviceName)
+                                {
+                                Response.Write(String.Format(@"
+                               <a name='OpenFreeService' value='{1}'>
+                                <table>
+                                     <tbody>
+                                         <tr>
+                                            <td>{0}</td>
+                                         </tr>
+                                     </tbody>
+                                </table>
+                               </a>", i, form.Id));
+                                }
+                            }
                     %>
-                        <a id="next" runat="server">Далее</a>
+                        <pre><a id="next" runat="server">Далее</a></pre>
                     </p>
 
                 <p id="serv" runat="server" visible="false">
@@ -88,11 +111,33 @@
                                 service.ServiceName, service.ServiceSpecification, service.Price, service.Id));
                         }
                     %>
-                    <a id="last" runat="server">Назад</a>
+                    <pre><a id="last" runat="server">Назад</a></pre>
                 </p>
-            </div>
+           </div>
+         </div>
         </div>
-    </div>
+       </div>
+
+<!-- jQuery -->
+<script src="/Scripts/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="/Scripts/bootstrap.min.js"></script>
+<!-- fancyBox JS -->
+<script src="/Scripts/jquery.fancybox.min.js"></script>
+<script>
+$(function() {
+    var options = {
+        srcNode: 'img',             // grid items
+        margin: '15px',             // margin in pixel
+        width: '240px',             // grid item width in pixel
+        max_width: '',              // dynamic gird item width
+        resizable: true,            // re-layout if window resize
+        transition: 'all 0.5s ease' // support transition for CSS3
+    };
+    $('.grid').gridify(options);
+});
+</script>
+
 
 <script>
 function SupressInput($event)

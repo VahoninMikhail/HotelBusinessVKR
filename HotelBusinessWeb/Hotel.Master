@@ -6,21 +6,79 @@
 <head id="Head1" runat="server">
     <title>Hotel</title>
     <link rel="stylesheet" href="/Content/Styles.css" />
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- Bootstrap CSS -->
+    <link href="/Content/bootstrap.min.css" rel="stylesheet"/>
+    <!-- fancyBox JS -->
+    <link href="/Content/jquery.fancybox.min.css" rel="stylesheet"/>
+
+    <style>
+        .thumb img {
+            -webkit-filter: grayscale(0);
+            filter: none;
+            border-radius: 5px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+
+        .thumb img:hover {
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+        }
+
+        .thumb {
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <div id="header">
-            <GS:CartSummary runat="server" EnableViewState="false"/>
-            <div class="title">Hotel - гостиница</div>
-        </div>
-        <div id="categories">
-            Мы добавим сюда контент позже
-        </div>
         <div>
-            <asp:ContentPlaceHolder ID="bodyContent" runat="server"/>
+            <div id="header">
+                <span class="caption">
+                    <p class="actionButtons" style="height: 29px">
+                        <a href="<%= ReturnMain %>">Главная</a> <a href="<%= ReturnLogin %>">Войти</a> <a href="<%= ReturnRegister %>">Регистрация</a> <a href="<%= ReturnAccount %>">Личный кабинет</a> <a href="<%= ReturnAccount %>">Выход</a>
+                    </p>
+                </span>                
+                <GS:CartSummary runat="server" EnableViewState="false" />
+                <div class="title">Hotel - гостиница&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="LabelName" runat="server" Text=""></asp:Label>
+                </div>
+            </div>
+            <div id="categories">
+                Мы добавим сюда контент позже
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="bodyContent" runat="server" />
+            </div>
         </div>
-    </div>
     </form>
 </body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <!-- jQuery -->
+<script src="/Scripts/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="/Scripts/bootstrap.min.js"></script>
+<!-- fancyBox JS -->
+<script src="/Scripts/jquery.fancybox.min.js"></script>
+<script>
+$(function() {
+    var options = {
+        srcNode: 'img',             // grid items
+        margin: '15px',             // margin in pixel
+        width: '240px',             // grid item width in pixel
+        max_width: '',              // dynamic gird item width
+        resizable: true,            // re-layout if window resize
+        transition: 'all 0.5s ease' // support transition for CSS3
+    };
+    $('.grid').gridify(options);
+});
+</script>
+
 </html>

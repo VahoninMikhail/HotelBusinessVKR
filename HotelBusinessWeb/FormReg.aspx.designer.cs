@@ -13,66 +13,57 @@ namespace HotelBusinessWeb {
     public partial class FormReg {
         
         /// <summary>
-        /// TextBoxFIO элемент управления.
+        /// inputName элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxFIO;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText inputName;
         
         /// <summary>
-        /// TextBoxLogin элемент управления.
+        /// inputEmail элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxLogin;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inputEmail;
         
         /// <summary>
-        /// TextBoxPhoneNumber элемент управления.
+        /// inputTel элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPhoneNumber;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inputTel;
         
         /// <summary>
-        /// TextBoxPassword элемент управления.
+        /// inputPassword элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPassword;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword inputPassword;
         
         /// <summary>
-        /// TextBoxConfirmPassword элемент управления.
+        /// inputConfirm элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxConfirmPassword;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword inputConfirm;
         
         /// <summary>
-        /// Button1 элемент управления.
+        /// Register элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// Button2 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.HtmlControls.HtmlButton Register;
     }
 }

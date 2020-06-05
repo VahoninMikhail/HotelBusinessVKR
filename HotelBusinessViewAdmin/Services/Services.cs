@@ -26,7 +26,13 @@ namespace HotelBusinessViewAdmin.Services
                 {
                     dataGridViewService.DataSource = list;
                     dataGridViewService.Columns[0].Visible = false;
-                    dataGridViewService.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewService.Columns[1].HeaderText = "Название";
+                    dataGridViewService.Columns[2].HeaderText = "Описание";
+                    dataGridViewService.Columns[3].HeaderText = "Цена";
+
+                    dataGridViewService.Columns[1].Width = 150;
+                    dataGridViewService.Columns[2].Width = 200;
+                    dataGridViewService.Columns[3].Width = 70;
                 }
 
             }

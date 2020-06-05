@@ -1,11 +1,8 @@
-﻿using HorelBusinessService.BindingModels;
-using HorelBusinessService.ViewModels;
+﻿using HorelBusinessService.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
 using System.Web.UI;
 
 namespace HotelBusinessWeb
@@ -29,6 +26,18 @@ namespace HotelBusinessWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (GetCartLinesRoom().GetEnumerator().MoveNext() == true)
+            {
+                CalendarFrom.SelectedDate = GetCartLinesRoom().ElementAt(0).ArrivalDate;
+                CalendarBefore.SelectedDate = GetCartLinesRoom().ElementAt(0).DepartureDate;
+                CalendarFrom.Visible = false;
+                CalendarBefore.Visible = false;
+                search.Visible = false;
+                secectNewDate.Visible = true;
+                forms.Visible = true;
+                LabelDate.Text = "Выбраны даты: С " + CalendarFrom.SelectedDate + " По " + CalendarBefore.SelectedDate;
+                LabelDate.Visible = true;
+            }
             if (IsPostBack)
             {
                 search.ServerClick += new EventHandler(ButtonSearch_Click);
@@ -64,6 +73,7 @@ namespace HotelBusinessWeb
                     int serviceId;
                     if (int.TryParse(Request.Form["addService"], out serviceId))
                     {
+                        forms.Visible = false;
                         int count = Convert.ToInt32(Request.Form["addServiceCount" + serviceId]);
 
                         if (serviceId != 0)
@@ -85,12 +95,23 @@ namespace HotelBusinessWeb
         {
             serv.Visible = false;
             forms.Visible = true;
+            SessionHelper.GetCart(Session).RemoveAllServices();
+        }
+
+        public IEnumerable<RoomOrderViewModel> GetCartLinesRoom()
+        {
+            return SessionHelper.GetCart(Session).LinesRoom;
         }
 
         void ButtonNext_Click(Object sender, EventArgs e)
         {
-            serv.Visible = true;
-            forms.Visible = false;
+            string s = "Выберите номер";
+            if(GetCartLinesRoom().GetEnumerator().MoveNext() == true)
+            {
+                serv.Visible = true;
+                forms.Visible = false;
+            }
+            else Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + s + "');</script>");
         }
 
         void ButtonSecectNewDate_Click(Object sender, EventArgs e)
@@ -103,27 +124,29 @@ namespace HotelBusinessWeb
             forms.Visible = false;
             serv.Visible = false;
 
-         //   GridViewService.Visible = false;
-         //   GridViewForm.Visible = false;
-
             LabelDate.Visible = false;
 
             SessionHelper.GetCart(Session).RemoveAll();
         }
 
         void ButtonSearch_Click(Object sender, EventArgs e)
-        {          
+        {
+            if (CalendarFrom.SelectedDate == null || CalendarBefore.SelectedDate == null)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Выберите даты');</script>");
+                return;
+            }
+            if (CalendarFrom.SelectedDate < DateTime.Now.Date || CalendarFrom.SelectedDate >= CalendarBefore.SelectedDate || CalendarBefore.SelectedDate <= DateTime.Now.Date)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Дата въезда не может быть меньше даты выезда и текущей даты');</script>");
+                return;
+            }
             CalendarFrom.Visible = false;
             CalendarBefore.Visible = false;
             search.Visible = false;
             secectNewDate.Visible = true;
-          //  LoadData();
 
             forms.Visible = true;
-
-           // GridViewService.Visible = true;
-          //  GridViewForm.Visible = true;
-
             LabelDate.Text = "Выбраны даты: С " + CalendarFrom.SelectedDate + " По " + CalendarBefore.SelectedDate;
             LabelDate.Visible = true;
         }
@@ -133,16 +156,21 @@ namespace HotelBusinessWeb
             return Task.Run(() => APIСlient.GetRequestData<List<FormViewModel>>("api/Form/GetList")).Result;
         }
 
-        public string Image(int id)
+        public List<string> ImageList(int id)
         {
             FormViewModel form = Task.Run(() => APIСlient.GetRequestData<FormViewModel>("api/Form/Get/" + id + "")).Result;
 
-            ImageViewModel im = form.Images[0];
+            List<ImageViewModel> im = form.Images;
             if (form != null)
             {
-                string r = Convert.ToBase64String(im.Image);
-                string imgDataURL = string.Format("data:image/png;base64,{0}", r);
-                return imgDataURL;
+                List<string> imList = new List<string>();
+                foreach (var i in im)
+                {
+                    string r = Convert.ToBase64String(i.Image);
+                    string imgDataURL = string.Format("data:image/png;base64,{0}", r);
+                    imList.Add(imgDataURL);
+                }
+                return imList;
             }
             else
             {
@@ -150,22 +178,43 @@ namespace HotelBusinessWeb
             }
         }
 
-    /*    public string GetImage(int formId)
+        public List<string> ServiceNames(int id)
         {
-            FormViewModel form = Task.Run(() => APIСlient.GetRequestData<FormViewModel>("api/Form/Get/" + formId + "")).Result;
+            FormViewModel form = Task.Run(() => APIСlient.GetRequestData<FormViewModel>("api/Form/Get/" + id + "")).Result;
 
+            List<FormFreeServiceViewModel> FreeServices = form.FormFreeServices;
             if (form != null)
             {
-                string r = Convert.ToBase64String(form.Images[0].Image);
-                string imgDataURL = string.Format("data:image/jpeg;base64,{0}", r);
-                return imgDataURL;
+                List<string> serviceNames = new List<string>();
+                foreach (var i in FreeServices)
+                {
+                    serviceNames.Add(i.ServiceName);
+                }
+                return serviceNames;
             }
             else
             {
                 return null;
             }
         }
-        */
+
+
+        /*    public string GetImage(int formId)
+            {
+                FormViewModel form = Task.Run(() => APIСlient.GetRequestData<FormViewModel>("api/Form/Get/" + formId + "")).Result;
+
+                if (form != null)
+                {
+                    string r = Convert.ToBase64String(form.Images[0].Image);
+                    string imgDataURL = string.Format("data:image/jpeg;base64,{0}", r);
+                    return imgDataURL;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            */
         public List<ServiceViewModel> GetServices()
         {
             return Task.Run(() => APIСlient.GetRequestData<List<ServiceViewModel>>("api/Service/GetList")).Result;

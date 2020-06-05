@@ -37,7 +37,7 @@
             // comboBoxService
             // 
             this.comboBoxService.FormattingEnabled = true;
-            this.comboBoxService.Location = new System.Drawing.Point(64, 12);
+            this.comboBoxService.Location = new System.Drawing.Point(64, 14);
             this.comboBoxService.Name = "comboBoxService";
             this.comboBoxService.Size = new System.Drawing.Size(208, 21);
             this.comboBoxService.TabIndex = 19;
@@ -45,7 +45,7 @@
             // labelService
             // 
             this.labelService.AutoSize = true;
-            this.labelService.Location = new System.Drawing.Point(12, 15);
+            this.labelService.Location = new System.Drawing.Point(12, 17);
             this.labelService.Name = "labelService";
             this.labelService.Size = new System.Drawing.Size(46, 13);
             this.labelService.TabIndex = 18;
@@ -53,9 +53,9 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(162, 41);
+            this.buttonCancel.Location = new System.Drawing.Point(181, 47);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(110, 36);
+            this.buttonCancel.Size = new System.Drawing.Size(80, 30);
             this.buttonCancel.TabIndex = 15;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -63,9 +63,9 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(15, 41);
+            this.buttonSave.Location = new System.Drawing.Point(44, 47);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(110, 36);
+            this.buttonSave.Size = new System.Drawing.Size(80, 30);
             this.buttonSave.TabIndex = 14;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -75,13 +75,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(287, 89);
+            this.ClientSize = new System.Drawing.Size(340, 89);
             this.Controls.Add(this.comboBoxService);
             this.Controls.Add(this.labelService);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Name = "AddFreeService";
-            this.Text = "AddFreeService";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Добавить бесплатную услугу";
             this.Load += new System.EventHandler(this.AddFreeService_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

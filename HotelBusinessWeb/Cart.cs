@@ -62,6 +62,7 @@ namespace HotelBusinessWeb
                     {
                         RoomId = listRoom[i].Id,
                         RoomName = listRoom[i].RoomName,
+                        FormName = listRoom[i].FormName,
                         Room = listRoom[i],
                         ArrivalDate = fromDate,
                         DepartureDate = beforeDate,
@@ -131,6 +132,11 @@ namespace HotelBusinessWeb
         public void RemoveLine(int serviceId)
         {
             lineCollection.RemoveAll(l => l.ServiceId == serviceId);
+        }
+
+        public void RemoveAllServices()
+        {
+            lineCollection.RemoveAll(l => l.ServiceId >= 0);
         }
 
         public void RemoveAll()

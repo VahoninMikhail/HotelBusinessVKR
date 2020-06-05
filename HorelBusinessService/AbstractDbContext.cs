@@ -64,6 +64,8 @@ namespace HorelBusinessService
 
         public virtual DbSet<ServiceOrder> ServiceOrders { get; set; }
 
+        public virtual DbSet<Review> Reviews { get; set; }
+
         public virtual DbSet<Image> Images { get; set; }
     }
 }

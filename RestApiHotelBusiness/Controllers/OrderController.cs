@@ -74,6 +74,17 @@ namespace RestApiHotelBusiness.Controllers
             return Ok(element);
         }
 
+        [HttpGet]
+        public async Task<IHttpActionResult> GetListReview()
+        {
+            var list = await service.GetListReview();
+            if (list == null)
+            {
+                InternalServerError(new Exception("Нет данных"));
+            }
+            return Ok(list);
+        }
+
         [HttpPost]
         public async Task AddElement(OrderBindingModel model)
         {
@@ -84,6 +95,12 @@ namespace RestApiHotelBusiness.Controllers
                 File.WriteAllBytes(model.FontPath, Properties.Resources.TIMCYR);
             }
             await service.AddElement(model);
+        }
+
+        [HttpPost]
+        public async Task AddReview(ReviewBindingModel model)
+        {
+            await service.AddReview(model);
         }
 
         [HttpPost]

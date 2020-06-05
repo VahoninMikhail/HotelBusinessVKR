@@ -2,11 +2,8 @@
 using HorelBusinessService.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -34,6 +31,8 @@ namespace HotelBusinessViewAdmin.Orders
                     comboBoxUsers.DisplayMember = "UserFIO";
                     comboBoxUsers.ValueMember = "Id";
                     comboBoxUsers.DataSource = list;
+                    comboBoxUsers.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    comboBoxUsers.AutoCompleteSource = AutoCompleteSource.ListItems;
                     comboBoxUsers.SelectedItem = null;
                 }
                 dateTimePickerFrom.Value = DateTime.Now;
@@ -71,7 +70,14 @@ namespace HotelBusinessViewAdmin.Orders
 
                     dataGridViewService.Columns[0].Visible = false;
                     dataGridViewService.Columns[1].Visible = false;
-                    // dataGridViewService.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewService.Columns[2].HeaderText = "Название услуги";
+                    dataGridViewService.Columns[3].HeaderText = "Кол-во";
+                    dataGridViewService.Columns[4].HeaderText = "Цена";
+                    dataGridViewService.Columns[5].HeaderText = "Общая стоимость";
+                    dataGridViewService.Columns[2].Width = 150;
+                    dataGridViewService.Columns[3].Width = 50;
+                    dataGridViewService.Columns[4].Width = 60;
+                    dataGridViewService.Columns[5].Width = 70;
                 }
                 if (roomCollection != null)
                 {
@@ -86,18 +92,22 @@ namespace HotelBusinessViewAdmin.Orders
                     dataGridViewForms.Columns[0].Visible = false;
                     dataGridViewForms.Columns[1].Visible = false;
                     dataGridViewForms.Columns[2].Visible = false;
+                    dataGridViewForms.Columns[3].HeaderText = "Вид комнаты";
                     dataGridViewForms.Columns[4].Visible = false;
                     dataGridViewForms.Columns[5].Visible = false;
                     dataGridViewForms.Columns[6].Visible = false;
+                    dataGridViewForms.Columns[7].HeaderText = "Номер комнаты";
+                    dataGridViewForms.Columns[8].HeaderText = "Стоимость";
                     dataGridViewForms.Columns[9].Visible = false;
                     dataGridViewForms.Columns[10].Visible = false;
                     dataGridViewForms.Columns[11].Visible = false;
 
+                    dataGridViewForms.Columns[3].Width = 100;
+                    dataGridViewForms.Columns[7].Width = 60;
+                    dataGridViewForms.Columns[8].Width = 70;
+
                     groupBoxServices.Enabled = true;
                     groupBoxPayment.Enabled = true;
-                    //    dataGridViewForms.Columns[0].Visible = false;
-                    //   dataGridViewForms.Columns[1].Visible = false;
-                    //    dataGridViewForms.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
                 else
                 {
@@ -146,11 +156,6 @@ namespace HotelBusinessViewAdmin.Orders
             }
         }
 
-        private void buttonEditForm_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonDelForm_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dataGridViewForms.SelectedRows[0].Cells[2].Value);
@@ -172,11 +177,6 @@ namespace HotelBusinessViewAdmin.Orders
                 textBoxSum.Text = (roomCollection.Select(rec => rec.Price).DefaultIfEmpty(0).Sum() + serviceCollection.Select(rec => rec.Total).DefaultIfEmpty(0).Sum()).ToString();
                 Initialize();
             }
-        }
-
-        private void buttonEditService_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonDelService_Click(object sender, EventArgs e)
@@ -288,6 +288,13 @@ namespace HotelBusinessViewAdmin.Orders
 
             dataGridViewFreeService.DataSource = null;
             dataGridViewFreeService.DataSource = form.FormFreeServices;
+            dataGridViewFreeService.Columns[0].Visible = false;
+            dataGridViewFreeService.Columns[1].Visible = false;
+            dataGridViewFreeService.Columns[2].HeaderText = "Бесплатные услуги";
+            dataGridViewFreeService.Columns[3].Visible = false;
+            dataGridViewFreeService.Columns[4].Visible = false;
+
+            dataGridViewFreeService.Columns[2].Width = 200;
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -310,11 +317,6 @@ namespace HotelBusinessViewAdmin.Orders
             groupBoxUserPeriod.Enabled = false;
 
             groupBoxForms.Enabled = true;
-        }
-
-        private void checkBoxCash_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

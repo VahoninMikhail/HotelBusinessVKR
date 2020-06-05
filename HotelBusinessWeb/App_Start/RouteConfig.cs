@@ -11,6 +11,10 @@ namespace HotelBusinessWeb.App_Start
             routes.MapPageRoute(null, "list", "~/FormMain.aspx");
 
             routes.MapPageRoute("cart", "cart", "~/CartView.aspx");
+            routes.MapPageRoute("login", "login", "~/FormLogin.aspx");
+            routes.MapPageRoute("register", "register", "~/FormReg.aspx");
+            routes.MapPageRoute("account", "account", "~/Account.aspx");
+            routes.MapPageRoute("main", "main", "~/FormMain.aspx");
         }
     }
 }

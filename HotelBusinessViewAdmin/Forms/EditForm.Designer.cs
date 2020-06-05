@@ -43,7 +43,7 @@
             this.textBoxFormName.Location = new System.Drawing.Point(12, 31);
             this.textBoxFormName.MaxLength = 16;
             this.textBoxFormName.Name = "textBoxFormName";
-            this.textBoxFormName.Size = new System.Drawing.Size(208, 20);
+            this.textBoxFormName.Size = new System.Drawing.Size(179, 20);
             this.textBoxFormName.TabIndex = 7;
             // 
             // labelName
@@ -57,9 +57,9 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(127, 154);
+            this.buttonCancel.Location = new System.Drawing.Point(111, 154);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(110, 36);
+            this.buttonCancel.Size = new System.Drawing.Size(80, 30);
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -67,9 +67,9 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(11, 154);
+            this.buttonSave.Location = new System.Drawing.Point(12, 154);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(110, 36);
+            this.buttonSave.Size = new System.Drawing.Size(80, 30);
             this.buttonSave.TabIndex = 4;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -78,7 +78,7 @@
             // labelSpecification
             // 
             this.labelSpecification.AutoSize = true;
-            this.labelSpecification.Location = new System.Drawing.Point(240, 9);
+            this.labelSpecification.Location = new System.Drawing.Point(194, 15);
             this.labelSpecification.Name = "labelSpecification";
             this.labelSpecification.Size = new System.Drawing.Size(60, 13);
             this.labelSpecification.TabIndex = 8;
@@ -86,9 +86,11 @@
             // 
             // richTextBoxSpecification
             // 
-            this.richTextBoxSpecification.Location = new System.Drawing.Point(243, 25);
+            this.richTextBoxSpecification.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBoxSpecification.Location = new System.Drawing.Point(197, 31);
             this.richTextBoxSpecification.Name = "richTextBoxSpecification";
-            this.richTextBoxSpecification.Size = new System.Drawing.Size(369, 175);
+            this.richTextBoxSpecification.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBoxSpecification.Size = new System.Drawing.Size(369, 153);
             this.richTextBoxSpecification.TabIndex = 10;
             this.richTextBoxSpecification.Text = "";
             // 
@@ -97,7 +99,7 @@
             this.textBoxPrice.Location = new System.Drawing.Point(12, 71);
             this.textBoxPrice.MaxLength = 16;
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(208, 20);
+            this.textBoxPrice.Size = new System.Drawing.Size(179, 20);
             this.textBoxPrice.TabIndex = 12;
             // 
             // labelPrice
@@ -113,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 209);
+            this.ClientSize = new System.Drawing.Size(573, 199);
             this.Controls.Add(this.textBoxPrice);
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.richTextBoxSpecification);
@@ -123,7 +125,8 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Name = "EditForm";
-            this.Text = "EditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Вид комнаты";
             this.Load += new System.EventHandler(this.EditForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

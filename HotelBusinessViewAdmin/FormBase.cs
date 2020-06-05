@@ -24,7 +24,7 @@ namespace HotelBusinessViewAdmin
             var form = new HotelBusinessViewAdmin.Forms.Forms();
             if (form.ShowDialog() == DialogResult.OK)
             {
-               
+
             }
         }
 
@@ -84,22 +84,29 @@ namespace HotelBusinessViewAdmin
             try
             {
                 List<OrderViewModel> listEntry = await ApiClient.GetRequestData<List<OrderViewModel>>("api/Order/GetList");
-                List<OrderViewModel> listExit = listEntry;
                 if (listEntry != null)
                 {
                     dataGridViewEntry.DataSource = null;
                     listEntry.RemoveAll(r => Convert.ToDateTime(r.ArrivalDate).Date != dateTimePickerEntry.Value.Date);
                     dataGridViewEntry.DataSource = listEntry;
-                   // dataGridViewRooms.Columns[0].Visible = false;
-                    //dataGridViewRooms.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-                if (listExit != null)
-                {
-                    dataGridViewExit.DataSource = null;
-                    listExit.RemoveAll(r => Convert.ToDateTime(r.DepartureDate).Date != dateTimePickerExit.Value.Date);
-                    dataGridViewExit.DataSource = listExit;
-                    // dataGridViewRooms.Columns[0].Visible = false;
-                    //dataGridViewRooms.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewEntry.Columns[0].HeaderText = "Номер заказа";
+                    dataGridViewEntry.Columns[1].Visible = false;
+                    dataGridViewEntry.Columns[2].HeaderText = "ФИО клиента";
+                    dataGridViewEntry.Columns[3].HeaderText = "Почта клиента";
+                    dataGridViewEntry.Columns[4].HeaderText = "Статус заказа";
+                    dataGridViewEntry.Columns[5].HeaderText = "Дата въезда";
+                    dataGridViewEntry.Columns[6].HeaderText = "Дата выезда";
+                    dataGridViewEntry.Columns[7].Visible = false;
+                    dataGridViewEntry.Columns[8].Visible = false;
+                    dataGridViewEntry.Columns[9].Visible = false;
+                    dataGridViewEntry.Columns[10].Visible = false;
+
+                    dataGridViewEntry.Columns[0].Width = 60;
+                    dataGridViewEntry.Columns[2].Width = 110;
+                    dataGridViewEntry.Columns[3].Width = 110;
+                    dataGridViewEntry.Columns[4].Width = 70;
+                    dataGridViewEntry.Columns[5].Width = 100;
+                    dataGridViewEntry.Columns[6].Width = 100;
                 }
             }
             catch (Exception ex)
@@ -122,8 +129,24 @@ namespace HotelBusinessViewAdmin
                     dataGridViewExit.DataSource = null;
                     listExit.RemoveAll(r => Convert.ToDateTime(r.DepartureDate).Date != dateTimePickerExit.Value.Date);
                     dataGridViewExit.DataSource = listExit;
-                    // dataGridViewRooms.Columns[0].Visible = false;
-                    //dataGridViewRooms.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewExit.Columns[0].HeaderText = "Номер заказа";
+                    dataGridViewExit.Columns[1].Visible = false;
+                    dataGridViewExit.Columns[2].HeaderText = "ФИО клиента";
+                    dataGridViewExit.Columns[3].HeaderText = "Почта клиента";
+                    dataGridViewExit.Columns[4].HeaderText = "Статус заказа";
+                    dataGridViewExit.Columns[5].HeaderText = "Дата въезда";
+                    dataGridViewExit.Columns[6].HeaderText = "Дата выезда";
+                    dataGridViewExit.Columns[7].Visible = false;
+                    dataGridViewExit.Columns[8].Visible = false;
+                    dataGridViewExit.Columns[9].Visible = false;
+                    dataGridViewExit.Columns[10].Visible = false;
+
+                    dataGridViewExit.Columns[0].Width = 60;
+                    dataGridViewExit.Columns[2].Width = 110;
+                    dataGridViewExit.Columns[3].Width = 110;
+                    dataGridViewExit.Columns[4].Width = 70;
+                    dataGridViewExit.Columns[5].Width = 100;
+                    dataGridViewExit.Columns[6].Width = 100;
                 }
             }
             catch (Exception ex)
@@ -148,10 +171,10 @@ namespace HotelBusinessViewAdmin
 
         private void buttonPayment_Click(object sender, EventArgs e)
         {
-            if ((dataGridViewExit.SelectedRows[0].Cells[4].Value).ToString() == "Начат")
+            if (dataGridViewExit.SelectedRows.Count == 1)
             {
-                if (dataGridViewExit.SelectedRows.Count == 1)
-                {
+                if ((dataGridViewExit.SelectedRows[0].Cells[4].Value).ToString() == "Начат")
+                {              
                     var form = new HotelBusinessViewAdmin.Base.PaymentOrder();
                     form.Id = Convert.ToInt32(dataGridViewExit.SelectedRows[0].Cells[0].Value);
                     if (form.ShowDialog() == DialogResult.OK)
@@ -159,16 +182,18 @@ namespace HotelBusinessViewAdmin
                         InitializeExit();
                     }
                 }
+                else MessageBox.Show("Заказ уже оплачен", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else MessageBox.Show("Заказ уже оплачен", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MessageBox.Show("Не выбран заказ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private async void buttonCloseOrder_Click(object sender, EventArgs e)
         {
-            if ((dataGridViewExit.SelectedRows[0].Cells[4].Value).ToString() == "Оплачен")
+            if (dataGridViewExit.SelectedRows.Count == 1)
             {
-                if (dataGridViewExit.SelectedRows.Count == 1)
+                if ((dataGridViewExit.SelectedRows[0].Cells[4].Value).ToString() == "Оплачен")
                 {
+                
                     int Id = Convert.ToInt32(dataGridViewExit.SelectedRows[0].Cells[0].Value);
                     try
                     {
@@ -185,8 +210,9 @@ namespace HotelBusinessViewAdmin
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                else MessageBox.Show("Заказ не может быть завершен", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else MessageBox.Show("Заказ не может быть завершен", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MessageBox.Show("Не выбран заказ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void buttonDetailEntry_Click(object sender, EventArgs e)
@@ -200,6 +226,7 @@ namespace HotelBusinessViewAdmin
                     
                 }
             }
+            else MessageBox.Show("Не выбран заказ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void buttonDetailExit_Click(object sender, EventArgs e)
@@ -213,6 +240,7 @@ namespace HotelBusinessViewAdmin
 
                 }
             }
+            else MessageBox.Show("Не выбран заказ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void buttonSaveEntryPDF_Click(object sender, EventArgs e)
@@ -222,7 +250,120 @@ namespace HotelBusinessViewAdmin
 
         private void buttonReport_Click(object sender, EventArgs e)
         {
+            var form2 = new HotelBusinessViewAdmin.Reports.FormReportRooms();
+            if (form2.ShowDialog() == DialogResult.OK)
+            {
 
+            }
+            var form = new HotelBusinessViewAdmin.Reports.FormReportPayments();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+            var form1 = new HotelBusinessViewAdmin.Reports.FormReportTotal();
+            if (form1.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void buttonReviews_Click(object sender, EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Reviews.Reviews();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void созданиеЗаказаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Orders.CreateOrder();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void отзывыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Reviews.Reviews();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void управлениеВидамиНомеровToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Forms.Forms();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void управлениеНомерамиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Rooms.Rooms();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void управлениеУслугамиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Services.Services();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Users.Users();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void администраторыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Admins.Admins();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void отчётОВыручкеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Reports.FormReportTotal();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void отчётОЗанятыхКомнатахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Reports.FormReportRooms();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void отчётОбОплатахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HotelBusinessViewAdmin.Reports.FormReportPayments();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
     }
 }

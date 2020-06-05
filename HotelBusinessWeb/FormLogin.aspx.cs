@@ -16,7 +16,10 @@ namespace HotelBusinessWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (IsPostBack)
+            {
+                login.ServerClick += new EventHandler(Button1_Click1);
+            }
         }
 
         protected void Button2_Click2(object sender, EventArgs e)
@@ -26,19 +29,19 @@ namespace HotelBusinessWeb
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(TextBoxUserName.Text))
+            if (string.IsNullOrEmpty(inputEmail.Value))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле логин');</script>");
                 return;
             }
-            if (string.IsNullOrEmpty(textBoxPassword.Text))
+            if (string.IsNullOrEmpty(inputPassword.Value))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле пароль');</script>");
                 return;
             }
             try
             {
-                APIСlient.Login(TextBoxUserName.Text, textBoxPassword.Text);
+                APIСlient.Login(inputEmail.Value, inputPassword.Value);
                 Server.Transfer("FormMain.aspx");
             }
             catch (Exception ex)

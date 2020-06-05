@@ -32,5 +32,9 @@ namespace HorelBusinessService.Interfaces
         Task SendPosetitelAccountXls(OrderBindingModel model);
 
         Task SendMail(string mailto, string caption, string message, string path = null);
+
+        Task AddReview(ReviewBindingModel model);
+
+        Task<List<ReviewViewModel>> GetListReview();
     }
 }

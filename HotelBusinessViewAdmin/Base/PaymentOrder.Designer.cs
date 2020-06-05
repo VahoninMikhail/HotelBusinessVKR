@@ -42,9 +42,9 @@
             this.groupBoxPayment.Controls.Add(this.checkBoxCard);
             this.groupBoxPayment.Controls.Add(this.checkBoxCash);
             this.groupBoxPayment.Controls.Add(this.buttonPayment);
-            this.groupBoxPayment.Location = new System.Drawing.Point(28, 46);
+            this.groupBoxPayment.Location = new System.Drawing.Point(39, 43);
             this.groupBoxPayment.Name = "groupBoxPayment";
-            this.groupBoxPayment.Size = new System.Drawing.Size(148, 77);
+            this.groupBoxPayment.Size = new System.Drawing.Size(148, 82);
             this.groupBoxPayment.TabIndex = 22;
             this.groupBoxPayment.TabStop = false;
             this.groupBoxPayment.Text = "Вид оплаты:";
@@ -52,7 +52,7 @@
             // checkBoxCard
             // 
             this.checkBoxCard.AutoSize = true;
-            this.checkBoxCard.Location = new System.Drawing.Point(91, 15);
+            this.checkBoxCard.Location = new System.Drawing.Point(89, 19);
             this.checkBoxCard.Name = "checkBoxCard";
             this.checkBoxCard.Size = new System.Drawing.Size(56, 17);
             this.checkBoxCard.TabIndex = 1;
@@ -62,7 +62,7 @@
             // checkBoxCash
             // 
             this.checkBoxCash.AutoSize = true;
-            this.checkBoxCash.Location = new System.Drawing.Point(7, 15);
+            this.checkBoxCash.Location = new System.Drawing.Point(6, 19);
             this.checkBoxCash.Name = "checkBoxCash";
             this.checkBoxCash.Size = new System.Drawing.Size(77, 17);
             this.checkBoxCash.TabIndex = 0;
@@ -71,9 +71,9 @@
             // 
             // buttonPayment
             // 
-            this.buttonPayment.Location = new System.Drawing.Point(10, 31);
+            this.buttonPayment.Location = new System.Drawing.Point(15, 46);
             this.buttonPayment.Name = "buttonPayment";
-            this.buttonPayment.Size = new System.Drawing.Size(118, 40);
+            this.buttonPayment.Size = new System.Drawing.Size(118, 30);
             this.buttonPayment.TabIndex = 5;
             this.buttonPayment.Text = "Оплатить";
             this.buttonPayment.UseVisualStyleBackColor = true;
@@ -82,15 +82,15 @@
             // textBoxSum
             // 
             this.textBoxSum.Enabled = false;
-            this.textBoxSum.Location = new System.Drawing.Point(82, 20);
+            this.textBoxSum.Location = new System.Drawing.Point(83, 17);
             this.textBoxSum.Name = "textBoxSum";
-            this.textBoxSum.Size = new System.Drawing.Size(110, 20);
+            this.textBoxSum.Size = new System.Drawing.Size(116, 20);
             this.textBoxSum.TabIndex = 21;
             // 
             // labelSum
             // 
             this.labelSum.AutoSize = true;
-            this.labelSum.Location = new System.Drawing.Point(11, 20);
+            this.labelSum.Location = new System.Drawing.Point(12, 20);
             this.labelSum.Name = "labelSum";
             this.labelSum.Size = new System.Drawing.Size(65, 13);
             this.labelSum.TabIndex = 20;
@@ -100,12 +100,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(219, 160);
+            this.ClientSize = new System.Drawing.Size(219, 137);
             this.Controls.Add(this.groupBoxPayment);
             this.Controls.Add(this.textBoxSum);
             this.Controls.Add(this.labelSum);
             this.Name = "PaymentOrder";
-            this.Text = "PaymentOrder";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Оплата";
             this.Load += new System.EventHandler(this.PaymentOrder_Load);
             this.groupBoxPayment.ResumeLayout(false);
             this.groupBoxPayment.PerformLayout();

@@ -1,4 +1,5 @@
-﻿using HorelBusinessService.ViewModels;
+﻿using HorelBusinessService.BindingModels;
+using HorelBusinessService.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,32 +13,73 @@ namespace HotelBusinessWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = "Количество бонусов: "+ Convert.ToString(GetUserInfo()) + "";
-            if (IsPostBack)
+             /*if (!User.IsInRole("User"))
+             {
+                 Response.Redirect("FormLogin.aspx");
+             }*/
+            try
             {
-                int orderId;
-                if (int.TryParse(Request.Form["save"], out orderId))
+                Label1.Text = "Количество бонусов: " + Convert.ToString(GetUserInfo()) + "";
+                if (IsPostBack)
                 {
-                    if (orderId != 0)
+                    int orderId;
+                    if (int.TryParse(Request.Form["save"], out orderId))
                     {
-                        SaveOrderPDF(orderId);
+                         SaveOrderPDF(orderId);
                     }
-                }
-                if (int.TryParse(Request.Form["GetOrder"], out orderId))
-                {
-                    if (orderId != 0)
+                    if (int.TryParse(Request.Form["PostReview"], out orderId))
                     {
-                        //GetOrder(orderId);
-                        List<OrderViewModel> listorder = new List<OrderViewModel>
+                        if (string.IsNullOrEmpty(Convert.ToString(Request.Form["inputText"])))
                         {
-                            GetOrder(orderId)
-                        };
-                        GridViewOrder.DataSource = GetOrder(orderId).RoomOrders;
-                        GridViewOrder.DataBind();
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните отзыв');</script>");
+                            return;
+                        }
+                        try
+                        {
+                            List<UserViewModel> listUser =
+                     Task.Run(() => APIСlient.GetRequestData<List<UserViewModel>>("api/Account/GetList")).Result;
+                            string userId = "";
+                            foreach (var user in listUser)
+                            {
+                                if (user.UserName.Equals(APIСlient.UserName))
+                                {
+                                    userId = user.Id;
+                                }
+                            }
+
+                            string text = Convert.ToString(Request.Form["inputText"]);
+                            Task task = Task.Run(() => APIСlient.PostRequestData("api/Order/AddReview", new ReviewBindingModel
+                            {
+                                Text = text,
+                                UserId = userId,
+                                OrderId = orderId
+                            }));
+                            task.ContinueWith((prevTask) => Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>('Успешно отправлено');</script>"),
+                            TaskContinuationOptions.OnlyOnRanToCompletion);
+                            task.ContinueWith((prevTask) =>
+                            {
+                                var ex = (Exception)prevTask.Exception;
+                                while (ex.InnerException != null)
+                                {
+                                    ex = ex.InnerException;
+                                }
+                                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
+                            }, TaskContinuationOptions.OnlyOnFaulted);
+                        }
+                        catch (Exception ex)
+                        {
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
+                        }
                     }
                 }
             }
-            //Server.Transfer("FormReg.aspx");
+            catch(Exception ex)
+            {
+                if (APIСlient.UserName == null)
+                {
+                    Response.Redirect("FormLogin.aspx");
+                }
+            }
         }
 
         public void SaveOrderPDF(int orderId)
@@ -63,7 +105,7 @@ namespace HotelBusinessWeb
 
         public List<OrderViewModel> GetOrders()
         {
-            List<UserViewModel> listUser =
+                List<UserViewModel> listUser =
                      Task.Run(() => APIСlient.GetRequestData<List<UserViewModel>>("api/Account/GetList")).Result;
             string userId = "";
             foreach (var user in listUser)

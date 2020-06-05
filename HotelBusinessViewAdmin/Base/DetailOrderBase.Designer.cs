@@ -35,12 +35,12 @@
             this.labelStatus = new System.Windows.Forms.Label();
             this.textBoxStatus = new System.Windows.Forms.TextBox();
             this.groupBoxPayment = new System.Windows.Forms.GroupBox();
-            this.textBoxDateImplement = new System.Windows.Forms.TextBox();
-            this.labelDateImplement = new System.Windows.Forms.Label();
-            this.labelSum = new System.Windows.Forms.Label();
-            this.textBoxSum = new System.Windows.Forms.TextBox();
             this.textBoxPayType = new System.Windows.Forms.TextBox();
             this.labelPayType = new System.Windows.Forms.Label();
+            this.textBoxSum = new System.Windows.Forms.TextBox();
+            this.labelSum = new System.Windows.Forms.Label();
+            this.labelDateImplement = new System.Windows.Forms.Label();
+            this.textBoxDateImplement = new System.Windows.Forms.TextBox();
             this.textBoxFrom = new System.Windows.Forms.TextBox();
             this.labelFrom = new System.Windows.Forms.Label();
             this.textBoxUser = new System.Windows.Forms.TextBox();
@@ -58,15 +58,15 @@
             this.dataGridViewRooms.AllowUserToAddRows = false;
             this.dataGridViewRooms.AllowUserToResizeColumns = false;
             this.dataGridViewRooms.AllowUserToResizeRows = false;
-            this.dataGridViewRooms.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRooms.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewRooms.Location = new System.Drawing.Point(291, 28);
+            this.dataGridViewRooms.Location = new System.Drawing.Point(277, 6);
             this.dataGridViewRooms.MultiSelect = false;
             this.dataGridViewRooms.Name = "dataGridViewRooms";
             this.dataGridViewRooms.RowHeadersVisible = false;
+            this.dataGridViewRooms.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewRooms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewRooms.Size = new System.Drawing.Size(284, 386);
+            this.dataGridViewRooms.Size = new System.Drawing.Size(255, 310);
             this.dataGridViewRooms.TabIndex = 12;
             // 
             // dataGridViewServices
@@ -74,21 +74,21 @@
             this.dataGridViewServices.AllowUserToAddRows = false;
             this.dataGridViewServices.AllowUserToResizeColumns = false;
             this.dataGridViewServices.AllowUserToResizeRows = false;
-            this.dataGridViewServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewServices.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewServices.Location = new System.Drawing.Point(606, 28);
+            this.dataGridViewServices.Location = new System.Drawing.Point(538, 6);
             this.dataGridViewServices.MultiSelect = false;
             this.dataGridViewServices.Name = "dataGridViewServices";
             this.dataGridViewServices.RowHeadersVisible = false;
+            this.dataGridViewServices.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewServices.Size = new System.Drawing.Size(284, 386);
+            this.dataGridViewServices.Size = new System.Drawing.Size(375, 310);
             this.dataGridViewServices.TabIndex = 13;
             // 
             // textBoxNumberOrder
             // 
             this.textBoxNumberOrder.Enabled = false;
-            this.textBoxNumberOrder.Location = new System.Drawing.Point(94, 66);
+            this.textBoxNumberOrder.Location = new System.Drawing.Point(102, 32);
             this.textBoxNumberOrder.Name = "textBoxNumberOrder";
             this.textBoxNumberOrder.Size = new System.Drawing.Size(159, 20);
             this.textBoxNumberOrder.TabIndex = 14;
@@ -97,7 +97,7 @@
             // labelNumberOrder
             // 
             this.labelNumberOrder.AutoSize = true;
-            this.labelNumberOrder.Location = new System.Drawing.Point(12, 69);
+            this.labelNumberOrder.Location = new System.Drawing.Point(55, 35);
             this.labelNumberOrder.Name = "labelNumberOrder";
             this.labelNumberOrder.Size = new System.Drawing.Size(41, 13);
             this.labelNumberOrder.TabIndex = 15;
@@ -107,7 +107,7 @@
             // labelStatus
             // 
             this.labelStatus.AutoSize = true;
-            this.labelStatus.Location = new System.Drawing.Point(12, 104);
+            this.labelStatus.Location = new System.Drawing.Point(13, 61);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(83, 13);
             this.labelStatus.TabIndex = 16;
@@ -116,7 +116,7 @@
             // textBoxStatus
             // 
             this.textBoxStatus.Enabled = false;
-            this.textBoxStatus.Location = new System.Drawing.Point(94, 101);
+            this.textBoxStatus.Location = new System.Drawing.Point(102, 58);
             this.textBoxStatus.Name = "textBoxStatus";
             this.textBoxStatus.Size = new System.Drawing.Size(159, 20);
             this.textBoxStatus.TabIndex = 17;
@@ -129,69 +129,69 @@
             this.groupBoxPayment.Controls.Add(this.labelSum);
             this.groupBoxPayment.Controls.Add(this.labelDateImplement);
             this.groupBoxPayment.Controls.Add(this.textBoxDateImplement);
-            this.groupBoxPayment.Location = new System.Drawing.Point(12, 237);
+            this.groupBoxPayment.Location = new System.Drawing.Point(4, 159);
             this.groupBoxPayment.Name = "groupBoxPayment";
-            this.groupBoxPayment.Size = new System.Drawing.Size(237, 131);
+            this.groupBoxPayment.Size = new System.Drawing.Size(267, 107);
             this.groupBoxPayment.TabIndex = 18;
             this.groupBoxPayment.TabStop = false;
             this.groupBoxPayment.Text = "Оплата:";
             // 
-            // textBoxDateImplement
-            // 
-            this.textBoxDateImplement.Enabled = false;
-            this.textBoxDateImplement.Location = new System.Drawing.Point(95, 28);
-            this.textBoxDateImplement.Name = "textBoxDateImplement";
-            this.textBoxDateImplement.Size = new System.Drawing.Size(124, 20);
-            this.textBoxDateImplement.TabIndex = 15;
-            // 
-            // labelDateImplement
-            // 
-            this.labelDateImplement.AutoSize = true;
-            this.labelDateImplement.Location = new System.Drawing.Point(6, 35);
-            this.labelDateImplement.Name = "labelDateImplement";
-            this.labelDateImplement.Size = new System.Drawing.Size(76, 13);
-            this.labelDateImplement.TabIndex = 19;
-            this.labelDateImplement.Text = "Дата оплаты:";
-            // 
-            // labelSum
-            // 
-            this.labelSum.AutoSize = true;
-            this.labelSum.Location = new System.Drawing.Point(6, 64);
-            this.labelSum.Name = "labelSum";
-            this.labelSum.Size = new System.Drawing.Size(84, 13);
-            this.labelSum.TabIndex = 19;
-            this.labelSum.Text = "Сумма оплаты:";
-            // 
-            // textBoxSum
-            // 
-            this.textBoxSum.Enabled = false;
-            this.textBoxSum.Location = new System.Drawing.Point(95, 64);
-            this.textBoxSum.Name = "textBoxSum";
-            this.textBoxSum.Size = new System.Drawing.Size(124, 20);
-            this.textBoxSum.TabIndex = 19;
-            // 
             // textBoxPayType
             // 
             this.textBoxPayType.Enabled = false;
-            this.textBoxPayType.Location = new System.Drawing.Point(95, 92);
+            this.textBoxPayType.Location = new System.Drawing.Point(98, 73);
             this.textBoxPayType.Name = "textBoxPayType";
-            this.textBoxPayType.Size = new System.Drawing.Size(124, 20);
+            this.textBoxPayType.Size = new System.Drawing.Size(159, 20);
             this.textBoxPayType.TabIndex = 20;
             // 
             // labelPayType
             // 
             this.labelPayType.AutoSize = true;
             this.labelPayType.Enabled = false;
-            this.labelPayType.Location = new System.Drawing.Point(6, 92);
+            this.labelPayType.Location = new System.Drawing.Point(23, 76);
             this.labelPayType.Name = "labelPayType";
             this.labelPayType.Size = new System.Drawing.Size(69, 13);
             this.labelPayType.TabIndex = 21;
             this.labelPayType.Text = "Тип оплаты:";
             // 
+            // textBoxSum
+            // 
+            this.textBoxSum.Enabled = false;
+            this.textBoxSum.Location = new System.Drawing.Point(98, 47);
+            this.textBoxSum.Name = "textBoxSum";
+            this.textBoxSum.Size = new System.Drawing.Size(159, 20);
+            this.textBoxSum.TabIndex = 19;
+            // 
+            // labelSum
+            // 
+            this.labelSum.AutoSize = true;
+            this.labelSum.Location = new System.Drawing.Point(8, 50);
+            this.labelSum.Name = "labelSum";
+            this.labelSum.Size = new System.Drawing.Size(84, 13);
+            this.labelSum.TabIndex = 19;
+            this.labelSum.Text = "Сумма оплаты:";
+            // 
+            // labelDateImplement
+            // 
+            this.labelDateImplement.AutoSize = true;
+            this.labelDateImplement.Location = new System.Drawing.Point(16, 24);
+            this.labelDateImplement.Name = "labelDateImplement";
+            this.labelDateImplement.Size = new System.Drawing.Size(76, 13);
+            this.labelDateImplement.TabIndex = 19;
+            this.labelDateImplement.Text = "Дата оплаты:";
+            // 
+            // textBoxDateImplement
+            // 
+            this.textBoxDateImplement.Enabled = false;
+            this.textBoxDateImplement.Location = new System.Drawing.Point(98, 21);
+            this.textBoxDateImplement.Name = "textBoxDateImplement";
+            this.textBoxDateImplement.Size = new System.Drawing.Size(159, 20);
+            this.textBoxDateImplement.TabIndex = 15;
+            // 
             // textBoxFrom
             // 
             this.textBoxFrom.Enabled = false;
-            this.textBoxFrom.Location = new System.Drawing.Point(94, 156);
+            this.textBoxFrom.Location = new System.Drawing.Point(102, 84);
             this.textBoxFrom.Name = "textBoxFrom";
             this.textBoxFrom.Size = new System.Drawing.Size(159, 20);
             this.textBoxFrom.TabIndex = 20;
@@ -199,7 +199,7 @@
             // labelFrom
             // 
             this.labelFrom.AutoSize = true;
-            this.labelFrom.Location = new System.Drawing.Point(10, 159);
+            this.labelFrom.Location = new System.Drawing.Point(20, 87);
             this.labelFrom.Name = "labelFrom";
             this.labelFrom.Size = new System.Drawing.Size(76, 13);
             this.labelFrom.TabIndex = 19;
@@ -208,7 +208,7 @@
             // textBoxUser
             // 
             this.textBoxUser.Enabled = false;
-            this.textBoxUser.Location = new System.Drawing.Point(93, 28);
+            this.textBoxUser.Location = new System.Drawing.Point(102, 6);
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.Size = new System.Drawing.Size(159, 20);
             this.textBoxUser.TabIndex = 22;
@@ -216,7 +216,7 @@
             // labelUser
             // 
             this.labelUser.AutoSize = true;
-            this.labelUser.Location = new System.Drawing.Point(12, 28);
+            this.labelUser.Location = new System.Drawing.Point(50, 9);
             this.labelUser.Name = "labelUser";
             this.labelUser.Size = new System.Drawing.Size(46, 13);
             this.labelUser.TabIndex = 21;
@@ -225,7 +225,7 @@
             // textBoxBefore
             // 
             this.textBoxBefore.Enabled = false;
-            this.textBoxBefore.Location = new System.Drawing.Point(93, 182);
+            this.textBoxBefore.Location = new System.Drawing.Point(102, 110);
             this.textBoxBefore.Name = "textBoxBefore";
             this.textBoxBefore.Size = new System.Drawing.Size(159, 20);
             this.textBoxBefore.TabIndex = 24;
@@ -233,7 +233,7 @@
             // labelBefore
             // 
             this.labelBefore.AutoSize = true;
-            this.labelBefore.Location = new System.Drawing.Point(9, 185);
+            this.labelBefore.Location = new System.Drawing.Point(19, 113);
             this.labelBefore.Name = "labelBefore";
             this.labelBefore.Size = new System.Drawing.Size(77, 13);
             this.labelBefore.TabIndex = 23;
@@ -242,7 +242,7 @@
             // labelPaymentType
             // 
             this.labelPaymentType.AutoSize = true;
-            this.labelPaymentType.Location = new System.Drawing.Point(81, 221);
+            this.labelPaymentType.Location = new System.Drawing.Point(90, 143);
             this.labelPaymentType.Name = "labelPaymentType";
             this.labelPaymentType.Size = new System.Drawing.Size(93, 13);
             this.labelPaymentType.TabIndex = 25;
@@ -252,7 +252,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 438);
+            this.ClientSize = new System.Drawing.Size(919, 346);
             this.Controls.Add(this.labelPaymentType);
             this.Controls.Add(this.textBoxBefore);
             this.Controls.Add(this.labelBefore);
@@ -268,7 +268,8 @@
             this.Controls.Add(this.dataGridViewServices);
             this.Controls.Add(this.dataGridViewRooms);
             this.Name = "DetailOrderBase";
-            this.Text = "DetailOrderBase";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Детали заказа";
             this.Load += new System.EventHandler(this.DetailOrderBase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRooms)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewServices)).EndInit();

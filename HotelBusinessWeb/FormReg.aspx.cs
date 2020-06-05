@@ -19,41 +19,44 @@ namespace HotelBusinessWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (IsPostBack)
+            {
+                Register.ServerClick += new EventHandler(Button1_Click1);
+            }
         }
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(TextBoxFIO.Text))
+            if (string.IsNullOrEmpty(inputName.Value))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле ФИО');</script>");
                 return;
             }
-            if (string.IsNullOrEmpty(TextBoxLogin.Text))
+            if (string.IsNullOrEmpty(inputEmail.Value))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле логин');</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле email');</script>");
                 return;
             }
-            if (string.IsNullOrEmpty(TextBoxPhoneNumber.Text))
+            if (string.IsNullOrEmpty(inputTel.Value))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле номер телефона');</script>");
                 return;
             }
-            if (string.IsNullOrEmpty(TextBoxPassword.Text))
+            if (string.IsNullOrEmpty(inputPassword.Value))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле пароль');</script>");
                 return;
             }
-            if (string.IsNullOrEmpty(TextBoxConfirmPassword.Text))
+            if (string.IsNullOrEmpty(inputConfirm.Value))
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Заполните поле подтвержение');</script>");
                 return;
             }
-            string fio = TextBoxFIO.Text;
-            string login = TextBoxLogin.Text;
-            string phoneNumber = TextBoxPhoneNumber.Text;
-            string password = TextBoxPassword.Text;
-            string confirmPassword = TextBoxConfirmPassword.Text;
+            string fio = inputName.Value;
+            string login = inputEmail.Value;
+            string phoneNumber = inputTel.Value;
+            string password = inputPassword.Value;
+            string confirmPassword = inputConfirm.Value;
 
             try
             {

@@ -103,6 +103,7 @@
     <Compile Include="BindingModels\PaymentBindingModel.cs" />
     <Compile Include="BindingModels\RepaymentBindingModel.cs" />
     <Compile Include="BindingModels\ReportBindingModel.cs" />
+    <Compile Include="BindingModels\ReviewBindingModel.cs" />
     <Compile Include="BindingModels\RoomBindingModel.cs" />
     <Compile Include="BindingModels\RoomOrderBindingModel.cs" />
     <Compile Include="BindingModels\ServiceBindingModel.cs" />
@@ -136,6 +137,8 @@
     <Compile Include="ViewModels\OrderPogashenieViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\PaymentViewModel.cs" />
+    <Compile Include="ViewModels\ReportRoomsViewModel.cs" />
+    <Compile Include="ViewModels\ReviewViewModel.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\RoomOrderViewModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />

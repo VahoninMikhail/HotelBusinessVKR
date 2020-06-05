@@ -94,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 153);
+            this.ClientSize = new System.Drawing.Size(336, 137);
             this.Controls.Add(this.comboBoxForm);
             this.Controls.Add(this.labelForm);
             this.Controls.Add(this.textBoxName);
@@ -102,7 +102,8 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Name = "EditRoom";
-            this.Text = "EditRoom";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Комната";
             this.Load += new System.EventHandler(this.EditRoom_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

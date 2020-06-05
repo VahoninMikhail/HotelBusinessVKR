@@ -51,14 +51,14 @@
             this.groupBoxUsers.Controls.Add(this.buttonAdd);
             this.groupBoxUsers.Location = new System.Drawing.Point(12, 12);
             this.groupBoxUsers.Name = "groupBoxUsers";
-            this.groupBoxUsers.Size = new System.Drawing.Size(522, 417);
+            this.groupBoxUsers.Size = new System.Drawing.Size(522, 405);
             this.groupBoxUsers.TabIndex = 4;
             this.groupBoxUsers.TabStop = false;
-            this.groupBoxUsers.Text = "Список пользователей";
+            this.groupBoxUsers.Text = "Список клиентов";
             // 
             // buttonUnblock
             // 
-            this.buttonUnblock.Location = new System.Drawing.Point(306, 370);
+            this.buttonUnblock.Location = new System.Drawing.Point(321, 363);
             this.buttonUnblock.Name = "buttonUnblock";
             this.buttonUnblock.Size = new System.Drawing.Size(116, 30);
             this.buttonUnblock.TabIndex = 7;
@@ -68,7 +68,7 @@
             // 
             // buttonBlock
             // 
-            this.buttonBlock.Location = new System.Drawing.Point(180, 370);
+            this.buttonBlock.Location = new System.Drawing.Point(193, 363);
             this.buttonBlock.Name = "buttonBlock";
             this.buttonBlock.Size = new System.Drawing.Size(107, 30);
             this.buttonBlock.TabIndex = 6;
@@ -81,21 +81,21 @@
             this.dataGridViewUsers.AllowUserToAddRows = false;
             this.dataGridViewUsers.AllowUserToResizeColumns = false;
             this.dataGridViewUsers.AllowUserToResizeRows = false;
-            this.dataGridViewUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUsers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewUsers.Location = new System.Drawing.Point(6, 26);
+            this.dataGridViewUsers.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewUsers.MultiSelect = false;
             this.dataGridViewUsers.Name = "dataGridViewUsers";
             this.dataGridViewUsers.RowHeadersVisible = false;
+            this.dataGridViewUsers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUsers.Size = new System.Drawing.Size(498, 338);
+            this.dataGridViewUsers.Size = new System.Drawing.Size(505, 338);
             this.dataGridViewUsers.TabIndex = 0;
             this.dataGridViewUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellClick);
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(68, 370);
+            this.buttonAdd.Location = new System.Drawing.Point(68, 363);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(106, 30);
             this.buttonAdd.TabIndex = 2;
@@ -105,7 +105,7 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(983, 435);
+            this.buttonClose.Location = new System.Drawing.Point(842, 423);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(79, 30);
             this.buttonClose.TabIndex = 5;
@@ -117,16 +117,16 @@
             // 
             this.groupBoxOrders.Controls.Add(this.buttonDetail);
             this.groupBoxOrders.Controls.Add(this.dataGridViewOrders);
-            this.groupBoxOrders.Location = new System.Drawing.Point(540, 17);
+            this.groupBoxOrders.Location = new System.Drawing.Point(540, 12);
             this.groupBoxOrders.Name = "groupBoxOrders";
-            this.groupBoxOrders.Size = new System.Drawing.Size(522, 412);
+            this.groupBoxOrders.Size = new System.Drawing.Size(388, 405);
             this.groupBoxOrders.TabIndex = 8;
             this.groupBoxOrders.TabStop = false;
-            this.groupBoxOrders.Text = "Заказы пользователя:";
+            this.groupBoxOrders.Text = "Заказы клиента";
             // 
             // buttonDetail
             // 
-            this.buttonDetail.Location = new System.Drawing.Point(206, 370);
+            this.buttonDetail.Location = new System.Drawing.Point(139, 363);
             this.buttonDetail.Name = "buttonDetail";
             this.buttonDetail.Size = new System.Drawing.Size(116, 30);
             this.buttonDetail.TabIndex = 7;
@@ -139,27 +139,28 @@
             this.dataGridViewOrders.AllowUserToAddRows = false;
             this.dataGridViewOrders.AllowUserToResizeColumns = false;
             this.dataGridViewOrders.AllowUserToResizeRows = false;
-            this.dataGridViewOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewOrders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewOrders.Location = new System.Drawing.Point(6, 26);
+            this.dataGridViewOrders.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewOrders.MultiSelect = false;
             this.dataGridViewOrders.Name = "dataGridViewOrders";
             this.dataGridViewOrders.RowHeadersVisible = false;
+            this.dataGridViewOrders.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOrders.Size = new System.Drawing.Size(498, 338);
+            this.dataGridViewOrders.Size = new System.Drawing.Size(375, 338);
             this.dataGridViewOrders.TabIndex = 0;
             // 
             // Users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1075, 476);
+            this.ClientSize = new System.Drawing.Size(928, 461);
             this.Controls.Add(this.groupBoxOrders);
             this.Controls.Add(this.groupBoxUsers);
             this.Controls.Add(this.buttonClose);
             this.Name = "Users";
-            this.Text = "Users";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Клиенты";
             this.Load += new System.EventHandler(this.Users_Load);
             this.groupBoxUsers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();

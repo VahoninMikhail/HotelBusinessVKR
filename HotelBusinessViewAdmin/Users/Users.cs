@@ -22,12 +22,21 @@ namespace HotelBusinessViewAdmin.Users
             try
             {
                 List<UserViewModel> listUser = await ApiClient.GetRequestData<List<UserViewModel>>("api/Account/GetListUser");
-               // List<UserViewModel> list = Task.Run(() => ApiClient.GetRequestData<List<UserViewModel>>("api/Account/GetList")).Result;
                 if (listUser != null)
                 {
                     dataGridViewUsers.DataSource = listUser;
                     dataGridViewUsers.Columns[0].Visible = false;
-                    dataGridViewUsers.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewUsers.Columns[1].HeaderText = "ФИО";
+                    dataGridViewUsers.Columns[2].HeaderText = "Почта";
+                    dataGridViewUsers.Columns[3].HeaderText = "Номер телефона";
+                    dataGridViewUsers.Columns[4].HeaderText = "Бан";
+                    dataGridViewUsers.Columns[5].HeaderText = "Бонусы";
+
+                    dataGridViewUsers.Columns[1].Width = 150;
+                    dataGridViewUsers.Columns[2].Width = 110;
+                    dataGridViewUsers.Columns[3].Width = 90;
+                    dataGridViewUsers.Columns[4].Width = 70;
+                    dataGridViewUsers.Columns[5].Width = 70;
                 }
 
             }
@@ -152,11 +161,25 @@ namespace HotelBusinessViewAdmin.Users
         {
             string id = Convert.ToString(dataGridViewUsers.SelectedRows[0].Cells[0].Value);
             var form = await ApiClient.GetRequestData<List<OrderViewModel>>("api/Order/GetPosetitelList/" + id);
-           // var form = await ApiClient.GetRequestData<List<OrderViewModel>>("api/Order/GetList");
-           // form.RemoveAll(r => r.UserId != id);
 
             dataGridViewOrders.DataSource = null;
             dataGridViewOrders.DataSource = form;
+            dataGridViewOrders.Columns[0].Visible = false;
+            dataGridViewOrders.Columns[1].Visible = false;
+            dataGridViewOrders.Columns[2].Visible = false;
+            dataGridViewOrders.Columns[3].Visible = false;
+            dataGridViewOrders.Columns[4].HeaderText = "Статус заказа";
+            dataGridViewOrders.Columns[5].HeaderText = "Дата въезда";
+            dataGridViewOrders.Columns[6].HeaderText = "Дата выезда";
+            dataGridViewOrders.Columns[7].HeaderText = "Сумма заказа";
+            dataGridViewOrders.Columns[8].Visible = false;
+            dataGridViewOrders.Columns[9].Visible = false;
+            dataGridViewOrders.Columns[10].Visible = false;
+
+            dataGridViewOrders.Columns[4].Width = 80;
+            dataGridViewOrders.Columns[5].Width = 100;
+            dataGridViewOrders.Columns[6].Width = 100;
+            dataGridViewOrders.Columns[7].Width = 80;
         }
     }
 }

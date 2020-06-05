@@ -313,7 +313,43 @@ namespace HorelBusinessService.ImplementationsBD
         }
 
 
-                    ////////////////////
+        public async Task<List<ReviewViewModel>> GetListReview()
+        {
+            return await context.Reviews.Include(rec => rec.User)
+                .Select(rec => new ReviewViewModel
+                {
+                    OrderId = rec.OrderId,
+                    UserFIO = rec.User.UserFIO,
+                    UserMail = rec.User.UserName,
+                    Text = rec.Text
+                }).ToListAsync();
+        }
+
+        public async System.Threading.Tasks.Task AddReview(ReviewBindingModel model)
+        {
+            using (var transaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    var element = new Review
+                    {
+                        OrderId = model.OrderId,
+                        UserId = model.UserId,
+                        Text = model.Text
+                    };
+                    context.Reviews.Add(element);
+                    await context.SaveChangesAsync();
+                    await System.Threading.Tasks.Task.Run(() => transaction.Commit());
+                }
+                catch (Exception ex)
+                {
+                    await System.Threading.Tasks.Task.Run(() => transaction.Rollback());
+                    throw;
+                }
+            }
+        }
+
+        ////////////////////
 
         private async System.Threading.Tasks.Task<OrderViewModel> GetOrder(int orderId)
         {

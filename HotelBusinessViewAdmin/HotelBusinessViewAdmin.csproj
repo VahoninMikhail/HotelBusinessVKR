@@ -179,6 +179,24 @@
     <Compile Include="Reports\FormReportPayments.Designer.cs">
       <DependentUpon>FormReportPayments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\FormReportRooms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FormReportRooms.Designer.cs">
+      <DependentUpon>FormReportRooms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FormReportTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FormReportTotal.Designer.cs">
+      <DependentUpon>FormReportTotal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reviews\Reviews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reviews\Reviews.Designer.cs">
+      <DependentUpon>Reviews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rooms\EditRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,6 +286,18 @@
     <EmbeddedResource Include="Reports\FormReportPayments.resx">
       <DependentUpon>FormReportPayments.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FormReportRooms.resx">
+      <DependentUpon>FormReportRooms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FormReportTotal.resx">
+      <DependentUpon>FormReportTotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportPays.rdlc" />
+    <EmbeddedResource Include="Reports\ReportRooms.rdlc" />
+    <EmbeddedResource Include="Reports\ReportTotal.rdlc" />
+    <EmbeddedResource Include="Reviews\Reviews.resx">
+      <DependentUpon>Reviews.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Rooms\EditRoom.resx">
       <DependentUpon>EditRoom.cs</DependentUpon>
     </EmbeddedResource>
@@ -288,6 +318,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\HorelBusinessService.ViewModels.PaymentViewModel.datasource" />
+    <None Include="Properties\DataSources\HorelBusinessService.ViewModels.ReportRoomsViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

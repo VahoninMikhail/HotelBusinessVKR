@@ -25,4 +25,21 @@
         </table>
         </ItemTemplate>
     </asp:Repeater>
+
+    <%
+                        foreach (HorelBusinessService.ViewModels.ServiceViewModel service in getOrder())
+                        {
+                            Response.Write(String.Format(@"
+                        <div class='item'>
+                            <h3>{0}</h3>
+                            {1}
+                            <h4>{2:c}</h4>
+                            <input id='addServiceCount{3}' name='addServiceCount{3}' type ='number' onkeypress='SupressInput(event)' min ='1' value='1' runat = 'server'/>
+                            <button name='addService' type='submit' value='{3}'>
+                                Выбрать
+                            </button>
+                        </div>",
+                                service.ServiceName, service.ServiceSpecification, service.Price, service.Id));
+                        }
+                    %>
 </div>

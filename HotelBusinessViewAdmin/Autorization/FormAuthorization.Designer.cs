@@ -38,28 +38,28 @@
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(85, 58);
+            this.textBoxPassword.Location = new System.Drawing.Point(85, 55);
             this.textBoxPassword.MaxLength = 32;
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(167, 20);
-            this.textBoxPassword.TabIndex = 11;
+            this.textBoxPassword.TabIndex = 2;
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(85, 22);
+            this.textBoxLogin.Location = new System.Drawing.Point(85, 19);
             this.textBoxLogin.MaxLength = 32;
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(167, 20);
-            this.textBoxLogin.TabIndex = 10;
+            this.textBoxLogin.TabIndex = 1;
             // 
             // sign_Up
             // 
             this.sign_Up.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.sign_Up.Location = new System.Drawing.Point(85, 137);
+            this.sign_Up.Location = new System.Drawing.Point(85, 125);
             this.sign_Up.Name = "sign_Up";
             this.sign_Up.Size = new System.Drawing.Size(132, 29);
-            this.sign_Up.TabIndex = 9;
+            this.sign_Up.TabIndex = 4;
             this.sign_Up.Text = "Регистрация";
             this.sign_Up.UseVisualStyleBackColor = true;
             this.sign_Up.Click += new System.EventHandler(this.sign_Up_Click);
@@ -67,10 +67,10 @@
             // sign_In
             // 
             this.sign_In.AutoSize = true;
-            this.sign_In.Location = new System.Drawing.Point(85, 99);
+            this.sign_In.Location = new System.Drawing.Point(85, 90);
             this.sign_In.Name = "sign_In";
             this.sign_In.Size = new System.Drawing.Size(132, 29);
-            this.sign_In.TabIndex = 8;
+            this.sign_In.TabIndex = 3;
             this.sign_In.Text = "Войти";
             this.sign_In.UseVisualStyleBackColor = true;
             this.sign_In.Click += new System.EventHandler(this.sign_In_Click);
@@ -78,7 +78,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 61);
+            this.label2.Location = new System.Drawing.Point(34, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 7;
@@ -87,7 +87,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 25);
+            this.label1.Location = new System.Drawing.Point(38, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 6;
@@ -97,7 +97,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 187);
+            this.ClientSize = new System.Drawing.Size(288, 170);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.sign_Up);
@@ -105,7 +105,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FormAuthorization";
-            this.Text = "FormAuthorization";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Авторизация";
             this.ResumeLayout(false);
             this.PerformLayout();
 

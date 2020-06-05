@@ -27,7 +27,13 @@ namespace HotelBusinessViewAdmin.Admins
                 {
                     dataGridViewAdmins.DataSource = listUser;
                     dataGridViewAdmins.Columns[0].Visible = false;
-                    dataGridViewAdmins.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewAdmins.Columns[1].HeaderText = "ФИО администратора";
+                    dataGridViewAdmins.Columns[2].HeaderText = "Логин";
+                    dataGridViewAdmins.Columns[3].Visible = false;
+                    dataGridViewAdmins.Columns[4].Visible = false;
+                    dataGridViewAdmins.Columns[5].Visible = false;
+                    dataGridViewAdmins.Columns[1].Width = 150;
+                    dataGridViewAdmins.Columns[2].Width = 150;
                 }
 
             }

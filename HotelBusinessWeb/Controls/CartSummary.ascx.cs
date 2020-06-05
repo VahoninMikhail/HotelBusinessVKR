@@ -17,8 +17,11 @@ namespace HotelBusinessWeb.Controls
             csQuantity.InnerText = myCart.Lines.Sum(x => x.Count).ToString();
             csRoomQuantity.InnerText = myCart.LinesRoom.Count().ToString();
             csTotal.InnerText = myCart.ComputeTotalValue().ToString("c");
-            csLink.HRef = RouteTable.Routes.GetVirtualPath(null, "cart",
-                null).VirtualPath;
+            if (myCart.LinesRoom.Count() == 0)
+            {
+                return;
+            }
+            csLink.HRef = RouteTable.Routes.GetVirtualPath(null, "cart", null).VirtualPath;
         }
 
         void ButtonRemoveAll_Click(Object sender, EventArgs e)

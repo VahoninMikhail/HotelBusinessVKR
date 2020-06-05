@@ -12,14 +12,20 @@ namespace HotelBusinessWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (GetCartLinesRoom().GetEnumerator().MoveNext() == false)
+            {
+                theadTableRoom.Visible = false;
+            }
+            if (GetCartLines().GetEnumerator().MoveNext() == false)
+            {
+                theadTableService.Visible = false;
+            }
+
             if (IsPostBack)
             {
-             //   Repository repository = new Repository();
                 int serviceId;
                 if (int.TryParse(Request.Form["remove"], out serviceId))
                 {
-             //       ServiceViewModel serviceToRemove = repository.Games
-             //          .Where(g => g.GameId == gameId).FirstOrDefault();
                     if (serviceId != 0)
                     {
                         SessionHelper.GetCart(Session).RemoveLine(serviceId);
@@ -56,7 +62,14 @@ namespace HotelBusinessWeb
 
         protected void ButtonReservation_Click(object sender, EventArgs e)
         {
-            UserInfoViewModel list =
+            if (GetCartLinesRoom().GetEnumerator().MoveNext() == false || GetCartLines().GetEnumerator().MoveNext() == false)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + "Корзина пуста" + "');</script>");
+                return;
+            }
+            try
+            {
+                UserInfoViewModel list =
                      Task.Run(() => APIСlient.GetRequestData<UserInfoViewModel>("api/Account/UserInfo")).Result;
 
 
@@ -118,8 +131,14 @@ namespace HotelBusinessWeb
                 }
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + ex.Message + "');</script>");
             }, TaskContinuationOptions.OnlyOnFaulted);
-            //Server.Transfer("FormMain.aspx");
-
+                SessionHelper.GetCart(Session).RemoveAll();
+                //Server.Transfer("FormMain.aspx");
+            }
+            catch (Exception ex)
+            {                      
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('" + "Для совершения данного действия нужно авторизоваться" + "');</script>");
+                Response.Redirect("FormLogin.aspx");
+            }
         }
 
         protected void ButtonRemoveAll_Click(object sender, EventArgs e)

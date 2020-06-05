@@ -131,8 +131,8 @@ h2 { margin-top: 0.3em }
 #cartTable tfoot tr td { text-align: right;}
 p.actionButtons { text-align: center;}
 .actionButtons a, button.actionButtons {
-    font: .8em Arial; color: White; margin: .5em;
-    text-decoration: none; padding: .15em 1.5em .2em 1.5em;
+    font: .8em Arial; color: White; margin: .02em;
+    text-decoration: none; padding: .03em 0.5em 0.3em 0.3em;
     background-color: #353535; border: 1px solid black;
 }
 

@@ -60,23 +60,23 @@
             this.dataGridViewForms.AllowUserToAddRows = false;
             this.dataGridViewForms.AllowUserToResizeColumns = false;
             this.dataGridViewForms.AllowUserToResizeRows = false;
-            this.dataGridViewForms.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewForms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewForms.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewForms.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewForms.MultiSelect = false;
             this.dataGridViewForms.Name = "dataGridViewForms";
             this.dataGridViewForms.RowHeadersVisible = false;
+            this.dataGridViewForms.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewForms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewForms.Size = new System.Drawing.Size(349, 321);
+            this.dataGridViewForms.Size = new System.Drawing.Size(523, 263);
             this.dataGridViewForms.TabIndex = 1;
             this.dataGridViewForms.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewForms_CellClick);
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(6, 351);
+            this.buttonAdd.Location = new System.Drawing.Point(40, 288);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(85, 33);
+            this.buttonAdd.Size = new System.Drawing.Size(80, 30);
             this.buttonAdd.TabIndex = 2;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -84,9 +84,9 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(143, 351);
+            this.buttonEdit.Location = new System.Drawing.Point(135, 288);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(80, 33);
+            this.buttonEdit.Size = new System.Drawing.Size(80, 30);
             this.buttonEdit.TabIndex = 3;
             this.buttonEdit.Text = "Изменить";
             this.buttonEdit.UseVisualStyleBackColor = true;
@@ -94,9 +94,9 @@
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(258, 351);
+            this.buttonDel.Location = new System.Drawing.Point(232, 288);
             this.buttonDel.Name = "buttonDel";
-            this.buttonDel.Size = new System.Drawing.Size(97, 33);
+            this.buttonDel.Size = new System.Drawing.Size(80, 30);
             this.buttonDel.TabIndex = 4;
             this.buttonDel.Text = "Удалить";
             this.buttonDel.UseVisualStyleBackColor = true;
@@ -104,9 +104,9 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(725, 380);
+            this.buttonClose.Location = new System.Drawing.Point(798, 300);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(89, 40);
+            this.buttonClose.Size = new System.Drawing.Size(80, 30);
             this.buttonClose.TabIndex = 6;
             this.buttonClose.Text = "Выход";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(401, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(474, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(386, 267);
             this.pictureBox1.TabIndex = 8;
@@ -134,32 +134,32 @@
             this.groupBoxFroms.Controls.Add(this.buttonDel);
             this.groupBoxFroms.Location = new System.Drawing.Point(12, 12);
             this.groupBoxFroms.Name = "groupBoxFroms";
-            this.groupBoxFroms.Size = new System.Drawing.Size(361, 408);
+            this.groupBoxFroms.Size = new System.Drawing.Size(535, 329);
             this.groupBoxFroms.TabIndex = 9;
             this.groupBoxFroms.TabStop = false;
-            this.groupBoxFroms.Text = "Виды номеров:";
+            this.groupBoxFroms.Text = "Виды комнат:";
             // 
             // dataGridViewService
             // 
             this.dataGridViewService.AllowUserToAddRows = false;
             this.dataGridViewService.AllowUserToResizeColumns = false;
             this.dataGridViewService.AllowUserToResizeRows = false;
-            this.dataGridViewService.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewService.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewService.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewService.Location = new System.Drawing.Point(6, 18);
             this.dataGridViewService.MultiSelect = false;
             this.dataGridViewService.Name = "dataGridViewService";
             this.dataGridViewService.RowHeadersVisible = false;
+            this.dataGridViewService.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewService.Size = new System.Drawing.Size(318, 321);
+            this.dataGridViewService.Size = new System.Drawing.Size(217, 263);
             this.dataGridViewService.TabIndex = 5;
             // 
             // buttonAddService
             // 
-            this.buttonAddService.Location = new System.Drawing.Point(50, 350);
+            this.buttonAddService.Location = new System.Drawing.Point(19, 287);
             this.buttonAddService.Name = "buttonAddService";
-            this.buttonAddService.Size = new System.Drawing.Size(85, 33);
+            this.buttonAddService.Size = new System.Drawing.Size(80, 30);
             this.buttonAddService.TabIndex = 5;
             this.buttonAddService.Text = "Добавить";
             this.buttonAddService.UseVisualStyleBackColor = true;
@@ -167,9 +167,9 @@
             // 
             // buttonDelService
             // 
-            this.buttonDelService.Location = new System.Drawing.Point(176, 350);
+            this.buttonDelService.Location = new System.Drawing.Point(126, 287);
             this.buttonDelService.Name = "buttonDelService";
-            this.buttonDelService.Size = new System.Drawing.Size(97, 33);
+            this.buttonDelService.Size = new System.Drawing.Size(80, 30);
             this.buttonDelService.TabIndex = 5;
             this.buttonDelService.Text = "Удалить";
             this.buttonDelService.UseVisualStyleBackColor = true;
@@ -180,12 +180,12 @@
             this.groupBoxService.Controls.Add(this.dataGridViewService);
             this.groupBoxService.Controls.Add(this.buttonDelService);
             this.groupBoxService.Controls.Add(this.buttonAddService);
-            this.groupBoxService.Location = new System.Drawing.Point(389, 13);
+            this.groupBoxService.Location = new System.Drawing.Point(553, 13);
             this.groupBoxService.Name = "groupBoxService";
-            this.groupBoxService.Size = new System.Drawing.Size(330, 407);
+            this.groupBoxService.Size = new System.Drawing.Size(230, 328);
             this.groupBoxService.TabIndex = 10;
             this.groupBoxService.TabStop = false;
-            this.groupBoxService.Text = "Бесплатные услуги данного вида номера:";
+            this.groupBoxService.Text = "Бесплатные услуги данного вида:";
             // 
             // groupBoxImages
             // 
@@ -193,35 +193,35 @@
             this.groupBoxImages.Controls.Add(this.buttonDelImages);
             this.groupBoxImages.Controls.Add(this.buttonAddImages);
             this.groupBoxImages.Controls.Add(this.pictureBox1);
-            this.groupBoxImages.Location = new System.Drawing.Point(12, 426);
+            this.groupBoxImages.Location = new System.Drawing.Point(12, 347);
             this.groupBoxImages.Name = "groupBoxImages";
-            this.groupBoxImages.Size = new System.Drawing.Size(802, 300);
+            this.groupBoxImages.Size = new System.Drawing.Size(866, 300);
             this.groupBoxImages.TabIndex = 11;
             this.groupBoxImages.TabStop = false;
-            this.groupBoxImages.Text = "Фотографии данного вида номера:";
+            this.groupBoxImages.Text = "Фотографии данного вида:";
             // 
             // dataGridViewImages
             // 
             this.dataGridViewImages.AllowUserToAddRows = false;
             this.dataGridViewImages.AllowUserToResizeColumns = false;
             this.dataGridViewImages.AllowUserToResizeRows = false;
-            this.dataGridViewImages.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewImages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewImages.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewImages.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewImages.MultiSelect = false;
             this.dataGridViewImages.Name = "dataGridViewImages";
             this.dataGridViewImages.RowHeadersVisible = false;
+            this.dataGridViewImages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewImages.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewImages.Size = new System.Drawing.Size(295, 267);
+            this.dataGridViewImages.Size = new System.Drawing.Size(376, 267);
             this.dataGridViewImages.TabIndex = 12;
             this.dataGridViewImages.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewImages_CellClick);
             // 
             // buttonDelImages
             // 
-            this.buttonDelImages.Location = new System.Drawing.Point(307, 223);
+            this.buttonDelImages.Location = new System.Drawing.Point(388, 191);
             this.buttonDelImages.Name = "buttonDelImages";
-            this.buttonDelImages.Size = new System.Drawing.Size(88, 63);
+            this.buttonDelImages.Size = new System.Drawing.Size(80, 30);
             this.buttonDelImages.TabIndex = 6;
             this.buttonDelImages.Text = "Удалить";
             this.buttonDelImages.UseVisualStyleBackColor = true;
@@ -229,9 +229,9 @@
             // 
             // buttonAddImages
             // 
-            this.buttonAddImages.Location = new System.Drawing.Point(307, 154);
+            this.buttonAddImages.Location = new System.Drawing.Point(388, 70);
             this.buttonAddImages.Name = "buttonAddImages";
-            this.buttonAddImages.Size = new System.Drawing.Size(88, 63);
+            this.buttonAddImages.Size = new System.Drawing.Size(80, 30);
             this.buttonAddImages.TabIndex = 9;
             this.buttonAddImages.Text = "Добавить";
             this.buttonAddImages.UseVisualStyleBackColor = true;
@@ -241,13 +241,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(924, 739);
+            this.ClientSize = new System.Drawing.Size(888, 653);
             this.Controls.Add(this.groupBoxImages);
             this.Controls.Add(this.groupBoxService);
             this.Controls.Add(this.groupBoxFroms);
             this.Controls.Add(this.buttonClose);
             this.Name = "Forms";
-            this.Text = "Forms";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Видами комнат";
             this.Load += new System.EventHandler(this.Forms_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewForms)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

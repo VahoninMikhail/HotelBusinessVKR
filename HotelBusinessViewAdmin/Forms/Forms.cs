@@ -24,8 +24,14 @@ namespace HotelBusinessViewAdmin.Forms
                 if (list != null)
                 {
                     dataGridViewForms.DataSource = list;
-                    dataGridViewForms.Columns[0].Visible = false;                  
-                }
+                    dataGridViewForms.Columns[0].Visible = false;
+                    dataGridViewForms.Columns[1].HeaderText = "Вид номера";
+                    dataGridViewForms.Columns[2].HeaderText = "Описание";
+                    dataGridViewForms.Columns[3].HeaderText = "Стоимость";
+                    dataGridViewForms.Columns[1].Width = 100;
+                    dataGridViewForms.Columns[2].Width = 330;
+                    dataGridViewForms.Columns[3].Width = 80;
+               }
 
             }
             catch (Exception ex)
@@ -219,45 +225,25 @@ namespace HotelBusinessViewAdmin.Forms
             int id = Convert.ToInt32(dataGridViewForms.SelectedRows[0].Cells[0].Value);
             var form = await ApiClient.GetRequestData<FormViewModel>("api/Form/Get/" + id);
 
-            // создаем список изображений для строк listViewImages
-            ImageList imageList = new ImageList();
-            // устанавливаем размер изображений
-            // imageList.ImageSize = new Size(50, 50);
-
-            foreach (var im in form.Images)
-            {
-                HttpPostedFileBase objFile = new MemoryPostedFile(im.Image);
-                // var image = System.Drawing.Image.FromStream(objFile.InputStream, true, true);
-                var image = ImageProcessing.ResizeImage(System.Drawing.Image.FromStream(objFile.InputStream, true, true),
-                        SystemInformation.VirtualScreen.Width / 4, (int)(SystemInformation.VirtualScreen.Height / 2.5));
-
-
-                pictureBox1.Image = image;
-
-                imageList.Images.Add(pictureBox1.Image);
-            }
-
-            for (int i = 0; i < form.Images.Count; i++)
-            {
-                // создадим объект ListViewItem (строку) для listView1
-                ListViewItem listViewItem = new ListViewItem(new string[] { "", Convert.ToString(form.Images[i].Id) });
-
-                // индекс изображения из imageList для данной строки listViewItem
-                listViewItem.ImageIndex = i;
-
-                // добавляем созданный элемент listViewItem (строку) в listView1
-            }
-
-
             if (form != null)
             {
                 dataGridViewService.DataSource = form.FormFreeServices;
                 dataGridViewImages.DataSource = form.Images;
+                dataGridViewImages.Columns[0].HeaderText = "Номер фото";
+                dataGridViewImages.Columns[1].HeaderText = "Фото";
+                dataGridViewImages.Columns[0].Width = 50;
+                dataGridViewImages.Columns[1].Width = 330;
 
                 //  listBox1.ValueMember = "Id";
 
                 // dataGridViewImages.Columns[1].ValueType = Image;
-                // dataGridViewService.Columns[0].Visible = false;
+                dataGridViewService.Columns[0].Visible = false;
+                dataGridViewService.Columns[1].Visible = false;
+                dataGridViewService.Columns[2].HeaderText = "Услуги";
+                dataGridViewService.Columns[3].Visible = false;
+                dataGridViewService.Columns[4].Visible = false;
+                dataGridViewService.Columns[2].Width = 200;
+
             }
         }
     }

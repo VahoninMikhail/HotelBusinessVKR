@@ -40,26 +40,26 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(106, 12);
+            this.textBoxName.Location = new System.Drawing.Point(78, 10);
             this.textBoxName.MaxLength = 16;
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(208, 20);
+            this.textBoxName.Size = new System.Drawing.Size(200, 20);
             this.textBoxName.TabIndex = 7;
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(14, 15);
+            this.labelName.Location = new System.Drawing.Point(12, 13);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(86, 13);
+            this.labelName.Size = new System.Drawing.Size(60, 13);
             this.labelName.TabIndex = 6;
-            this.labelName.Text = "Наименование:";
+            this.labelName.Text = "Название:";
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(204, 138);
+            this.buttonCancel.Location = new System.Drawing.Point(168, 108);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(110, 36);
+            this.buttonCancel.Size = new System.Drawing.Size(110, 30);
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -67,9 +67,9 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(12, 138);
+            this.buttonSave.Location = new System.Drawing.Point(29, 108);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(110, 36);
+            this.buttonSave.Size = new System.Drawing.Size(110, 30);
             this.buttonSave.TabIndex = 4;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -77,16 +77,16 @@
             // 
             // textBoxSpecification
             // 
-            this.textBoxSpecification.Location = new System.Drawing.Point(106, 47);
+            this.textBoxSpecification.Location = new System.Drawing.Point(78, 36);
             this.textBoxSpecification.MaxLength = 16;
             this.textBoxSpecification.Name = "textBoxSpecification";
-            this.textBoxSpecification.Size = new System.Drawing.Size(208, 20);
+            this.textBoxSpecification.Size = new System.Drawing.Size(200, 20);
             this.textBoxSpecification.TabIndex = 9;
             // 
             // labelSpecification
             // 
             this.labelSpecification.AutoSize = true;
-            this.labelSpecification.Location = new System.Drawing.Point(14, 50);
+            this.labelSpecification.Location = new System.Drawing.Point(12, 39);
             this.labelSpecification.Name = "labelSpecification";
             this.labelSpecification.Size = new System.Drawing.Size(60, 13);
             this.labelSpecification.TabIndex = 8;
@@ -94,16 +94,16 @@
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(106, 90);
+            this.textBoxPrice.Location = new System.Drawing.Point(78, 62);
             this.textBoxPrice.MaxLength = 16;
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(208, 20);
+            this.textBoxPrice.Size = new System.Drawing.Size(200, 20);
             this.textBoxPrice.TabIndex = 11;
             // 
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(14, 93);
+            this.labelPrice.Location = new System.Drawing.Point(7, 65);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(65, 13);
             this.labelPrice.TabIndex = 10;
@@ -113,7 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 193);
+            this.ClientSize = new System.Drawing.Size(297, 153);
             this.Controls.Add(this.textBoxPrice);
             this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.textBoxSpecification);
@@ -123,7 +123,8 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Name = "EditService";
-            this.Text = "EditService";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Услуга";
             this.Load += new System.EventHandler(this.EditService_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

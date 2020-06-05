@@ -24,23 +24,35 @@ namespace HotelBusinessViewAdmin.Base
                     var form = await ApiClient.GetRequestData<OrderViewModel>("api/Order/Get/" + id.Value);
 
                     dataGridViewRooms.DataSource = form.RoomOrders;
-                    dataGridViewRooms.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
                     dataGridViewRooms.Columns[0].Visible = false;
                     dataGridViewRooms.Columns[1].Visible = false;
                     dataGridViewRooms.Columns[2].Visible = false;
+                    dataGridViewRooms.Columns[3].HeaderText = "Виды комнат";
                     dataGridViewRooms.Columns[4].Visible = false;
                     dataGridViewRooms.Columns[5].Visible = false;
                     dataGridViewRooms.Columns[6].Visible = false;
+                    dataGridViewRooms.Columns[7].HeaderText = "Номер комнаты";
+                    dataGridViewRooms.Columns[8].HeaderText = "Стоимость";
                     dataGridViewRooms.Columns[9].Visible = false;
                     dataGridViewRooms.Columns[10].Visible = false;
                     dataGridViewRooms.Columns[11].Visible = false;
 
-                    dataGridViewServices.DataSource = form.ServiceOrders;
-                    dataGridViewServices.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridViewRooms.Columns[3].Width = 100;
+                    dataGridViewRooms.Columns[7].Width = 60;
+                    dataGridViewRooms.Columns[8].Width = 80;
 
+                    dataGridViewServices.DataSource = form.ServiceOrders;
                     dataGridViewServices.Columns[0].Visible = false;
                     dataGridViewServices.Columns[1].Visible = false;
+                    dataGridViewServices.Columns[2].HeaderText = "Услуги";
+                    dataGridViewServices.Columns[3].HeaderText = "Кол-во";
+                    dataGridViewServices.Columns[4].HeaderText = "Цена";
+                    dataGridViewServices.Columns[5].HeaderText = "Стоимость";
+
+                    dataGridViewServices.Columns[2].Width = 150;
+                    dataGridViewServices.Columns[3].Width = 60;
+                    dataGridViewServices.Columns[4].Width = 70;
+                    dataGridViewServices.Columns[5].Width = 80;
 
                     textBoxUser.Text = form.UserFIO;
                     textBoxNumberOrder.Text = form.Id.ToString();

@@ -1,12 +1,6 @@
 ﻿using HorelBusinessService.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HotelBusinessViewAdmin.Rooms
@@ -32,9 +26,14 @@ namespace HotelBusinessViewAdmin.Rooms
                 {
                     dataGridViewRooms.DataSource = list;
                     dataGridViewRooms.Columns[0].Visible = false;
-                    dataGridViewRooms.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
+                    dataGridViewRooms.Columns[1].HeaderText = "Номер комнаты";
+                    dataGridViewRooms.Columns[2].Visible = false;
+                    dataGridViewRooms.Columns[3].HeaderText = "Вид номера";
+                    dataGridViewRooms.Columns[4].Visible = false;
 
+                    dataGridViewRooms.Columns[1].Width = 100;
+                    dataGridViewRooms.Columns[3].Width = 150;
+                }
             }
             catch (Exception ex)
             {

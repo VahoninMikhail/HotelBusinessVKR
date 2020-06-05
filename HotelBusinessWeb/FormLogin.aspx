@@ -2,11 +2,27 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="bodyContent" runat="server">
     <div id="content">
-             Логин<asp:TextBox ID="TextBoxUserName" runat="server"></asp:TextBox>
-            <br />
-            Пароль<asp:TextBox ID="textBoxPassword" runat="server"></asp:TextBox>
-            <br />
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Вход" />
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click2" Text="Регистрация" />
+ <div class="container">
+
+
+<form data-toggle="validator">
+    <div class="form-group has-feedback">
+        <label for="input-email" class="sr-only">Адрес почты</label>
+        <input type="email" class="form-control" id="inputEmail" runat="server"
+               data-required-error="Поле не заполнено" placeholder="Адрес почты" required/>
+        <div class="help-block with-errors">Обязательное поле</div>
     </div>
+    <div class="form-group has-feedback">
+        <label for="input-password" class="sr-only">Пароль</label>
+        <input type="password" class="form-control" id="inputPassword" runat="server"
+               data-required-error="Поле не заполнено" placeholder="Введите пароль" required/>
+        <div class="help-block with-errors">Обязательное поле</div>
+    </div>
+    <div class="form-group">
+        <button id="login" type="submit" class="btn btn-default" runat="server">Вход</button>
+    </div>
+</form>
+
+    </div>
+   </div>
 </asp:Content>

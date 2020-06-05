@@ -58,15 +58,6 @@ namespace HotelBusinessWeb {
         protected global::System.Web.UI.WebControls.Label LabelDate;
         
         /// <summary>
-        /// Repeater1 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
-        
-        /// <summary>
         /// forms элемент управления.
         /// </summary>
         /// <remarks>

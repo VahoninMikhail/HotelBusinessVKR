@@ -70,7 +70,8 @@ namespace HotelBusinessWeb
                 DepartureDate = departureDate,
                 RoomOrders = roomBM,
                 ServiceOrders = serviceBM,
-                Payed = CartTotal
+                Payed = CartTotal,
+                PayType = "Безналичные"
             }));
 
             task.ContinueWith((prevTask) => Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Сохранение прошло успешно');</script>"),
